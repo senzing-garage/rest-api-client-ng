@@ -1,7 +1,7 @@
 {
   "name": "@senzing/rest-api-client-ng",
   "version": "0.0.5",
-  "description": "A package providing restful http interfaces to typescript interfaces to @senzing/rest-api-server-java",
+  "description": "A package providing restful http interfaces to typescript interfaces to @senzing/senzing-api-server",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Senzing/rest-api-client-ng.git"
