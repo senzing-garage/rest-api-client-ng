@@ -1,6 +1,6 @@
 {
   "name": "@senzing/rest-api-client-ng",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A package providing restful http interfaces to typescript interfaces to @senzing/rest-api-server-java",
   "scripts": {
     "ng": "ng",
