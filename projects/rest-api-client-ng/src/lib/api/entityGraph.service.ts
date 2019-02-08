@@ -31,7 +31,21 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class EntityGraphService {
 
-    protected basePath = '/';
+    protected _basePath = '/';
+    /**
+     * get the basePath from the configuration instance
+     * or alternatively fallback to local reference
+     */
+    public get basePath(): string {
+        return this.configuration && this.configuration.basePath ? this.configuration.basePath : this._basePath;
+    }
+    /**
+     * set the local basePath reference
+     */
+    public set basePath(value: string) {
+        this._basePath = value;
+    }
+    
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
