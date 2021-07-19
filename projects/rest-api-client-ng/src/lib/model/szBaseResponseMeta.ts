@@ -9,22 +9,63 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { SzHttpMethod } from './szHttpMethod';
+ import { SzHttpMethod } from './szHttpMethod';
 
-export interface SzBaseResponseMeta {
-    httpMethod?: SzHttpMethod;
-    /**
-     * The HTTP status response code.
-     */
-    httpStatusCode?: number;
-    /**
-     * The timestamp of the operation's execution.
-     */
-    timestamp?: Date;
-    version?: string;
-    restApiVersion?: string;
-    /**
-     * The timing measurements that were taken where the keys are identifying what was timed and the values are the number of milliseconds.
-     */
-    timings?: { [key: string]: number; };
-}
+ /**
+  * Represents the meta data returned with each response.
+  */
+ export interface SzBaseResponseMeta { 
+     /**
+      * The descriptive name of the server that produced the response.
+      */
+     server?: string;
+     httpMethod?: SzHttpMethod;
+     /**
+      * The HTTP status response code.
+      */
+     httpStatusCode?: number;
+     /**
+      * The timestamp of the operation's execution.
+      */
+     timestamp?: Date;
+     /**
+      * The version number of the server.
+      */
+     version?: string;
+     /**
+      * The REST API specification version implemented by the server.
+      */
+     restApiVersion?: string;
+     /**
+      * The version of the underlying native Senzing API product.
+      */
+     nativeApiVersion?: string;
+     /**
+      * The build version of the underlying native Senzing API product.
+      */
+     nativeApiBuildVersion?: string;
+     /**
+      * The build number of the underlying native Senzing API product.
+      */
+     nativeApiBuildNumber?: string;
+     /**
+      * The build date of the underlying native Senzing API product.
+      */
+     nativeApiBuildDate?: Date;
+     /**
+      * The config compatilibility version of the underlying native Senzing API product.
+      */
+     configCompatibilityVersion?: string;
+     /**
+      * The timing measurements that were taken where the keys are identifying what was timed and the values are the number of milliseconds.
+      */
+     timings?: { [key: string]: number; };
+     /**
+      * The version number of the server.
+      */
+     pocServerVersion?: string;
+     /**
+      * The REST API specification version implemented by the server.
+      */
+     pocApiVersion?: string;
+ }

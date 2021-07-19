@@ -11,7 +11,6 @@
  */
 import { SzBaseResponse } from './szBaseResponse';
 import { SzBaseResponseLinks } from './szBaseResponseLinks';
-import { SzBaseResponseMeta } from './szBaseResponseMeta';
 import { SzServerInfo } from './szServerInfo';
 
 /**

@@ -1,6 +1,6 @@
 {
   "name": "@senzing/rest-api-client-ng",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "A package providing restful http interfaces to typescript interfaces to @senzing/senzing-api-server. Utilizes the OpenAPI spec defined in the https://github.com/Senzing/senzing-rest-api-specification repository.",
   "scripts": {
     "ng": "ng",
