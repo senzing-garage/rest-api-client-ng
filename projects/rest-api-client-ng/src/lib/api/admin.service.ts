@@ -22,6 +22,7 @@ import { SzBaseResponse } from '../model/szBaseResponse';
 import { SzLicenseResponse } from '../model/szLicenseResponse';
 import { SzServerInfoResponse } from '../model/szServerInfoResponse';
 import { SzVersionResponse } from '../model/szVersionResponse';
+import { SzQueueInfoResponse } from '../model/szQueueInfoResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -280,4 +281,42 @@ export class AdminService {
             }
         );
     }
+
+    /**
+     * Gets the properties of the configured load queue.
+     * Obtains the properties of the configured load queue
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+     public getLoadQueueInfo(observe?: 'body', reportProgress?: boolean): Observable<SzQueueInfoResponse>;
+     public getLoadQueueInfo(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SzQueueInfoResponse>>;
+     public getLoadQueueInfo(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SzQueueInfoResponse>>;
+     public getLoadQueueInfo(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+ 
+         let headers = this.defaultHeaders;
+ 
+         // to determine the Accept header
+         let httpHeaderAccepts: string[] = [
+             'application/json; charset=UTF-8',
+             'application/json',
+             'default'
+         ];
+         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+         if (httpHeaderAcceptSelected != undefined) {
+             headers = headers.set('Accept', httpHeaderAcceptSelected);
+         }
+ 
+         // to determine the Content-Type header
+         const consumes: string[] = [
+         ];
+ 
+         return this.httpClient.request<SzQueueInfoResponse>('get',`${this.basePath}/load-queue`,
+             {
+                 withCredentials: this.configuration.withCredentials,
+                 headers: headers,
+                 observe: observe,
+                 reportProgress: reportProgress
+             }
+         );
+     }
  }

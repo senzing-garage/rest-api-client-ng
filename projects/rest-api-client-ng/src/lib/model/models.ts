@@ -83,6 +83,8 @@ export * from './szMatchInfo';
 export * from './szMatchLevel';
 export * from './szMatchedRecord';
 export * from './szNameScoring';
+export * from './szQueueInfo';
+export * from './szQueueInfoResponse';
 export * from './szRecordId';
 export * from './szRecordResponse';
 export * from './szRecordResponseData';
