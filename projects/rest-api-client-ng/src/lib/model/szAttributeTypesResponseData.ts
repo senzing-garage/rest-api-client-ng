@@ -11,7 +11,10 @@
  */
 import { SzAttributeType } from './szAttributeType';
 
-export interface SzAttributeTypesResponseData {
+/**
+ * Describes the data associated with the `SzAttributeTypesResponse`.
+ */
+export interface SzAttributeTypesResponseData { 
     /**
      * The list of attribute types.
      */
