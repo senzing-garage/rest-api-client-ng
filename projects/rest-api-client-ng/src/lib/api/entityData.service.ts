@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { SzAttributeSearchResponse } from '../model/szAttributeSearchResponse';
+import { SzAttributeSearchResultType } from '../model/szAttributeSearchResultType';
 import { SzDeleteRecordResponse } from '../model/szDeleteRecordResponse';
 import { SzEntityResponse } from '../model/szEntityResponse';
 import { SzErrorResponse } from '../model/szErrorResponse';
@@ -26,6 +27,7 @@ import { SzLoadRecordResponse } from '../model/szLoadRecordResponse';
 import { SzRecordResponse } from '../model/szRecordResponse';
 import { SzReevaluateResponse } from '../model/szReevaluateResponse';
 import { SzRelationshipMode } from '../model/szRelationshipMode';
+import { SzWhyEntitiesResponse } from '../model/szWhyEntitiesResponse';
 import { SzWhyEntityResponse } from '../model/szWhyEntityResponse';
 import { SzWhyRecordsResponse } from '../model/szWhyRecordsResponse';
 
@@ -99,7 +101,7 @@ export class EntityDataService {
 
     /**
      * Load a new record or replace a record in a data source with a specific record ID.
-     *
+     * This operation loads a single record using the data source identified by the data source code in the request path.  The record will be identified uniquely within the data source by the record ID provided in the request path.  The provided record in the request body is described in JSON using the [Senzing Generic Entity Specification](https://senzing.zendesk.com/hc/en-us/articles/231925448-Generic-Entity-Specification). The provided JSON record may omit the &#x60;RECORD_ID&#x60;, but if it contains a &#x60;RECORD_ID&#x60; then it **must** match the record ID provided on the request path.  The record ID is returned as part of the response.  **NOTE:** The &#x60;withInfo&#x60; parameter will return the entity resolution info pertaining to the load.  This can be used to update a search index or external data mart.   Additionally, Senzing API Server provides a means to have the \&quot;raw\&quot; entity resolution info (from the underlying native Senzing API) automatically sent to a messaging service such as those provided by Amazon SQS, Rabbit MQ or Kafka regardless of the &#x60;withInfo&#x60; query parameter value. 
      * @param body The record data as JSON.  The format of the JSON is described by the [Senzing Generic Entity Specification](https://senzing.zendesk.com/hc/en-us/articles/231925448-Generic-Entity-Specification). The specified JSON may include or exclude the DATA_SOURCE and RECORD_ID fields.  Any excluded field will be added to the JSON accordingly.  Any included field in the JSON, must match the respective path parameter for data source code or record ID.
      * @param dataSourceCode The data source code identifying the data source.
      * @param recordId The identifier that uniquely identifies the requested record within a given data source.  This may have been specified when the record was loaded or generated automatically.
@@ -181,8 +183,8 @@ export class EntityDataService {
     }
 
     /**
-     * Load a new record specified in a data source with either an auto-generated record ID or a RECORD_ID specified in the payload.
-     *
+     * Load a new record specified in a data source with either an auto-generated record ID or a &#x60;RECORD_ID&#x60; specified in the payload.
+     * This operation loads a single record using the data source identified by the data source code in the request path.  The provided record in the request body is described in JSON using the [Senzing Generic Entity Specification](https://senzing.zendesk.com/hc/en-us/articles/231925448-Generic-Entity-Specification). The provided record may contain a &#x60;RECORD_ID&#x60; to identify it uniquely among other records in the same data source, but if it does not then a record ID will be automatically generated.  The record ID is returned as part of the response.  **NOTE:** The &#x60;withInfo&#x60; parameter will return the entity resolution info pertaining to the load.  This can be used to update a search index or external data mart.   Additionally, Senzing API Server provides a means to have the \&quot;raw\&quot; entity resolution info (from the underlying native Senzing API) automatically sent to a messaging service such as those provided by Amazon SQS, Rabbit MQ or Kafka regardless of the &#x60;withInfo&#x60; query parameter value. 
      * @param body The record data as JSON.  The format of the JSON is described by the [Senzing Generic Entity Specification](https://senzing.zendesk.com/hc/en-us/articles/231925448-Generic-Entity-Specification). The specified JSON may include or exclude the DATA_SOURCE field. It will be added if excluded.  If included, it must match the data source code in the path parameters.
      * @param dataSourceCode The data source code identifying the data source.
      * @param loadId The optional load ID to associate with the loaded record.
@@ -260,7 +262,7 @@ export class EntityDataService {
 
     /**
      * Delete a record given its data source and record ID.
-     *
+     * This operation deletes a single record identified by the data source code and record ID in the request path.  **NOTE:** The &#x60;withInfo&#x60; parameter will return the entity resolution info pertaining to the delete.  This can be used to update a search index or external data mart.   Additionally, Senzing API Server provides a means to have the \&quot;raw\&quot; entity resolution info (from the underlying native Senzing API) automatically sent to a messaging service such as those provided by Amazon SQS, Rabbit MQ or Kafka regardless of the &#x60;withInfo&#x60; query parameter value. 
      * @param dataSourceCode The data source code identifying the data source.
      * @param recordId The identifier that uniquely identifies the requested record within a given data source.  This may have been specified when the record was loaded or generated automatically.
      * @param loadId The optional load ID to associate with the loaded record.
@@ -330,80 +332,18 @@ export class EntityDataService {
     }
 
     /**
-     * Get an entity record by data source and record ID.
-     *
-     * @param dataSourceCode The data source code identifying the data source.
-     * @param recordId The identifier that uniquely identifies the requested record within a given data source.  This may have been specified when the record was loaded or generated automatically.
-     * @param withRaw Whether or not to include the raw JSON response from the underlying native API.  This raw response may include additional details but lack some of the abstraction the standard response provides.  If true, then the &#x27;rawData&#x27; field in the response will be a non-null value and contain the additional details.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    /*
-    public getDataSourceRecord(dataSourceCode: string, recordId: string, withRaw?: boolean, observe?: 'body', reportProgress?: boolean): Observable<SzRecordResponse>;
-    public getDataSourceRecord(dataSourceCode: string, recordId: string, withRaw?: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SzRecordResponse>>;
-    public getDataSourceRecord(dataSourceCode: string, recordId: string, withRaw?: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SzRecordResponse>>;
-    public getDataSourceRecord(dataSourceCode: string, recordId: string, withRaw?: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (dataSourceCode === null || dataSourceCode === undefined) {
-            throw new Error('Required parameter dataSourceCode was null or undefined when calling getDataSourceRecord.');
-        }
-
-        if (recordId === null || recordId === undefined) {
-            throw new Error('Required parameter recordId was null or undefined when calling getDataSourceRecord.');
-        }
-
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (withRaw !== undefined && withRaw !== null) {
-            queryParameters = queryParameters.set('withRaw', <any>withRaw);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json; charset=UTF-8',
-            'application/json',
-            'default'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-        if(additionalHeaders) {
-            for(let _hKey in additionalHeaders) {
-                headers = headers.set(_hKey, additionalHeaders[_hKey]);
-            }
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<SzRecordResponse>('get',`${this.basePath}/data-sources/${encodeURIComponent(String(dataSourceCode))}/records/${encodeURIComponent(String(recordId))}`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }*/
-
-    /**
      * Get a resolved entity by entity ID.
-     *
+     * Gets the details on a resolved entity that is identified by the entity ID specified in the request path.  **NOTE:** Bear in mind that entity ID&#x27;s are transient and may be recycled or repurposed as new records are loaded and entities resolve, unresolve and re-resolve.  An alternative way to identify a record is by one of its composite records using &#x60;GET /data-sources/{dataSourceCode}/records/{recordId}/entity&#x60;. 
      * @param entityId The unique numeric ID that identifies that entity being requested.
      * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &#x60;NONE&#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &#x60;REPRESENTATIVE&#x60; - Include only a single representative value per                        \&quot;unique\&quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &#x60;WITH_DUPLICATES&#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.
+     * @param forceMinimal Whether or not to force the minimum entity detail in the response which may consist of nothing more than an entity ID.  This provides the fastest response to an entity query operation because no additional data needs to be retrieved other than what is directly accessible.  This overrules other parameters governing the retrieval of features or related entities.
      * @param withFeatureStats Set to &#x60;true&#x60; to include resolution statistics for features.  This defaults to &#x60;false&#x60;.
      * @param withInternalFeatures Set to &#x60;true&#x60; to include \&quot;expressed\&quot; features that are derived composite keys such as name + date of birth keys.  This defaults to &#x60;false&#x60;.
-     * @param forceMinimal Whether or not to force the minimum entity detail in the response which may consist of nothing more than an entity ID.  This provides the fastest response to an entity query operation because no additional data needs to be retrieved other than what is directly accessible.  This overrules other parameters governing the retrieval of features or related entities.
      * @param withRelated Controls how to handle the first-degree related entities.  The possible values are:   * &#x60;NONE&#x60; - Do not include any data on first-degree related entities --      this is the fastest option from a performance perspective because      related entities do not have to be retrieved.   * &#x60;PARTIAL&#x60; - **(default value)** Include only partial stub      information for related entities with the &#x60;partial&#x60; property of the      &#x60;SzRelatedEntity&#x60; instances set to &#x60;true&#x60;.  Obtaining additional      information requires subsequent API calls.   * &#x60;FULL&#x60; - Include full data on the first-degree related entities.      This option obtains entity network at one degree for the requested      entity and will fully populate up to 1000 related entities and sets      the &#x60;partial&#x60; property of those &#x60;SzRelatedEntity&#x60; instances to      &#x60;false&#x60;.  Related entities beyond the first 1000 will be left      incomplete and have their &#x60;partial&#x60; property will be set to &#x60;true&#x60;.
      * @param withRaw Whether or not to include the raw JSON response from the underlying native API.  This raw response may include additional details but lack some of the abstraction the standard response provides.  If true, then the &#x27;rawData&#x27; field in the response will be a non-null value and contain the additional details.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
-    */
+     */
     public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, forceMinimal?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: 'body', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<SzEntityResponse>;
     public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, forceMinimal?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: 'response', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpResponse<SzEntityResponse>>;
     public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, forceMinimal?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: 'events', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpEvent<SzEntityResponse>>;
@@ -474,7 +414,7 @@ export class EntityDataService {
 
     /**
      * Get a resolved entity by data source and record ID.
-     *
+     * Gets the details on a resolved entity that contains the record identified by the data source code and record ID in the specified request path. 
      * @param dataSourceCode The data source code identifying the data source.
      * @param recordId The identifier that uniquely identifies the requested record within a given data source.  This may have been specified when the record was loaded or generated automatically.
      * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &#x60;NONE&#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &#x60;REPRESENTATIVE&#x60; - Include only a single representative value per                        \&quot;unique\&quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &#x60;WITH_DUPLICATES&#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.
@@ -560,7 +500,7 @@ export class EntityDataService {
 
     /**
      * Get an entity record by data source and record ID.
-     *
+     * Gets details on a specific entity record identified by the data source code and record ID specified in the request path. 
      * @param dataSourceCode The data source code identifying the data source.
      * @param recordId The identifier that uniquely identifies the requested record within a given data source.  This may have been specified when the record was loaded or generated automatically.
      * @param withRaw Whether or not to include the raw JSON response from the underlying native API.  This raw response may include additional details but lack some of the abstraction the standard response provides.  If true, then the &#x27;rawData&#x27; field in the response will be a non-null value and contain the additional details.
@@ -621,7 +561,7 @@ export class EntityDataService {
 
     /**
      * Reevaluate an entity identified by its entity ID.
-     *
+     * Reevaluates an entity identified by the entity ID specified via the &#x60;entityId&#x60; query parameter.  **NOTE:** The &#x60;withInfo&#x60; parameter will return the entity resolution info pertaining to the reevaluation.  This can be used to update a search index or external data mart.   Additionally, Senzing API Server provides a means to have the \&quot;raw\&quot; entity resolution info (from the underlying native Senzing API) automatically sent to a messaging service such as those provided by Amazon SQS, Rabbit MQ or Kafka regardless of the &#x60;withInfo&#x60; query parameter value.  **ALSO NOTE:** Bear in mind that entity ID&#x27;s are transient and may be recycled or repurposed as new records are loaded and entities resolve, unresolve and re-resolve. 
      * @param entityId The entity ID of the entity to reevaluate.
      * @param withInfo Set to &#x60;true&#x60; to include resolution information related to loading, and &#x60;false&#x60; to exclude it.  This defaults to &#x60;false&#x60;.
      * @param withRaw Whether or not to include the raw JSON response from the underlying native API.  This raw response may include additional details but lack some of the abstraction the standard response provides.  If true, then the &#x27;rawData&#x27; field in the response will be a non-null value and contain the additional details.
@@ -685,7 +625,7 @@ export class EntityDataService {
 
     /**
      * Reevaluate a record identified by a data source and record ID.
-     *
+     * This operation reevaluates a single record identified by the data source code and record ID in the request path.  **NOTE:** The &#x60;withInfo&#x60; parameter will return the entity resolution info pertaining to the reevaluation.  This can be used to update a search index or external data mart.   Additionally, Senzing API Server provides a means to have the \&quot;raw\&quot; entity resolution info (from the underlying native Senzing API) automatically sent to a messaging service such as those provided by Amazon SQS, Rabbit MQ or Kafka regardless of the &#x60;withInfo&#x60; query parameter value. 
      * @param dataSourceCode The data source code identifying the data source.
      * @param recordId The identifier that uniquely identifies the requested record within a given data source.  This may have been specified when the record was loaded or generated automatically.
      * @param withInfo Set to &#x60;true&#x60; to include resolution information related to loading, and &#x60;false&#x60; to exclude it.  This defaults to &#x60;false&#x60;.
@@ -750,10 +690,11 @@ export class EntityDataService {
     }
 
     /**
-     * Search for entities that would match or relate to the provided entity features.
-     *
-     * @param attrs The JSON record describing the entity attributes in the same format as how an entity record is loaded.  The specified attributes are treated as a hypothetical record being loaded, and the result is anything that would have matched or related to it.  Here are some examples of encoding this parameter:  - **JavaScript Example**   &#x60;&#x60;&#x60;javascript     var searchCriteria &#x3D; {       \&quot;NAME_FULL\&quot;: \&quot;Joe Schmoe\&quot;,       \&quot;DATE_OF_BIRTH\&quot;: \&quot;03-SEP-1987\&quot;     };     var searchAttrs &#x3D; JSON.stringify(searchCriteria);     var urlPath &#x3D; \&quot;/entities?attrs&#x3D;\&quot; + encodeURIComponent(searchAttrs);   &#x60;&#x60;&#x60;  - **Java Example**   &#x60;&#x60;&#x60;java     JsonObjectBuilder builder &#x3D; Json.createObjectBuilder();     builder.add(\&quot;NAME_FULL\&quot;, \&quot;Joe Schmoe\&quot;);     builder.add(\&quot;DATE_OF_BIRTH\&quot;, \&quot;03-SEP-1987\&quot;);     JsonObject searchCriteria &#x3D; builder.build();      String searchAttrs &#x3D; searchCriteria.toString();     String encodedAttrs &#x3D; URLEncoder.encode(searchAttrs, \&quot;UTF-8\&quot;);     String urlPath &#x3D; \&quot;/entities?attrs&#x3D;\&quot; + encodedAttrs;   &#x60;&#x60;&#x60;  In both of the above examples the &#x60;urlPath&#x60; variable is set to: &#x60;&#x60;&#x60;json  /entities?attrs&#x3D;%7B%22NAME_FULL%22%3A%22Joe%20Schmoe%22%2C%22DATE_OF_BIRTH%22%3A%2203-SEP-1987%22%7D  &#x60;&#x60;&#x60;
+     * Search for entities that would resolve to or relate to the provided entity features.
+     * This operation finds all entities that would resolve or relate to the search candidate features specified by the &#x60;attr&#x60; and/or &#x60;attrs&#x60; query parameters.  The search candidate features are treated as if they belonged to an inbound record being loaded, thus the attribute names are given by the [Senzing Generic Entity Specification](https://senzing.zendesk.com/hc/en-us/articles/231925448-Generic-Entity-Specification). If including the search candidate features as query parameters presents privacy concerns due to sensitivity of the data, they can alternately be sent in the request body using the &#x60;POST /search-entities&#x60; endpoint.  **NOTE:** This operation differs from a keyword search in that it uses deterministic entity resolution rules to determine the result set.  This means that features that are considered \&quot;generic\&quot; (i.e.: overly common) will be ignored just as they are during entity resolution and will not yield search results.  For example, searching on a gender by itself will return no results rather than half of all entities.  Similarly, a phone number such as &#x60;555-1212&#x60; may yield no results. 
+     * @param attrs The JSON record describing the entity attributes in the same format as how an entity record is loaded.  The specified attributes are treated as a hypothetical record being loaded, and the result is anything that would have matched or related to it.  Here are some examples of encoding this parameter:  - **JavaScript Example**   &#x60;&#x60;&#x60;javascript     var searchCriteria &#x3D; {       \&quot;NAME_FULL\&quot;: \&quot;Joe Schmoe\&quot;,       \&quot;DATE_OF_BIRTH\&quot;: \&quot;03-SEP-1987\&quot;     };     var searchAttrs &#x3D; JSON.stringify(searchCriteria);     var urlPath &#x3D; \&quot;/entities?attrs&#x3D;\&quot; + encodeURIComponent(searchAttrs);   &#x60;&#x60;&#x60;  - **Java Example**   &#x60;&#x60;&#x60;java     JsonObjectBuilder builder &#x3D; Json.createObjectBuilder();     builder.add(\&quot;NAME_FULL\&quot;, \&quot;Joe Schmoe\&quot;);     builder.add(\&quot;DATE_OF_BIRTH\&quot;, \&quot;03-SEP-1987\&quot;);     JsonObject searchCriteria &#x3D; builder.build();      String searchAttrs &#x3D; searchCriteria.toString();     String encodedAttrs &#x3D; URLEncoder.encode(searchAttrs, \&quot;UTF-8\&quot;);     String urlPath &#x3D; \&quot;/entities?attrs&#x3D;\&quot; + encodedAttrs;   &#x60;&#x60;&#x60;  In both of the above examples the &#x60;urlPath&#x60; variable is set to: &#x60;&#x60;&#x60;json  /entities?attrs&#x3D;%7B%22NAME_FULL%22%3A%22Joe%20Schmoe%22%2C%22DATE_OF_BIRTH%22%3A%2203-SEP-1987%22%7D  &#x60;&#x60;&#x60; 
      * @param attr Either the &#x60;attrs&#x60; or &#x60;attr&#x60; parameter is required, **however** if the &#x60;attrs&#x60; parameter is provided it takes precedence and the &#x60;attr&#x60; parameter will be ignored.  If you are using this API programmatically then you should typically use the &#x60;attrs&#x60; parameter.  But when manually constructing a URL in the browser address bar, in a command-line tool like &#x60;curl&#x60; or in a REST client browser extension for debugging or testing purposes, encoding that JSON value can be unwieldy.  This parameter (which is multi-valued) lets you specify colon-delimited strings that are prefixed with the JSON property name and suffixed with the value.  For example, &#x60;NAME_FIRST:Joe&#x60; (url encoded of course).  This side-steps the need to URL-encode the structural JSON characters and usually means you need only URL-encode basic characters like colons (&#x60;%3A&#x60;) and spaces (&#x60;%20&#x60;).  The JSON constructed using this parameter is obviously flat.  If you want to group properties together by their \&quot;usage type\&quot; (e.g.: &#x60;NAME_TYPE&#x60;, &#x60;PHONE_TYPE&#x60; or &#x60;ADDRESS_TYPE&#x60;) then you would **also** prefix with the type (e.g.: &#x60;HOME_PHONE_NUMBER:702-555-1212&#x60;).
+     * @param includeOnly Optional parameter that can be specified zero or more times to indicate which &#x60;SzAttributeSearchResultType&#x60;&#x27;s should be included in the search results.  If not specified then all match types are included.  *NOTE*: This parameter is ignored unless the underlying native Senzing API is version 2.4.1 or later.
      * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &#x60;NONE&#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &#x60;REPRESENTATIVE&#x60; - Include only a single representative value per                        \&quot;unique\&quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &#x60;WITH_DUPLICATES&#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.
      * @param withFeatureStats Set to &#x60;true&#x60; to include resolution statistics for features.  This defaults to &#x60;false&#x60;.
      * @param withInternalFeatures Set to &#x60;true&#x60; to include \&quot;expressed\&quot; features that are derived composite keys such as name + date of birth keys.  This defaults to &#x60;false&#x60;.
@@ -763,19 +704,10 @@ export class EntityDataService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public searchByAttributes(attrs?: string, attr?: Array<string>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'body', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<SzAttributeSearchResponse>;
-    public searchByAttributes(attrs?: string, attr?: Array<string>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'response', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpResponse<SzAttributeSearchResponse>>;
-    public searchByAttributes(attrs?: string, attr?: Array<string>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'events', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpEvent<SzAttributeSearchResponse>>;
-    public searchByAttributes(attrs?: string, attr?: Array<string>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe: any = 'body', reportProgress: boolean = false, additionalHeaders: {[key: string]: string} = {} ): Observable<any> {
-
-
-
-
-
-
-
-
-
+     public searchEntitiesByGet(attrs?: string, attr?: Array<string>, includeOnly?: Array<SzAttributeSearchResultType>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'body', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<SzAttributeSearchResponse>;
+     public searchEntitiesByGet(attrs?: string, attr?: Array<string>, includeOnly?: Array<SzAttributeSearchResultType>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'response', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpResponse<SzAttributeSearchResponse>>;
+     public searchEntitiesByGet(attrs?: string, attr?: Array<string>, includeOnly?: Array<SzAttributeSearchResultType>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'events', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpEvent<SzAttributeSearchResponse>>;
+     public searchEntitiesByGet(attrs?: string, attr?: Array<string>, includeOnly?: Array<SzAttributeSearchResultType>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe: any = 'body', reportProgress: boolean = false, additionalHeaders: {[key: string]: string} = {} ): Observable<any> {
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (attrs !== undefined && attrs !== null) {
             queryParameters = queryParameters.set('attrs', <any>attrs);
@@ -783,6 +715,11 @@ export class EntityDataService {
         if (attr) {
             attr.forEach((element) => {
                 queryParameters = queryParameters.append('attr', <any>element);
+            })
+        }
+        if (includeOnly) {
+            includeOnly.forEach((includeOnlyEle: SzAttributeSearchResultType) => {
+                queryParameters = queryParameters.append('includeOnly', <SzAttributeSearchResultType>includeOnlyEle);
             })
         }
         if (featureMode !== undefined && featureMode !== null) {
@@ -836,12 +773,201 @@ export class EntityDataService {
             }
         );
     }
+    /**
+     * Search for entities that would match or relate to the provided entity features.  This is similar to &#x60;GET /entities&#x60; except it requires the caller to specify the search criteria as JSON in the request body.
+     * This operation finds all entities that would resolve or relate to the search candidate features specified in JSON request body.  The search candidate features are treated as if they belonged to an inbound record being loaded.  The JSON format of the request body is defined by the [Senzing Generic Entity Specification](https://senzing.zendesk.com/hc/en-us/articles/231925448-Generic-Entity-Specification). This operation is similar to the &#x60;GET /entities&#x60; endpoint in function except that it provides a means to avoid specifying potentially sensitive data in query parameters, but instead in the request body.  **NOTE:** This operation differs from a keyword search in that it uses deterministic entity resolution rules to determine the result set.  This means that features that are considered \&quot;generic\&quot; (i.e.: overly common) will be ignored just as they are during entity resolution and will not yield search results.  For example, searching on a gender by itself will return no results rather than half of all entities.  Similarly, a phone number such as &#x60;555-1212&#x60; may yield no results. 
+     * @param body The JSON record describing the entity attributes in the same format as how an entity record is loaded The format of the JSON is described by the [Senzing Generic Entity Specification](https://senzing.zendesk.com/hc/en-us/articles/231925448-Generic-Entity-Specification). The specified attributes are treated as a hypothetical record being loaded, and the result is anything that would have matched or related to it.
+     * @param includeOnly Optional parameter that can be specified zero or more times to indicate which &#x60;SzAttributeSearchResultType&#x60;&#x27;s should be included in the search results.  If not specified then all match types are included.  *NOTE*: This parameter is ignored unless the underlying native Senzing API is version 2.4.1 or later.
+     * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &#x60;NONE&#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &#x60;REPRESENTATIVE&#x60; - Include only a single representative value per                        \&quot;unique\&quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &#x60;WITH_DUPLICATES&#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.
+     * @param withFeatureStats Set to &#x60;true&#x60; to include resolution statistics for features.  This defaults to &#x60;false&#x60;.
+     * @param withInternalFeatures Set to &#x60;true&#x60; to include \&quot;expressed\&quot; features that are derived composite keys such as name + date of birth keys.  This defaults to &#x60;false&#x60;.
+     * @param forceMinimal Whether or not to force the minimum entity detail in the response which may consist of nothing more than an entity ID.  This provides the fastest response to an entity query operation because no additional data needs to be retrieved other than what is directly accessible.  This overrules other parameters governing the retrieval of features or related entities.
+     * @param withRelationships Set to &#x60;true&#x60; to include partial information of related entities for the returned entities.  This defaults to &#x60;false&#x60;.
+     * @param withRaw Whether or not to include the raw JSON response from the underlying native API.  This raw response may include additional details but lack some of the abstraction the standard response provides.  If true, then the &#x27;rawData&#x27; field in the response will be a non-null value and contain the additional details.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public searchEntitiesByPost(body: { [key: string]: any; }, includeOnly?: Array<SzAttributeSearchResultType>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'body', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<SzAttributeSearchResponse>;
+    public searchEntitiesByPost(body: { [key: string]: any; }, includeOnly?: Array<SzAttributeSearchResultType>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'response', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpResponse<SzAttributeSearchResponse>>;
+    public searchEntitiesByPost(body: { [key: string]: any; }, includeOnly?: Array<SzAttributeSearchResultType>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'events', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpEvent<SzAttributeSearchResponse>>;
+    public searchEntitiesByPost(body: { [key: string]: any; }, includeOnly?: Array<SzAttributeSearchResultType>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe: any = 'body', reportProgress: boolean = false, additionalHeaders: {[key: string]: string} = {} ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling searchEntitiesByPost.');
+        }
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (includeOnly) {
+            includeOnly.forEach((element) => {
+                queryParameters = queryParameters.append('includeOnly', <any>element);
+            })
+        }
+        if (featureMode !== undefined && featureMode !== null) {
+            queryParameters = queryParameters.set('featureMode', <any>featureMode);
+        }
+        if (withFeatureStats !== undefined && withFeatureStats !== null) {
+            queryParameters = queryParameters.set('withFeatureStats', <any>withFeatureStats);
+        }
+        if (withInternalFeatures !== undefined && withInternalFeatures !== null) {
+            queryParameters = queryParameters.set('withInternalFeatures', <any>withInternalFeatures);
+        }
+        if (forceMinimal !== undefined && forceMinimal !== null) {
+            queryParameters = queryParameters.set('forceMinimal', <any>forceMinimal);
+        }
+        if (withRelationships !== undefined && withRelationships !== null) {
+            queryParameters = queryParameters.set('withRelationships', <any>withRelationships);
+        }
+        if (withRaw !== undefined && withRaw !== null) {
+            queryParameters = queryParameters.set('withRaw', <any>withRaw);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json; charset=UTF-8',
+            'application/json',
+            'default'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+        if(additionalHeaders) {
+            for(let _hKey in additionalHeaders) {
+                headers = headers.set(_hKey, additionalHeaders[_hKey]);
+            }
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json; charset=UTF-8',
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<SzAttributeSearchResponse>('post',`${this.basePath}/search-entities`,
+            {
+                body: body,
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Search for entities that would match or relate to the provided entity features.
+     *
+     * @param attrs The JSON record describing the entity attributes in the same format as how an entity record is loaded.  The specified attributes are treated as a hypothetical record being loaded, and the result is anything that would have matched or related to it.  Here are some examples of encoding this parameter:  - **JavaScript Example**   &#x60;&#x60;&#x60;javascript     var searchCriteria &#x3D; {       \&quot;NAME_FULL\&quot;: \&quot;Joe Schmoe\&quot;,       \&quot;DATE_OF_BIRTH\&quot;: \&quot;03-SEP-1987\&quot;     };     var searchAttrs &#x3D; JSON.stringify(searchCriteria);     var urlPath &#x3D; \&quot;/entities?attrs&#x3D;\&quot; + encodeURIComponent(searchAttrs);   &#x60;&#x60;&#x60;  - **Java Example**   &#x60;&#x60;&#x60;java     JsonObjectBuilder builder &#x3D; Json.createObjectBuilder();     builder.add(\&quot;NAME_FULL\&quot;, \&quot;Joe Schmoe\&quot;);     builder.add(\&quot;DATE_OF_BIRTH\&quot;, \&quot;03-SEP-1987\&quot;);     JsonObject searchCriteria &#x3D; builder.build();      String searchAttrs &#x3D; searchCriteria.toString();     String encodedAttrs &#x3D; URLEncoder.encode(searchAttrs, \&quot;UTF-8\&quot;);     String urlPath &#x3D; \&quot;/entities?attrs&#x3D;\&quot; + encodedAttrs;   &#x60;&#x60;&#x60;  In both of the above examples the &#x60;urlPath&#x60; variable is set to: &#x60;&#x60;&#x60;json  /entities?attrs&#x3D;%7B%22NAME_FULL%22%3A%22Joe%20Schmoe%22%2C%22DATE_OF_BIRTH%22%3A%2203-SEP-1987%22%7D  &#x60;&#x60;&#x60;
+     * @param attr Either the &#x60;attrs&#x60; or &#x60;attr&#x60; parameter is required, **however** if the &#x60;attrs&#x60; parameter is provided it takes precedence and the &#x60;attr&#x60; parameter will be ignored.  If you are using this API programmatically then you should typically use the &#x60;attrs&#x60; parameter.  But when manually constructing a URL in the browser address bar, in a command-line tool like &#x60;curl&#x60; or in a REST client browser extension for debugging or testing purposes, encoding that JSON value can be unwieldy.  This parameter (which is multi-valued) lets you specify colon-delimited strings that are prefixed with the JSON property name and suffixed with the value.  For example, &#x60;NAME_FIRST:Joe&#x60; (url encoded of course).  This side-steps the need to URL-encode the structural JSON characters and usually means you need only URL-encode basic characters like colons (&#x60;%3A&#x60;) and spaces (&#x60;%20&#x60;).  The JSON constructed using this parameter is obviously flat.  If you want to group properties together by their \&quot;usage type\&quot; (e.g.: &#x60;NAME_TYPE&#x60;, &#x60;PHONE_TYPE&#x60; or &#x60;ADDRESS_TYPE&#x60;) then you would **also** prefix with the type (e.g.: &#x60;HOME_PHONE_NUMBER:702-555-1212&#x60;).
+     * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &#x60;NONE&#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &#x60;REPRESENTATIVE&#x60; - Include only a single representative value per                        \&quot;unique\&quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &#x60;WITH_DUPLICATES&#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.
+     * @param withFeatureStats Set to &#x60;true&#x60; to include resolution statistics for features.  This defaults to &#x60;false&#x60;.
+     * @param withInternalFeatures Set to &#x60;true&#x60; to include \&quot;expressed\&quot; features that are derived composite keys such as name + date of birth keys.  This defaults to &#x60;false&#x60;.
+     * @param forceMinimal Whether or not to force the minimum entity detail in the response which may consist of nothing more than an entity ID.  This provides the fastest response to an entity query operation because no additional data needs to be retrieved other than what is directly accessible.  This overrules other parameters governing the retrieval of features or related entities.
+     * @param withRelationships Set to &#x60;true&#x60; to include partial information of related entities for the returned entities.  This defaults to &#x60;false&#x60;.
+     * @param withRaw Whether or not to include the raw JSON response from the underlying native API.  This raw response may include additional details but lack some of the abstraction the standard response provides.  If true, then the &#x27;rawData&#x27; field in the response will be a non-null value and contain the additional details.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public searchByAttributes(attrs?: string, attr?: Array<string>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'body', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<SzAttributeSearchResponse>;
+    public searchByAttributes(attrs?: string, attr?: Array<string>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'response', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpResponse<SzAttributeSearchResponse>>;
+    public searchByAttributes(attrs?: string, attr?: Array<string>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: 'events', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpEvent<SzAttributeSearchResponse>>;
+    public searchByAttributes(attrs?: string, attr?: Array<string>, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe: any = 'body', reportProgress: boolean = false, additionalHeaders: {[key: string]: string} = {} ): Observable<any> {
+        return this.searchEntitiesByGet(attrs, attr, undefined, featureMode, withFeatureStats, withInternalFeatures, forceMinimal, withRelationships, withRaw, observe, reportProgress, additionalHeaders);
+    }
+
+    /**
+     * Returns an analysis of why the two entities related, did not relate, or did not resolve.
+     * This operation provides an anlysis of why two entities related, did not relate or did not resolve.  The entities are identified either by entity ID&#x27;s or by data source code and record ID pairs for constituent records of those entities.  **NOTE:** If the first entity is identified by entity ID then the second must also be identified an entity ID.  Similarly, if the first entity is identified by data source code and record ID then the second must also be identified by data source code and record ID.  **ALSO NOTE:** Bear in mind that entity ID&#x27;s are transient and may be recycled or repurposed as new records are loaded and entities resolve, unresolve and re-resolve. 
+     * @param entity1 The &#x60;SzEntityIdentifier&#x60; for the first entity as an entity ID or an encoded &#x60;SzRecordId&#x60; for the constituent record.  Whatever format is used for the \&quot;entity1\&quot; parameter must match the format of the \&quot;entity2\&quot; parameter.  NOTE: An encoded &#x60;SzRecordId&#x60; can EITHER be encoded as JSON or as a delimited string where the first character is the delimiter and the remainder is parsed as a data source prefix (up to the second occurrence of the delimiter) and a record ID suffix (all characters after the second occurrence of the delimiter).  For example: &#x60;{\&quot;src\&quot;:\&quot;PEOPLE\&quot;,\&quot;id\&quot;:\&quot;12345ABC\&quot;}&#x60; or &#x60;:PEOPLE:12345ABC&#x60;.
+     * @param entity2 The &#x60;SzEntityIdentifier&#x60; for the second entity as an entity ID or an encoded &#x60;SzRecordId&#x60; for the constituent record.  Whatever format is used for the \&quot;entity2\&quot; parameter must match the format of the \&quot;entity1\&quot; parameter.  NOTE: An encoded &#x60;SzRecordId&#x60; can EITHER be encoded as JSON or as a delimited string where the first character is the delimiter and the remainder is parsed as a data source prefix (up to the second occurrence of the delimiter) and a record ID suffix (all characters after the second occurrence of the delimiter).  For example: &#x60;{\&quot;src\&quot;:\&quot;PEOPLE\&quot;,\&quot;id\&quot;:\&quot;12345ABC\&quot;}&#x60; or &#x60;:PEOPLE:12345ABC&#x60;.
+     * @param withRelationships Set to &#x60;true&#x60; to include partial information of related entities for the returned entities.  This defaults to &#x60;false&#x60;.
+     * @param withFeatureStats Set to &#x60;false&#x60; to suppress resolution statistics for features.  This defaults to &#x60;true&#x60; for why operations.
+     * @param withInternalFeatures Set to &#x60;false&#x60; to suppress \&quot;expressed\&quot; features that are derived composite keys such as &#x60;FULL_NAME&#x60; + &#x60;DATE_OF_BIRTH&#x60;.  This defaults to &#x60;true&#x60; for why operations.
+     * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &#x60;NONE&#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &#x60;REPRESENTATIVE&#x60; - Include only a single representative value per                        \&quot;unique\&quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &#x60;WITH_DUPLICATES&#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.
+     * @param forceMinimal Whether or not to force the minimum entity detail in the response which may consist of nothing more than an entity ID.  This provides the fastest response to an entity query operation because no additional data needs to be retrieved other than what is directly accessible.  This overrules other parameters governing the retrieval of features or related entities.
+     * @param withRaw Whether or not to include the raw JSON response from the underlying native API.  This raw response may include additional details but lack some of the abstraction the standard response provides.  If true, then the &#x27;rawData&#x27; field in the response will be a non-null value and contain the additional details.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public whyEntities(entity1: string, entity2: string, withRelationships?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, featureMode?: SzFeatureMode, forceMinimal?: boolean, withRaw?: boolean, observe?: 'body', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<SzWhyEntitiesResponse>;
+    public whyEntities(entity1: string, entity2: string, withRelationships?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, featureMode?: SzFeatureMode, forceMinimal?: boolean, withRaw?: boolean, observe?: 'response', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpResponse<SzWhyEntitiesResponse>>;
+    public whyEntities(entity1: string, entity2: string, withRelationships?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, featureMode?: SzFeatureMode, forceMinimal?: boolean, withRaw?: boolean, observe?: 'events', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpEvent<SzWhyEntitiesResponse>>;
+    public whyEntities(entity1: string, entity2: string, withRelationships?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, featureMode?: SzFeatureMode, forceMinimal?: boolean, withRaw?: boolean, observe: any = 'body', reportProgress: boolean = false, additionalHeaders: {[key: string]: string} = {} ): Observable<any> {
+
+        if (entity1 === null || entity1 === undefined) {
+            throw new Error('Required parameter entity1 was null or undefined when calling whyEntities.');
+        }
+
+        if (entity2 === null || entity2 === undefined) {
+            throw new Error('Required parameter entity2 was null or undefined when calling whyEntities.');
+        }
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (entity1 !== undefined && entity1 !== null) {
+            queryParameters = queryParameters.set('entity1', <any>entity1);
+        }
+        if (entity2 !== undefined && entity2 !== null) {
+            queryParameters = queryParameters.set('entity2', <any>entity2);
+        }
+        if (withRelationships !== undefined && withRelationships !== null) {
+            queryParameters = queryParameters.set('withRelationships', <any>withRelationships);
+        }
+        if (withFeatureStats !== undefined && withFeatureStats !== null) {
+            queryParameters = queryParameters.set('withFeatureStats', <any>withFeatureStats);
+        }
+        if (withInternalFeatures !== undefined && withInternalFeatures !== null) {
+            queryParameters = queryParameters.set('withInternalFeatures', <any>withInternalFeatures);
+        }
+        if (featureMode !== undefined && featureMode !== null) {
+            queryParameters = queryParameters.set('featureMode', <any>featureMode);
+        }
+        if (forceMinimal !== undefined && forceMinimal !== null) {
+            queryParameters = queryParameters.set('forceMinimal', <any>forceMinimal);
+        }
+        if (withRaw !== undefined && withRaw !== null) {
+            queryParameters = queryParameters.set('withRaw', <any>withRaw);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json; charset=UTF-8',
+            'application/json',
+            'default'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<SzWhyEntitiesResponse>('get',`${this.basePath}/why/entities`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
 
     /**
      * Returns an analysis of why the entity for the respective entity ID resolved.
-     *
+     * This operation provides an anlysis of why the records in an entity resolved.  The subject entity is identified by the entity ID in the request path.  **NOTE:** Bear in mind that entity ID&#x27;s are transient and may be recycled or repurposed as new records are loaded and entities resolve, unresolve and re-resolve.  An alternative way to identify a record is by one of its composite records using &#x60;GET /data-sources/{dataSourceCode}/records/{recordId}/entity/why&#x60;. 
      * @param entityId The unique numeric ID that identifies that entity being requested.
-     * @param withRelationships Set to &#x60;true&#x60; to include partial information of related entities for the returned entities.  This defaults to &#x60;false&#x60; for why operations.
+     * @param withRelationships Set to &#x60;true&#x60; to include partial information of related entities for the returned entities.  This defaults to &#x60;false&#x60;.
      * @param withFeatureStats Set to &#x60;false&#x60; to suppress resolution statistics for features.  This defaults to &#x60;true&#x60; for why operations.
      * @param withInternalFeatures Set to &#x60;false&#x60; to suppress \&quot;expressed\&quot; features that are derived composite keys such as &#x60;FULL_NAME&#x60; + &#x60;DATE_OF_BIRTH&#x60;.  This defaults to &#x60;true&#x60; for why operations.
      * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &#x60;NONE&#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &#x60;REPRESENTATIVE&#x60; - Include only a single representative value per                        \&quot;unique\&quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &#x60;WITH_DUPLICATES&#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.
@@ -858,12 +984,6 @@ export class EntityDataService {
         if (entityId === null || entityId === undefined) {
             throw new Error('Required parameter entityId was null or undefined when calling whyEntityByEntityID.');
         }
-
-
-
-
-
-
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (withRelationships !== undefined && withRelationships !== null) {
@@ -920,10 +1040,10 @@ export class EntityDataService {
 
     /**
      * Returns an analysis of why the entity for the record with the respective data source code and record ID resolved.
-     *
+     * This operation provides an anlysis of why the records in an entity resolved.  The subject entity is the one containing the record identified by the data source code and record ID in the request path. 
      * @param dataSourceCode The data source code identifying the data source.
      * @param recordId The identifier that uniquely identifies the requested record within a given data source.  This may have been specified when the record was loaded or generated automatically.
-     * @param withRelationships Set to &#x60;true&#x60; to include partial information of related entities for the returned entities.  This defaults to &#x60;false&#x60; for why operations.
+     * @param withRelationships Set to &#x60;true&#x60; to include partial information of related entities for the returned entities.  This defaults to &#x60;false&#x60;.
      * @param withFeatureStats Set to &#x60;false&#x60; to suppress resolution statistics for features.  This defaults to &#x60;true&#x60; for why operations.
      * @param withInternalFeatures Set to &#x60;false&#x60; to suppress \&quot;expressed\&quot; features that are derived composite keys such as &#x60;FULL_NAME&#x60; + &#x60;DATE_OF_BIRTH&#x60;.  This defaults to &#x60;true&#x60; for why operations.
      * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &#x60;NONE&#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &#x60;REPRESENTATIVE&#x60; - Include only a single representative value per                        \&quot;unique\&quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &#x60;WITH_DUPLICATES&#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.
@@ -1006,12 +1126,12 @@ export class EntityDataService {
 
     /**
      * Returns an analysis of why the records identified by the data source and record ID&#x27;s in the query parameters resolved or did not resolve.
-     *
+     * This operation provides an anlysis of two records identified by data source code and record ID in respective qeury parameters resolved or did not resolve. 
      * @param dataSource1 The data source for the first record.
      * @param recordId1 The record ID for the first record.
      * @param dataSource2 The data source for the second record.
      * @param recordId2 The data source for the second record.
-     * @param withRelationships Set to &#x60;true&#x60; to include partial information of related entities for the returned entities.  This defaults to &#x60;false&#x60; for why operations.
+     * @param withRelationships Set to &#x60;true&#x60; to include partial information of related entities for the returned entities.  This defaults to &#x60;false&#x60;.
      * @param withFeatureStats Set to &#x60;false&#x60; to suppress resolution statistics for features.  This defaults to &#x60;true&#x60; for why operations.
      * @param withInternalFeatures Set to &#x60;false&#x60; to suppress \&quot;expressed\&quot; features that are derived composite keys such as &#x60;FULL_NAME&#x60; + &#x60;DATE_OF_BIRTH&#x60;.  This defaults to &#x60;true&#x60; for why operations.
      * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &#x60;NONE&#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &#x60;REPRESENTATIVE&#x60; - Include only a single representative value per                        \&quot;unique\&quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &#x60;WITH_DUPLICATES&#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.

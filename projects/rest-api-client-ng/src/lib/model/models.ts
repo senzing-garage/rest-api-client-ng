@@ -1,10 +1,10 @@
-/** updated to api spec 2.0.0 */
-export * from './body';
-export * from './body1';
-export * from './body2';
-export * from './body3';
-export * from './body4';
-export * from './body5';
+export * from './bulkdataAnalyzeBody';
+export * from './bulkdataLoadBody';
+export * from './bulkdataRecordsBody';      // poc only
+export * from './datasourcesBody';
+export * from './datasourcesBody1';
+export * from './entitytypesBody';
+export * from './entitytypesBody1';
 export * from './szAttributeClass';
 export * from './szAttributeNecessity';
 export * from './szAttributeSearchResponse';
@@ -19,8 +19,8 @@ export * from './szAttributeTypesResponseData';
 export * from './szBaseBulkLoadResult';
 export * from './szBaseRelatedEntity';
 export * from './szBaseResponse';
-export * from './szBaseResponseLinks';
-export * from './szBaseResponseMeta';
+//export * from './szBaseResponseLinks';        // deprecated in 2.7.0
+//export * from './szBaseResponseMeta';         // deprecated in 2.7.0
 export * from './szBulkDataAnalysis';
 export * from './szBulkDataAnalysisResponse';
 export * from './szBulkDataStatus';
@@ -39,6 +39,8 @@ export * from './szDataSourceResponseData';
 export * from './szDataSourcesResponse';
 export * from './szDataSourcesResponseData';
 export * from './szDeleteRecordResponse';
+export * from './szDeleteRecordResponseData';
+export * from './szDisclosedRelation';
 export * from './szEntityClass';
 export * from './szEntityClassDescriptor';
 export * from './szEntityClassResponse';
@@ -77,20 +79,26 @@ export * from './szHttpMethod';
 export * from './szLicenseInfo';
 export * from './szLicenseResponse';
 export * from './szLicenseResponseData';
+export * from './szLinks';
 export * from './szLoadRecordResponse';
 export * from './szLoadRecordResponseData';
 export * from './szMatchInfo';
 export * from './szMatchLevel';
 export * from './szMatchedRecord';
+export * from './szMeta';
 export * from './szNameScoring';
-export * from './szQueueInfo';
-export * from './szQueueInfoResponse';
+export * from './szOpenApiSpecResponse';
+export * from './szOpenApiSpecResponseOrRawJson';
+export * from './szQueueInfo';          // poc only
+export * from './szQueueInfoResponse';  // poc only
 export * from './szRecordId';
 export * from './szRecordResponse';
 export * from './szRecordResponseData';
 export * from './szReevaluateResponse';
 export * from './szReevaluateResponseData';
 export * from './szRelatedEntity';
+export * from './szRelatedFeatures';
+export * from './szRelationDirection';
 export * from './szRelationshipMode';
 export * from './szRelationshipType';
 export * from './szResolutionInfo';
@@ -105,6 +113,9 @@ export * from './szServerInfo';
 export * from './szServerInfoResponse';
 export * from './szVersionInfo';
 export * from './szVersionResponse';
+export * from './szWhyEntitiesResponse';
+export * from './szWhyEntitiesResponseData';
+export * from './szWhyEntitiesResult';
 export * from './szWhyEntityResponse';
 export * from './szWhyEntityResponseData';
 export * from './szWhyEntityResult';

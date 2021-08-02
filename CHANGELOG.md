@@ -6,6 +6,72 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2021-7-31
+
+- deleted:    
+    - szBaseResponseLinks.ts
+    - szBaseResponseMeta.ts
+    - (DEPRECATED) szBulkDataLoadResponse.ts
+    - body.ts
+    - body1.ts
+    - body2.ts
+    - body3.ts
+    - body4.ts
+    - body5.ts
+
+- added:
+    - bulkdataAnalyzeBody.ts
+    - bulkdataLoadBody.ts
+    - bulkdataRecordsBody.ts
+    - datasourcesBody.ts
+    - datasourcesBody1.ts
+    - entitytypesBody.ts
+    - entitytypesBody1.ts
+    - szDeleteRecordResponseData.ts
+    - szDisclosedRelation.ts
+    - szLinks.ts
+    - szMeta.ts
+    - szOpenApiSpecResponse.ts
+    - szOpenApiSpecResponseOrRawJson.ts
+    - szQueueInfo.ts
+    - szQueueInfoResponse.ts
+    - szRelatedFeatures.ts
+    - szRelationDirection.ts
+    - szWhyEntitiesResponse.ts
+    - szWhyEntitiesResponseData.ts
+    - szWhyEntitiesResult.ts
+
+- SenzingBaseResponse:
+    - `meta` changed from type `SzBaseResponseMeta` to `SzMeta`
+    - `links` changed from type `SzBaseResponseLinks` to `SzLinks`
+- SzEntityRecord:
+    - added `lastSeenTimestamp` as Date
+    - added `originalSourceData` as { [key: string]: any; }
+- SzMatchInfo
+    - added `disclosedRelations` as Array<SzDisclosedRelation>
+- SzResolvedEntity
+    - added `lastSeenTimestamp` as Date
+- SzServerInfo
+    - added `webSocketsMessageMaxSize` as number
+    - added `infoQueueConfigured` as boolean
+    - added `loadQueueConfigured` as boolean
+- SzVersionInfo
+    - added `nativeApiBuildVersion` as string
+    - added `pocServerVersion` as string
+    - added `pocApiVersion` as string
+- AdminService
+    - added `openApiSpecification` method
+    - added `root` method
+- BulkDataService
+    - parameters maxFailures, and eofSendTimeout added to method `analyzeBulkRecords`
+    - parameters maxFailures, and eofSendTimeout added to method `loadBulkRecords`
+    - added `analyzeBulkRecordsForm` method
+    - added `loadBulkRecordsForm` method
+- EntityDataService
+    - added `searchEntitiesByGet`. existing behavior or passing search parameters in the url of api requests.
+    - added `searchEntitiesByPost` to allow not passing search parameters through url requests.
+    - `searchByAttributes` refactored as alias of `searchEntitiesByGet` to prevent breaking change.
+
 ## [2.2.2] - 2021-06-09
 
 - Dependency security updates and bugfixes. #67
