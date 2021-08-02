@@ -59,11 +59,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - added `nativeApiBuildVersion` as string
     - added `pocServerVersion` as string
     - added `pocApiVersion` as string
+- AdminService
+    - added `openApiSpecification` method
+    - added `root` method
 - BulkDataService
     - parameters maxFailures, and eofSendTimeout added to method `analyzeBulkRecords`
     - parameters maxFailures, and eofSendTimeout added to method `loadBulkRecords`
-    - method `analyzeBulkRecordsForm` added
-    - method `loadBulkRecordsForm` added
+    - added `analyzeBulkRecordsForm` method
+    - added `loadBulkRecordsForm` method
+- EntityDataService
+    - added `searchEntitiesByGet`. existing behavior or passing search parameters in the url of api requests.
+    - added `searchEntitiesByPost` to allow not passing search parameters through url requests.
+    - `searchByAttributes` refactored as alias of `searchEntitiesByGet` to prevent breaking change.
 
 ## [2.2.2] - 2021-06-09
 

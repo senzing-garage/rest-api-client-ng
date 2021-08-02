@@ -332,68 +332,6 @@ export class EntityDataService {
     }
 
     /**
-     * Get an entity record by data source and record ID.
-     *
-     * @param dataSourceCode The data source code identifying the data source.
-     * @param recordId The identifier that uniquely identifies the requested record within a given data source.  This may have been specified when the record was loaded or generated automatically.
-     * @param withRaw Whether or not to include the raw JSON response from the underlying native API.  This raw response may include additional details but lack some of the abstraction the standard response provides.  If true, then the &#x27;rawData&#x27; field in the response will be a non-null value and contain the additional details.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    /*
-    public getDataSourceRecord(dataSourceCode: string, recordId: string, withRaw?: boolean, observe?: 'body', reportProgress?: boolean): Observable<SzRecordResponse>;
-    public getDataSourceRecord(dataSourceCode: string, recordId: string, withRaw?: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SzRecordResponse>>;
-    public getDataSourceRecord(dataSourceCode: string, recordId: string, withRaw?: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SzRecordResponse>>;
-    public getDataSourceRecord(dataSourceCode: string, recordId: string, withRaw?: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (dataSourceCode === null || dataSourceCode === undefined) {
-            throw new Error('Required parameter dataSourceCode was null or undefined when calling getDataSourceRecord.');
-        }
-
-        if (recordId === null || recordId === undefined) {
-            throw new Error('Required parameter recordId was null or undefined when calling getDataSourceRecord.');
-        }
-
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (withRaw !== undefined && withRaw !== null) {
-            queryParameters = queryParameters.set('withRaw', <any>withRaw);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json; charset=UTF-8',
-            'application/json',
-            'default'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-        if(additionalHeaders) {
-            for(let _hKey in additionalHeaders) {
-                headers = headers.set(_hKey, additionalHeaders[_hKey]);
-            }
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<SzRecordResponse>('get',`${this.basePath}/data-sources/${encodeURIComponent(String(dataSourceCode))}/records/${encodeURIComponent(String(recordId))}`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }*/
-
-    /**
      * Get a resolved entity by entity ID.
      * Gets the details on a resolved entity that is identified by the entity ID specified in the request path.  **NOTE:** Bear in mind that entity ID&#x27;s are transient and may be recycled or repurposed as new records are loaded and entities resolve, unresolve and re-resolve.  An alternative way to identify a record is by one of its composite records using &#x60;GET /data-sources/{dataSourceCode}/records/{recordId}/entity&#x60;. 
      * @param entityId The unique numeric ID that identifies that entity being requested.
