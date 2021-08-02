@@ -41,7 +41,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - szWhyEntitiesResponseData.ts
     - szWhyEntitiesResult.ts
 
-
 - SenzingBaseResponse:
     - `meta` changed from type `SzBaseResponseMeta` to `SzMeta`
     - `links` changed from type `SzBaseResponseLinks` to `SzLinks`
@@ -60,6 +59,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - added `nativeApiBuildVersion` as string
     - added `pocServerVersion` as string
     - added `pocApiVersion` as string
+- BulkDataService
+    - parameters maxFailures, and eofSendTimeout added to method `analyzeBulkRecords`
+    - parameters maxFailures, and eofSendTimeout added to method `loadBulkRecords`
+    - method `analyzeBulkRecordsForm` added
+    - method `loadBulkRecordsForm` added
 
 ## [2.2.2] - 2021-06-09
 
