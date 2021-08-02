@@ -20,6 +20,7 @@ import { Observable }                                        from 'rxjs';
 
 import { SzBaseResponse } from '../model/szBaseResponse';
 import { SzLicenseResponse } from '../model/szLicenseResponse';
+import { SzOpenApiSpecResponseOrRawJson } from '../model/szOpenApiSpecResponseOrRawJson';
 import { SzServerInfoResponse } from '../model/szServerInfoResponse';
 import { SzVersionResponse } from '../model/szVersionResponse';
 
@@ -222,6 +223,93 @@ export class AdminService {
         return this.httpClient.request<SzLicenseResponse>('get',`${this.basePath}/license`,
             {
                 params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Gets this Open API specification to describe the API.
+     * This operation can be used to obtain the Open API specification in JSON format.  The specification can either be the &#x60;data&#x60; field of a standard response (i.e.: a response with a &#x60;meta&#x60;, &#x60;links&#x60; and &#x60;data&#x60; field) or as raw format where the root JSON document is the Open API specification JSON. 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public openApiSpecification(observe?: 'body', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<SzOpenApiSpecResponseOrRawJson>;
+    public openApiSpecification(observe?: 'response', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpResponse<SzOpenApiSpecResponseOrRawJson>>;
+    public openApiSpecification(observe?: 'events', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpEvent<SzOpenApiSpecResponseOrRawJson>>;
+    public openApiSpecification(observe: any = 'body', reportProgress: boolean = false, additionalHeaders: {[key: string]: string} = {} ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json; charset=UTF-8',
+            'application/json',
+            'default'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        if(additionalHeaders) {
+            for(let _hKey in additionalHeaders) {
+                headers = headers.set(_hKey, additionalHeaders[_hKey]);
+            }
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<SzOpenApiSpecResponseOrRawJson>('get',`${this.basePath}/specifications/open-api`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Gets a root-level response from the server.  This returns the same as the &#x60;GET /heartbeat&#x60; endpoint for now, but may change in the future to provide additional information.
+     * The root operation can be used to ensure that the HTTP server is indeed running, but this operation does not call upon the underlying native Senzing API and therefore does not ensure the Senzing initialization or configuration is valid. 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public root(observe?: 'body', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<SzBaseResponse>;
+    public root(observe?: 'response', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpResponse<SzBaseResponse>>;
+    public root(observe?: 'events', reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable<HttpEvent<SzBaseResponse>>;
+    public root(observe: any = 'body', reportProgress: boolean = false, additionalHeaders: {[key: string]: string} = {} ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json; charset=UTF-8',
+            'application/json',
+            'default'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+        if(additionalHeaders) {
+            for(let _hKey in additionalHeaders) {
+                headers = headers.set(_hKey, additionalHeaders[_hKey]);
+            }
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<SzBaseResponse>('get',`${this.basePath}/`,
+            {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
