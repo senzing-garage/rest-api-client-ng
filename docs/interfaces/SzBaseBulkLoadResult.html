@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>SzBaseBulkLoadResult</li>
+  <li
+  >
+  SzBaseBulkLoadResult</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
         <p class="comment">
             <code>projects/rest-api-client-ng/src/lib/model/szBaseBulkLoadResult.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -87,23 +91,38 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#failedRecordCount">failedRecordCount</a>
+                                        <a href="#failedRecordCount" 
+>
+                                            failedRecordCount
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#incompleteRecordCount">incompleteRecordCount</a>
+                                        <a href="#incompleteRecordCount" 
+>
+                                            incompleteRecordCount
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#loadedRecordCount">loadedRecordCount</a>
+                                        <a href="#loadedRecordCount" 
+>
+                                            loadedRecordCount
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#recordCount">recordCount</a>
+                                        <a href="#recordCount" 
+>
+                                            recordCount
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#topErrors">topErrors</a>
+                                        <a href="#topErrors" 
+>
+                                            topErrors
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -121,7 +140,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="failedRecordCount"></a>
-                                        <span class="name"><b>failedRecordCount</b><a href="#failedRecordCount"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>failedRecordCount</b>
+                                            <a href="#failedRecordCount">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -161,7 +184,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="incompleteRecordCount"></a>
-                                        <span class="name"><b>incompleteRecordCount</b><a href="#incompleteRecordCount"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>incompleteRecordCount</b>
+                                            <a href="#incompleteRecordCount">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -201,7 +228,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="loadedRecordCount"></a>
-                                        <span class="name"><b>loadedRecordCount</b><a href="#loadedRecordCount"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>loadedRecordCount</b>
+                                            <a href="#loadedRecordCount">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -241,7 +272,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="recordCount"></a>
-                                        <span class="name"><b>recordCount</b><a href="#recordCount"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>recordCount</b>
+                                            <a href="#recordCount">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -281,7 +316,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="topErrors"></a>
-                                        <span class="name"><b>topErrors</b><a href="#topErrors"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>topErrors</b>
+                                            <a href="#topErrors">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -326,7 +365,7 @@
 /**
  * Provides statistics specific common to all bulk load results regardless of how they are aggregated.
  */
-export interface SzBaseBulkLoadResult {
+export interface SzBaseBulkLoadResult { 
     /**
      * The number of records found in the bulk data set with the aggregate group.  This may not match the number of \&quot;observed entities\&quot; once loaded since some records may be exact duplicates.
      */
@@ -347,8 +386,7 @@ export interface SzBaseBulkLoadResult {
      * The array of top error occurrences with the number of times they occurred when loading records with the associated data source.
      */
     topErrors?: Array&lt;SzBulkLoadError&gt;;
-}
-</code></pre>
+}</code></pre>
     </div>
 </div>
 
@@ -381,9 +419,9 @@ export interface SzBaseBulkLoadResult {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

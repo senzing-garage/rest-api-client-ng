@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	      <link rel="stylesheet" href="./styles/style.css">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -35,6 +36,103 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 <a href="https://dlaa.me/markdownlint/">markdownlint</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="230---2021-7-31">[2.3.0] - 2021-7-31</h2>
+<ul>
+<li><p>deleted:    </p>
+<ul>
+<li>szBaseResponseLinks.ts</li>
+<li>szBaseResponseMeta.ts</li>
+<li>(DEPRECATED) szBulkDataLoadResponse.ts</li>
+<li>body.ts</li>
+<li>body1.ts</li>
+<li>body2.ts</li>
+<li>body3.ts</li>
+<li>body4.ts</li>
+<li>body5.ts</li>
+</ul>
+</li>
+<li><p>added:</p>
+<ul>
+<li>bulkdataAnalyzeBody.ts</li>
+<li>bulkdataLoadBody.ts</li>
+<li>bulkdataRecordsBody.ts</li>
+<li>datasourcesBody.ts</li>
+<li>datasourcesBody1.ts</li>
+<li>entitytypesBody.ts</li>
+<li>entitytypesBody1.ts</li>
+<li>szDeleteRecordResponseData.ts</li>
+<li>szDisclosedRelation.ts</li>
+<li>szLinks.ts (replaces szBaseResponseLinks)</li>
+<li>szMeta.ts (replaces szBaseResponseMeta)</li>
+<li>szOpenApiSpecResponse.ts</li>
+<li>szOpenApiSpecResponseOrRawJson.ts</li>
+<li>szQueueInfo.ts</li>
+<li>szQueueInfoResponse.ts</li>
+<li>szRelatedFeatures.ts</li>
+<li>szRelationDirection.ts</li>
+<li>szWhyEntitiesResponse.ts</li>
+<li>szWhyEntitiesResponseData.ts</li>
+<li>szWhyEntitiesResult.ts</li>
+</ul>
+</li>
+<li><p>SenzingBaseResponse:</p>
+<ul>
+<li><code>meta</code> changed from type <code>SzBaseResponseMeta</code> to <code>SzMeta</code></li>
+<li><code>links</code> changed from type <code>SzBaseResponseLinks</code> to <code>SzLinks</code></li>
+</ul>
+</li>
+<li><p>SzEntityRecord:</p>
+<ul>
+<li>added <code>lastSeenTimestamp</code> as Date</li>
+<li>added <code>originalSourceData</code> as { [key: string]: any; }</li>
+</ul>
+</li>
+<li><p>SzMatchInfo</p>
+<ul>
+<li>added <code>disclosedRelations</code> as Array<SzDisclosedRelation></li>
+</ul>
+</li>
+<li><p>SzResolvedEntity</p>
+<ul>
+<li>added <code>lastSeenTimestamp</code> as Date</li>
+</ul>
+</li>
+<li><p>SzServerInfo</p>
+<ul>
+<li>added <code>webSocketsMessageMaxSize</code> as number</li>
+<li>added <code>infoQueueConfigured</code> as boolean</li>
+<li>added <code>loadQueueConfigured</code> as boolean</li>
+</ul>
+</li>
+<li><p>SzVersionInfo</p>
+<ul>
+<li>added <code>nativeApiBuildVersion</code> as string</li>
+<li>added <code>pocServerVersion</code> as string</li>
+<li>added <code>pocApiVersion</code> as string</li>
+</ul>
+</li>
+<li><p>AdminService</p>
+<ul>
+<li>added <code>openApiSpecification</code> method</li>
+<li>added <code>root</code> method</li>
+</ul>
+</li>
+<li><p>BulkDataService</p>
+<ul>
+<li>parameters maxFailures, and eofSendTimeout added to method <code>analyzeBulkRecords</code></li>
+<li>parameters maxFailures, and eofSendTimeout added to method <code>loadBulkRecords</code></li>
+<li>added <code>analyzeBulkRecordsForm</code> method</li>
+<li>added <code>loadBulkRecordsForm</code> method</li>
+</ul>
+</li>
+<li><p>EntityDataService</p>
+<ul>
+<li>added <code>searchEntitiesByGet</code> method. existing behavior or passing search parameters in the url of api requests.</li>
+<li>added <code>searchEntitiesByPost</code> method to allow not passing search parameters through url requests.</li>
+<li><code>searchByAttributes</code> refactored as alias of <code>searchEntitiesByGet</code> to prevent breaking change.</li>
+</ul>
+</li>
+</ul>
 <h2 id="222---2021-06-09">[2.2.2] - 2021-06-09</h2>
 <ul>
 <li>Dependency security updates and bugfixes. #67</li>
@@ -177,9 +275,9 @@ model was incorrect.</li>
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="./js/menu-wc.js" defer></script>
+       
+       <script type="module" src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 

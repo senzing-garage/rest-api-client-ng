@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>SzMatchedRecord</li>
+  <li
+  >
+  SzMatchedRecord</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
         <p class="comment">
             <code>projects/rest-api-client-ng/src/lib/model/szMatchedRecord.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -93,23 +97,38 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#matchKey">matchKey</a>
+                                        <a href="#matchKey" 
+>
+                                            matchKey
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#matchLevel">matchLevel</a>
+                                        <a href="#matchLevel" 
+>
+                                            matchLevel
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#matchScore">matchScore</a>
+                                        <a href="#matchScore" 
+>
+                                            matchScore
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#refScore">refScore</a>
+                                        <a href="#refScore" 
+>
+                                            refScore
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#resolutionRuleCode">resolutionRuleCode</a>
+                                        <a href="#resolutionRuleCode" 
+>
+                                            resolutionRuleCode
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -127,7 +146,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="matchKey"></a>
-                                        <span class="name"><b>matchKey</b><a href="#matchKey"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>matchKey</b>
+                                            <a href="#matchKey">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -167,7 +190,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="matchLevel"></a>
-                                        <span class="name"><b>matchLevel</b><a href="#matchLevel"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>matchLevel</b>
+                                            <a href="#matchLevel">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -207,7 +234,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="matchScore"></a>
-                                        <span class="name"><b>matchScore</b><a href="#matchScore"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>matchScore</b>
+                                            <a href="#matchScore">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -247,7 +278,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="refScore"></a>
-                                        <span class="name"><b>refScore</b><a href="#refScore"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>refScore</b>
+                                            <a href="#refScore">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -287,7 +322,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="resolutionRuleCode"></a>
-                                        <span class="name"><b>resolutionRuleCode</b><a href="#resolutionRuleCode"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>resolutionRuleCode</b>
+                                            <a href="#resolutionRuleCode">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -386,9 +425,9 @@ export interface SzMatchedRecord extends SzEntityRecord {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
