@@ -29,8 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - entitytypesBody1.ts
     - szDeleteRecordResponseData.ts
     - szDisclosedRelation.ts
-    - szLinks.ts
-    - szMeta.ts
+    - szLinks.ts (replaces szBaseResponseLinks)
+    - szMeta.ts (replaces szBaseResponseMeta)
     - szOpenApiSpecResponse.ts
     - szOpenApiSpecResponseOrRawJson.ts
     - szQueueInfo.ts
@@ -68,8 +68,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - added `analyzeBulkRecordsForm` method
     - added `loadBulkRecordsForm` method
 - EntityDataService
-    - added `searchEntitiesByGet`. existing behavior or passing search parameters in the url of api requests.
-    - added `searchEntitiesByPost` to allow not passing search parameters through url requests.
+    - added `searchEntitiesByGet` method. existing behavior or passing search parameters in the url of api requests.
+    - added `searchEntitiesByPost` method to allow not passing search parameters through url requests.
     - `searchByAttributes` refactored as alias of `searchEntitiesByGet` to prevent breaking change.
 
 ## [2.2.2] - 2021-06-09
