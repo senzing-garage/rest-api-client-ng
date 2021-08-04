@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>SzEntityFeatureDetail</li>
+  <li
+  >
+  SzEntityFeatureDetail</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
         <p class="comment">
             <code>projects/rest-api-client-ng/src/lib/model/szEntityFeatureDetail.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -87,15 +91,24 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#featureValue">featureValue</a>
+                                        <a href="#featureValue" 
+>
+                                            featureValue
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#internalId">internalId</a>
+                                        <a href="#internalId" 
+>
+                                            internalId
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#statistics">statistics</a>
+                                        <a href="#statistics" 
+>
+                                            statistics
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -113,7 +126,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="featureValue"></a>
-                                        <span class="name"><b>featureValue</b><a href="#featureValue"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>featureValue</b>
+                                            <a href="#featureValue">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -153,7 +170,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="internalId"></a>
-                                        <span class="name"><b>internalId</b><a href="#internalId"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>internalId</b>
+                                            <a href="#internalId">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -193,7 +214,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="statistics"></a>
-                                        <span class="name"><b>statistics</b><a href="#statistics"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>statistics</b>
+                                            <a href="#statistics">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -232,7 +257,7 @@
 /**
  * Describes the details of an entity feature value, optionally including statistics if they have been requested.
  */
-export interface SzEntityFeatureDetail {
+export interface SzEntityFeatureDetail { 
     /**
      * The internal ID for the feature value.
      */
@@ -242,8 +267,7 @@ export interface SzEntityFeatureDetail {
      */
     featureValue?: string;
     statistics?: SzEntityFeatureStatistics;
-}
-</code></pre>
+}</code></pre>
     </div>
 </div>
 
@@ -276,9 +300,9 @@ export interface SzEntityFeatureDetail {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>SzLoadRecordResponseData</li>
+  <li
+  >
+  SzLoadRecordResponseData</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -65,6 +68,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Describes the data segment of <code>SzLoadRecordResponse</code>.</p>
+
+            </p>
+
 
         <section>
             <h3 id="index">Index</h3>
@@ -80,11 +91,17 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#info">info</a>
+                                        <a href="#info" 
+>
+                                            info
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#recordId">recordId</a>
+                                        <a href="#recordId" 
+>
+                                            recordId
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -102,7 +119,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="info"></a>
-                                        <span class="name"><b>info</b><a href="#info"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>info</b>
+                                            <a href="#info">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -136,7 +157,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="recordId"></a>
-                                        <span class="name"><b>recordId</b><a href="#recordId"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>recordId</b>
+                                            <a href="#recordId">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -178,14 +203,16 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzResolutionInfo } from &#x27;./szResolutionInfo&#x27;;
 
-export interface SzLoadRecordResponseData {
+/**
+ * Describes the data segment of &#x60;SzLoadRecordResponse&#x60;.
+ */
+export interface SzLoadRecordResponseData { 
     /**
      * The record ID of the record that was loaded.
      */
     recordId?: string;
     info?: SzResolutionInfo;
-}
-</code></pre>
+}</code></pre>
     </div>
 </div>
 
@@ -218,9 +245,9 @@ export interface SzLoadRecordResponseData {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

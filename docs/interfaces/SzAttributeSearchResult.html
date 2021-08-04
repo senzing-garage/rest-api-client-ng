@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>SzAttributeSearchResult</li>
+  <li
+  >
+  SzAttributeSearchResult</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,6 +66,7 @@
         <p class="comment">
             <code>projects/rest-api-client-ng/src/lib/model/szAttributeSearchResult.ts</code>
         </p>
+
 
             <p class="comment">
                 <h3>Description</h3>
@@ -93,19 +97,31 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#bestNameScore">bestNameScore</a>
+                                        <a href="#bestNameScore" 
+>
+                                            bestNameScore
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#featureScores">featureScores</a>
+                                        <a href="#featureScores" 
+>
+                                            featureScores
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#relatedEntities">relatedEntities</a>
+                                        <a href="#relatedEntities" 
+>
+                                            relatedEntities
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#resultType">resultType</a>
+                                        <a href="#resultType" 
+>
+                                            resultType
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -123,7 +139,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="bestNameScore"></a>
-                                        <span class="name"><b>bestNameScore</b><a href="#bestNameScore"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>bestNameScore</b>
+                                            <a href="#bestNameScore">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -163,7 +183,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="featureScores"></a>
-                                        <span class="name"><b>featureScores</b><a href="#featureScores"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>featureScores</b>
+                                            <a href="#featureScores">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -203,7 +227,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="relatedEntities"></a>
-                                        <span class="name"><b>relatedEntities</b><a href="#relatedEntities"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>relatedEntities</b>
+                                            <a href="#relatedEntities">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -243,7 +271,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="resultType"></a>
-                                        <span class="name"><b>resultType</b><a href="#resultType"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>resultType</b>
+                                            <a href="#resultType">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -332,9 +364,9 @@ export interface SzAttributeSearchResult extends SzBaseRelatedEntity {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -8,7 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
@@ -43,7 +44,9 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>SzEntityClassesResponseData</li>
+  <li
+  >
+  SzEntityClassesResponseData</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -65,6 +68,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Describes the data associated with <code>SzEntityClassesResponse</code></p>
+
+            </p>
+
 
         <section>
             <h3 id="index">Index</h3>
@@ -80,11 +91,17 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#entityClassDetails">entityClassDetails</a>
+                                        <a href="#entityClassDetails" 
+>
+                                            entityClassDetails
+                                        </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#entityClasses">entityClasses</a>
+                                        <a href="#entityClasses" 
+>
+                                            entityClasses
+                                        </a>
                                 </li>
                             </ul>
                         </td>
@@ -102,7 +119,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="entityClassDetails"></a>
-                                        <span class="name"><b>entityClassDetails</b><a href="#entityClassDetails"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>entityClassDetails</b>
+                                            <a href="#entityClassDetails">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,7 +163,11 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <a name="entityClasses"></a>
-                                        <span class="name"><b>entityClasses</b><a href="#entityClasses"><span class="icon ion-ios-link"></span></a></span>
+                                        <span class="name "><b>entityClasses</b>
+                                            <a href="#entityClasses">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -184,7 +209,10 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzEntityClass } from &#x27;./szEntityClass&#x27;;
 
-export interface SzEntityClassesResponseData {
+/**
+ * Describes the data associated with &#x60;SzEntityClassesResponse&#x60;
+ */
+export interface SzEntityClassesResponseData { 
     /**
      * The list of entity classes codes for the configured entity classes.
      */
@@ -193,8 +221,7 @@ export interface SzEntityClassesResponseData {
      * The list of &#x60;SzEntityClass&#x60; instances describing the configured entity classes.
      */
     entityClassDetails?: { [key: string]: SzEntityClass; };
-}
-</code></pre>
+}</code></pre>
     </div>
 </div>
 
@@ -227,9 +254,9 @@ export interface SzEntityClassesResponseData {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
-       <script src="../js/menu-wc.js" defer></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
