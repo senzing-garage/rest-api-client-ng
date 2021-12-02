@@ -13,5 +13,15 @@
     {
       "path": "./projects/rest-api-client-ng/tsconfig.spec.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "sourceMap": true,
+    "paths": {
+      "rest-api-client-ng": [
+        "dist/@senzing/rest-api-client-ng/rest-api-client-ng",
+        "dist/@senzing/rest-api-client-ng"
+      ]
+    }
+  }
 }
