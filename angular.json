@@ -18,8 +18,10 @@
           "configurations": {
             "production": {
               "tsConfig": "projects/rest-api-client-ng/tsconfig.lib.prod.json"
-            }
-          }
+            },
+              "development": {}
+          },
+            "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -58,8 +60,10 @@
           "configurations": {
             "production": {
               "tsConfig": "projects/testlib/tsconfig.lib.prod.json"
-            }
-          }
+            },
+            "development": {}
+          },
+          "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
