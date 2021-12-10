@@ -35,6 +35,35 @@ export class Configuration {
     }
 
     /**
+     * Convenience getter that returns the current state of the object's 
+     * properties as a <ConfigurationParameters> Object
+     */
+    public get configurationParameters(): ConfigurationParameters {
+        let retVal: ConfigurationParameters = {};
+        if(this.apiKeys && this.apiKeys !== undefined && this.apiKeys !== null) retVal.apiKeys = this.apiKeys; 
+        if(this.username && this.username !== undefined && this.username !== null) retVal.username = this.username; 
+        if(this.password && this.password !== undefined && this.password !== null) retVal.password = this.password; 
+        if(this.accessToken && this.accessToken !== undefined && this.accessToken !== null) retVal.accessToken = this.accessToken; 
+        if(this.basePath && this.basePath !== undefined && this.basePath !== null) retVal.basePath = this.basePath; 
+        if(this.withCredentials && this.withCredentials !== undefined && this.withCredentials !== null) retVal.withCredentials = this.withCredentials; 
+        if(this.additionalHeaders && this.additionalHeaders !== undefined && this.additionalHeaders !== null) retVal.additionalHeaders = this.additionalHeaders; 
+        return retVal;
+    }
+    /**
+     * set the object's properties through a <ConfigurationParameters> Object
+     */
+    public set configurationParameters(value: ConfigurationParameters) {
+        let retVal: ConfigurationParameters = {};
+        if(value.apiKeys && value.apiKeys !== undefined && value.apiKeys !== null) this.apiKeys = value.apiKeys; 
+        if(value.username && value.username !== undefined && value.username !== null) this.username = value.username; 
+        if(value.password && value.password !== undefined && value.password !== null) this.password = value.password; 
+        if(value.accessToken && value.accessToken !== undefined && value.accessToken !== null) this.accessToken = value.accessToken; 
+        if(value.basePath && value.basePath !== undefined && value.basePath !== null) this.basePath = value.basePath; 
+        if(value.withCredentials && value.withCredentials !== undefined && value.withCredentials !== null) this.withCredentials = value.withCredentials; 
+        if(value.additionalHeaders && value.additionalHeaders !== undefined && value.additionalHeaders !== null) this.additionalHeaders = value.additionalHeaders; 
+    }
+
+    /**
      * Select the correct content-type to use for a request.
      * Uses {@link Configuration#isJsonMime} to determine the correct content-type.
      * If no content type is found return the first found type if the contentTypes is not empty
