@@ -1,6 +1,5 @@
 'use strict';
 
-
 customElements.define('compodoc-menu', class extends HTMLElement {
     constructor() {
         super();
@@ -70,13 +69,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ApiModule.html" data-type="entity-link" >ApiModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-ApiModule-bec36a8f4efd43ba757ddd6bb1ec764b"' : 'data-target="#xs-injectables-links-module-ApiModule-bec36a8f4efd43ba757ddd6bb1ec764b"' }>
+                                        'data-target="#injectables-links-module-ApiModule-b7f9a46fae2bd1537b3111b36a6555c373b7a7f46067dcbc719f9caf8d43d437d4cd5b2cf5c5242653e4690bf02f7b96e1dc0e299a5a8831a2f2e7d608025ad0"' : 'data-target="#xs-injectables-links-module-ApiModule-b7f9a46fae2bd1537b3111b36a6555c373b7a7f46067dcbc719f9caf8d43d437d4cd5b2cf5c5242653e4690bf02f7b96e1dc0e299a5a8831a2f2e7d608025ad0"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-ApiModule-bec36a8f4efd43ba757ddd6bb1ec764b"' :
-                                        'id="xs-injectables-links-module-ApiModule-bec36a8f4efd43ba757ddd6bb1ec764b"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-ApiModule-b7f9a46fae2bd1537b3111b36a6555c373b7a7f46067dcbc719f9caf8d43d437d4cd5b2cf5c5242653e4690bf02f7b96e1dc0e299a5a8831a2f2e7d608025ad0"' :
+                                        'id="xs-injectables-links-module-ApiModule-b7f9a46fae2bd1537b3111b36a6555c373b7a7f46067dcbc719f9caf8d43d437d4cd5b2cf5c5242653e4690bf02f7b96e1dc0e299a5a8831a2f2e7d608025ad0"' }>
                                         <li class="link">
                                             <a href="injectables/AdminService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AdminService</a>
                                         </li>
@@ -113,31 +112,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                         </ul>
                     </li>
-                        <li class="chapter">
-                            <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#injectables-links"' :
-                                'data-target="#xs-injectables-links"' }>
-                                <span class="icon ion-md-arrow-round-down"></span>
-                                <span>Injectables</span>
-                                <span class="icon ion-ios-arrow-down"></span>
-                            </div>
-                            <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
-                                <li class="link">
-                                    <a href="injectables/AdminService.html" data-type="entity-link" >AdminService</a>
-                                </li>
-                                <li class="link">
-                                    <a href="injectables/BulkDataService.html" data-type="entity-link" >BulkDataService</a>
-                                </li>
-                                <li class="link">
-                                    <a href="injectables/ConfigService.html" data-type="entity-link" >ConfigService</a>
-                                </li>
-                                <li class="link">
-                                    <a href="injectables/EntityDataService.html" data-type="entity-link" >EntityDataService</a>
-                                </li>
-                                <li class="link">
-                                    <a href="injectables/EntityGraphService.html" data-type="entity-link" >EntityGraphService</a>
-                                </li>
-                            </ul>
-                        </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interfaces-links"' :
                             'data-target="#xs-interfaces-links"' }>

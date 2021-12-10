@@ -9,7 +9,7 @@
 
         <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
 	   <link rel="stylesheet" href="./styles/style.css">
-        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="./styles/dark.css">
     </head>
     <body>
 
@@ -36,6 +36,23 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 <a href="https://dlaa.me/markdownlint/">markdownlint</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="240---2021-12-10">[2.4.0] - 2021-12-10</h2>
+<ul>
+<li>removed:<ul>
+<li>IE11 support (via NG13)</li>
+</ul>
+</li>
+<li>modified:<ul>
+<li>Framework updated to Angular 13 (<a href="https://angular.io/guide/update-to-latest-version#changes-and-deprecations-in-version-13">click here for full changelog</a>)</li>
+<li>Build tooling to Angular 13</li>
+<li>Dependencies updated to latest versions available</li>
+</ul>
+</li>
+</ul>
+<p>As of 2.4.0 release this package now requires <code>@angular@~13.0.0</code> to compile and run. There are no components in this package so <em>technically</em> it would probably be compatible with earlier releases but it is not recommended and would <strong>not</strong> be officially supported.</p>
+<p>Updating to angular 13 resolves major dependency compatibility issues so we can apply the latest security patches to the library.</p>
+<p>For information updating your project from a previous angular version to <code>~13.0.0</code> see the <a href="https://update.angular.io/">Angular Update Guide </a></p>
+<p>relevant tickets #78</p>
 <h2 id="230---2021-7-31">[2.3.0] - 2021-7-31</h2>
 <ul>
 <li><p>deleted:    </p>
@@ -76,57 +93,48 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 </li>
 <li><p>SenzingBaseResponse:</p>
-<ul>
-<li><code>meta</code> changed from type <code>SzBaseResponseMeta</code> to <code>SzMeta</code></li>
-<li><code>links</code> changed from type <code>SzBaseResponseLinks</code> to <code>SzLinks</code></li>
-</ul>
 </li>
-<li><p>SzEntityRecord:</p>
-<ul>
+</ul>
+<div><pre class="line-numbers"><code class="language-none">- `meta` changed from type `SzBaseResponseMeta` to `SzMeta`
+- `links` changed from type `SzBaseResponseLinks` to `SzLinks`</code></pre></div><ul>
+<li>SzEntityRecord:<ul>
 <li>added <code>lastSeenTimestamp</code> as Date</li>
 <li>added <code>originalSourceData</code> as { [key: string]: any; }</li>
 </ul>
 </li>
-<li><p>SzMatchInfo</p>
-<ul>
+<li>SzMatchInfo<ul>
 <li>added <code>disclosedRelations</code> as Array<SzDisclosedRelation></li>
 </ul>
 </li>
-<li><p>SzResolvedEntity</p>
-<ul>
+<li>SzResolvedEntity<ul>
 <li>added <code>lastSeenTimestamp</code> as Date</li>
 </ul>
 </li>
-<li><p>SzServerInfo</p>
-<ul>
+<li>SzServerInfo<ul>
 <li>added <code>webSocketsMessageMaxSize</code> as number</li>
 <li>added <code>infoQueueConfigured</code> as boolean</li>
 <li>added <code>loadQueueConfigured</code> as boolean</li>
 </ul>
 </li>
-<li><p>SzVersionInfo</p>
-<ul>
+<li>SzVersionInfo<ul>
 <li>added <code>nativeApiBuildVersion</code> as string</li>
 <li>added <code>pocServerVersion</code> as string</li>
 <li>added <code>pocApiVersion</code> as string</li>
 </ul>
 </li>
-<li><p>AdminService</p>
-<ul>
+<li>AdminService<ul>
 <li>added <code>openApiSpecification</code> method</li>
 <li>added <code>root</code> method</li>
 </ul>
 </li>
-<li><p>BulkDataService</p>
-<ul>
+<li>BulkDataService<ul>
 <li>parameters maxFailures, and eofSendTimeout added to method <code>analyzeBulkRecords</code></li>
 <li>parameters maxFailures, and eofSendTimeout added to method <code>loadBulkRecords</code></li>
 <li>added <code>analyzeBulkRecordsForm</code> method</li>
 <li>added <code>loadBulkRecordsForm</code> method</li>
 </ul>
 </li>
-<li><p>EntityDataService</p>
-<ul>
+<li>EntityDataService<ul>
 <li>added <code>searchEntitiesByGet</code> method. existing behavior or passing search parameters in the url of api requests.</li>
 <li>added <code>searchEntitiesByPost</code> method to allow not passing search parameters through url requests.</li>
 <li><code>searchByAttributes</code> refactored as alias of <code>searchEntitiesByGet</code> to prevent breaking change.</li>
@@ -247,14 +255,14 @@ model was incorrect.</li>
 
 
 
-                   
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -266,6 +274,15 @@ model was incorrect.</li>
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
@@ -275,8 +292,8 @@ model was incorrect.</li>
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       
-       <script type="module" src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/menu-wc.js" defer></script>
        <script nomodule src="./js/menu-wc_es5.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
