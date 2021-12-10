@@ -4,22 +4,23 @@
   "newProjectRoot": "projects",
   "projects": {
     "@senzing/rest-api-client-ng": {
+      "projectType": "library",
       "root": "projects/rest-api-client-ng",
       "sourceRoot": "projects/rest-api-client-ng/src",
-      "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/rest-api-client-ng/tsconfig.lib.json",
             "project": "projects/rest-api-client-ng/ng-package.json"
           },
           "configurations": {
             "production": {
               "tsConfig": "projects/rest-api-client-ng/tsconfig.lib.prod.json"
             },
-              "development": {}
+            "development": {
+              "tsConfig": "projects/rest-api-client-ng/tsconfig.lib.json"
+            }
           },
             "defaultConfiguration": "production"
         },
@@ -29,36 +30,6 @@
             "main": "projects/rest-api-client-ng/src/test.ts",
             "tsConfig": "projects/rest-api-client-ng/tsconfig.spec.json",
             "karmaConfig": "projects/rest-api-client-ng/karma.conf.js"
-          }
-        }
-      }
-    },
-    "testlib": {
-      "projectType": "library",
-      "root": "projects/testlib",
-      "sourceRoot": "projects/testlib/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "tsConfig": "projects/testlib/tsconfig.lib.json",
-            "project": "projects/testlib/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/testlib/tsconfig.lib.prod.json"
-            },
-            "development": {}
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/testlib/src/test.ts",
-            "tsConfig": "projects/testlib/tsconfig.spec.json",
-            "karmaConfig": "projects/testlib/karma.conf.js"
           }
         }
       }
