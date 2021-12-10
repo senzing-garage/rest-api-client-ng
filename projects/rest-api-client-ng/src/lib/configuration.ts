@@ -117,6 +117,7 @@ export class Configuration {
                 }
             }
         }
+        return undefined;
     }
 
     /**
@@ -160,21 +161,22 @@ export class Configuration {
      * all outbound api server requests.
      */
     public get additionalHeaders(): {[key: string]: string} | undefined {
-        let retVal = undefined;
         if(this._additionalHeaders) {
-            retVal = {};
+            let retVal: {[key: string]: string} = {};
             this._additionalHeaders.forEach((httpHeader) => {
                 retVal[ httpHeader.key ] = httpHeader.value;
             });
+            return retVal;
         }
-        return retVal;
+        return undefined;
     }
     /** 
      * set additional http/https request headers to be added by default to 
      * all outbound api server requests. most commonly used for adding custom 
      * or required non-standard headers like jwt session tokens, auth id etc.
      */
-    public set additionalHeaders(value: {[key: string]: string}) {
+    public set additionalHeaders(value: {[key: string]: string} | undefined) {
+        if(value === undefined) { return; }
         if(value && value !== undefined && value !== null) {
             this._additionalHeaders = []; // set to empty
             let _keys = Object.keys( value );
@@ -196,7 +198,7 @@ export class Configuration {
                     this._additionalHeaders = [];
                 } else {
                     alreadyExistsAtIndex = this._additionalHeaders.findIndex((eheader: {[key: string]: string}) => {
-                        return eheader.key === keys[0];
+                        return eheader['key'] === keys[0];
                     })
                 }
                 if( this._additionalHeaders && !this._additionalHeaders[alreadyExistsAtIndex]) {
@@ -220,7 +222,7 @@ export class Configuration {
             }
             if(keyToRemove && this._additionalHeaders && this._additionalHeaders.length > 0) {
                 let alreadyExistsAtIndex = this._additionalHeaders.findIndex((eheader: {[key: string]: string}) => {
-                    return eheader.key === keyToRemove;
+                    return eheader['key'] === keyToRemove;
                 })
                 if(alreadyExistsAtIndex && this._additionalHeaders[ alreadyExistsAtIndex ]) {
                     //this._additionalHeaders.push({key: keys[0], value: (header[ keys[0] ]) });

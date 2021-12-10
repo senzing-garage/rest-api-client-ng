@@ -6,10 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.3.1] - 2021-12-3
+## [2.4.0] - 2021-12-10
 
-# Modified
-- latest bugfixes in dependencies patched
+- removed:
+    - IE11 support (via NG13)
+- modified:
+    - Framework updated to Angular 13 ([click here for full changelog](https://angular.io/guide/update-to-latest-version#changes-and-deprecations-in-version-13))
+    - Build tooling to Angular 13
+    - Dependencies updated to latest versions available
+
+As of 2.4.0 release this package now requires `@angular@~13.0.0` to compile and run. There are no components in this package so _technically_ it would probably be compatible with earlier releases but it is not recommended and would **not** be officially supported.
+
+Updating to angular 13 resolves major dependency compatibility issues so we can apply the latest security patches to the library.
+
+For information updating your project from a previous angular version to `~13.0.0` see the [Angular Update Guide ](https://update.angular.io/)
+
+relevant tickets #78
 
 ## [2.3.0] - 2021-7-31
 
