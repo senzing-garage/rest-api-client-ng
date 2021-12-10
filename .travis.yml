@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10.14.1"
+  - "14"
 dist: trusty
 sudo: required
 branches:
@@ -16,7 +16,7 @@ cache:
 
 install:
   - travis_wait npm install
-  - travis_wait npm install -g @angular/cli@10.0.0
+  - travis_wait npm install -g @angular/cli@13
   - ng version
 #  - chromedriver --version
 
