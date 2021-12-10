@@ -450,6 +450,35 @@ export class Configuration {
     }
 
     /**
+     * Convenience getter that returns the current state of the object&#x27;s 
+     * properties as a &lt;ConfigurationParameters&gt; Object
+     */
+    public get configurationParameters(): ConfigurationParameters {
+        let retVal: ConfigurationParameters &#x3D; {};
+        if(this.apiKeys &amp;&amp; this.apiKeys !&#x3D;&#x3D; undefined &amp;&amp; this.apiKeys !&#x3D;&#x3D; null) retVal.apiKeys &#x3D; this.apiKeys; 
+        if(this.username &amp;&amp; this.username !&#x3D;&#x3D; undefined &amp;&amp; this.username !&#x3D;&#x3D; null) retVal.username &#x3D; this.username; 
+        if(this.password &amp;&amp; this.password !&#x3D;&#x3D; undefined &amp;&amp; this.password !&#x3D;&#x3D; null) retVal.password &#x3D; this.password; 
+        if(this.accessToken &amp;&amp; this.accessToken !&#x3D;&#x3D; undefined &amp;&amp; this.accessToken !&#x3D;&#x3D; null) retVal.accessToken &#x3D; this.accessToken; 
+        if(this.basePath &amp;&amp; this.basePath !&#x3D;&#x3D; undefined &amp;&amp; this.basePath !&#x3D;&#x3D; null) retVal.basePath &#x3D; this.basePath; 
+        if(this.withCredentials &amp;&amp; this.withCredentials !&#x3D;&#x3D; undefined &amp;&amp; this.withCredentials !&#x3D;&#x3D; null) retVal.withCredentials &#x3D; this.withCredentials; 
+        if(this.additionalHeaders &amp;&amp; this.additionalHeaders !&#x3D;&#x3D; undefined &amp;&amp; this.additionalHeaders !&#x3D;&#x3D; null) retVal.additionalHeaders &#x3D; this.additionalHeaders; 
+        return retVal;
+    }
+    /**
+     * set the object&#x27;s properties through a &lt;ConfigurationParameters&gt; Object
+     */
+    public set configurationParameters(value: ConfigurationParameters) {
+        let retVal: ConfigurationParameters &#x3D; {};
+        if(value.apiKeys &amp;&amp; value.apiKeys !&#x3D;&#x3D; undefined &amp;&amp; value.apiKeys !&#x3D;&#x3D; null) this.apiKeys &#x3D; value.apiKeys; 
+        if(value.username &amp;&amp; value.username !&#x3D;&#x3D; undefined &amp;&amp; value.username !&#x3D;&#x3D; null) this.username &#x3D; value.username; 
+        if(value.password &amp;&amp; value.password !&#x3D;&#x3D; undefined &amp;&amp; value.password !&#x3D;&#x3D; null) this.password &#x3D; value.password; 
+        if(value.accessToken &amp;&amp; value.accessToken !&#x3D;&#x3D; undefined &amp;&amp; value.accessToken !&#x3D;&#x3D; null) this.accessToken &#x3D; value.accessToken; 
+        if(value.basePath &amp;&amp; value.basePath !&#x3D;&#x3D; undefined &amp;&amp; value.basePath !&#x3D;&#x3D; null) this.basePath &#x3D; value.basePath; 
+        if(value.withCredentials &amp;&amp; value.withCredentials !&#x3D;&#x3D; undefined &amp;&amp; value.withCredentials !&#x3D;&#x3D; null) this.withCredentials &#x3D; value.withCredentials; 
+        if(value.additionalHeaders &amp;&amp; value.additionalHeaders !&#x3D;&#x3D; undefined &amp;&amp; value.additionalHeaders !&#x3D;&#x3D; null) this.additionalHeaders &#x3D; value.additionalHeaders; 
+    }
+
+    /**
      * Select the correct content-type to use for a request.
      * Uses {@link Configuration#isJsonMime} to determine the correct content-type.
      * If no content type is found return the first found type if the contentTypes is not empty
