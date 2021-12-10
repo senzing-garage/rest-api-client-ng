@@ -13,12 +13,12 @@ jobs:
       - name: Setup
         run: npm ci
 
-      - name: Test
+      - name: Run Static Tests
         run: |
           npm test -- --no-watch --watch=false --progress=false --no-progress --browsers=ChromeHeadlessCI
-      - name: Build Docs
+      - name: Ensure Documentation is Buildable
         run: |
           npm run build:docs
-      - name: Build Package
+      - name: Ensure Package Compiles
         run: |
           npm run build
