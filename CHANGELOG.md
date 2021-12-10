@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - removed:
     - IE11 support (via NG13)
 - modified:
-    - Framework updated to Angular 13 ([click here for full chang](https://angular.io/guide/update-to-latest-version#changes-and-deprecations-in-version-13))
+    - Framework updated to Angular 13 ([click here for full changelog](https://angular.io/guide/update-to-latest-version#changes-and-deprecations-in-version-13))
     - Build tooling to Angular 13
     - Dependencies updated to latest versions available
 
