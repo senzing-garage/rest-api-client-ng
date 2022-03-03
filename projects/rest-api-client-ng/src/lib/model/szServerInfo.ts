@@ -45,8 +45,5 @@ export interface SzServerInfo {
     /**
      * Whether or not an asynchronous LOAD queue has been configured for asynchronously loading records.
      */
-    /*
-    @deprecated as of 3.0.0
     loadQueueConfigured?: boolean;
-    */
 }

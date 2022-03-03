@@ -30,6 +30,26 @@ and [rest api specification](https://github.com/Senzing/senzing-rest-api-specifi
   - `SzEntityTypeResponseData`
   - `SzEntityTypesResponse`
   - `SzEntityTypesResponseData`
+- The following methods removed from `ConfigService`
+  - `addEntityTypes`
+  - `addEntityTypesForClass`
+  - `getEntityClass`
+  - `getEntityClasses`
+  - `getEntityType`
+  - `getEntityTypeByClass`
+  - `getEntityTypes`
+  - `getEntityTypesByClass`
+- The following parameters removed from `BulkData.analyzeBulkRecordsForm`
+  - `entityType`
+  - `mapEntityTypes`
+  - `mapEntityType`
+  - `maxFailures`
+- The following parameters removed from `BulkData.loadBulkRecordsForm`
+  - `entityType`
+  - `mapEntityTypes`
+  - `mapEntityType`
+- The following parameters removed from `BulkData.getEntityByEntityId`
+  - `forceMinimal`
 
 ## [3.0.0] - 2021-12-14
 
