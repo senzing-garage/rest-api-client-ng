@@ -42,6 +42,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Interfaces</li>
   <li
@@ -98,13 +99,6 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#analysisByEntityType" 
->
-                                            analysisByEntityType
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#characterEncoding" 
 >
                                             characterEncoding
@@ -129,13 +123,6 @@
                                         <a href="#recordsWithDataSourceCount" 
 >
                                             recordsWithDataSourceCount
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#recordsWithEntityTypeCount" 
->
-                                            recordsWithEntityTypeCount
                                         </a>
                                 </li>
                                 <li>
@@ -202,50 +189,6 @@
                             <tr>
                                 <td class="col-md-4">
                                     <div class="io-description"><p>The array of <code>SzDataSourceRecordAnalysis</code> elements providing statistics on the records by data source.</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="analysisByEntityType"></a>
-                                        <span class="name "><b>analysisByEntityType</b>
-                                            <a href="#analysisByEntityType">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>analysisByEntityType:     <code>Array&lt;SzEntityTypeRecordAnalysis&gt;</code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>    <code>Array&lt;SzEntityTypeRecordAnalysis&gt;</code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The array of <code>SzEntityTypeRecordAnalysis</code> elements providing statistics on the records by entity type.</p>
 </div>
                                 </td>
                             </tr>
@@ -431,50 +374,6 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="recordsWithEntityTypeCount"></a>
-                                        <span class="name "><b>recordsWithEntityTypeCount</b>
-                                            <a href="#recordsWithEntityTypeCount">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>recordsWithEntityTypeCount:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The number of records provided that include a <code>ENTITY_TYPE</code> value.</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
                                         <a name="recordsWithRecordIdCount"></a>
                                         <span class="name "><b>recordsWithRecordIdCount</b>
                                             <a href="#recordsWithRecordIdCount">
@@ -560,7 +459,6 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzBulkDataStatus } from &#x27;./szBulkDataStatus&#x27;;
 import { SzDataSourceRecordAnalysis } from &#x27;./szDataSourceRecordAnalysis&#x27;;
-import { SzEntityTypeRecordAnalysis } from &#x27;./szEntityTypeRecordAnalysis&#x27;;
 
 /**
  * Describes the analysis performed against a set of bulk data records described as a JSON array, JSON Lines format or CSV format.
@@ -590,7 +488,10 @@ export interface SzBulkDataAnalysis {
     /**
      * The number of records provided that include a &#x60;ENTITY_TYPE&#x60; value.
      */
+    /*
+    @deprecated as of 3.0.0
     recordsWithEntityTypeCount?: number;
+    */
     /**
      * The array of &#x60;SzDataSourceRecordAnalysis&#x60; elements providing statistics on the records by data source.
      */
@@ -598,10 +499,14 @@ export interface SzBulkDataAnalysis {
     /**
      * The array of &#x60;SzEntityTypeRecordAnalysis&#x60; elements providing statistics on the records by entity type.
      */
+    /*
+    @deprecated as of 3.0.0
     analysisByEntityType?: Array&lt;SzEntityTypeRecordAnalysis&gt;;
+    */
 }</code></pre>
     </div>
 </div>
+
 
 
 

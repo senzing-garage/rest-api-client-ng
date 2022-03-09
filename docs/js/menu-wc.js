@@ -53,6 +53,11 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         <span class="icon ion-ios-list"></span>Dependencies
                                     </a>
                                 </li>
+                                <li class="link">
+                                    <a href="properties.html" data-type="chapter-link">
+                                        <span class="icon ion-ios-apps"></span>Properties
+                                    </a>
+                                </li>
                     </ul>
                 </li>
                     <li class="chapter modules">
@@ -220,21 +225,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/SzDisclosedRelation.html" data-type="entity-link" >SzDisclosedRelation</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/SzEntityClass.html" data-type="entity-link" >SzEntityClass</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityClassesResponse.html" data-type="entity-link" >SzEntityClassesResponse</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityClassesResponseData.html" data-type="entity-link" >SzEntityClassesResponseData</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityClassResponse.html" data-type="entity-link" >SzEntityClassResponse</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityClassResponseData.html" data-type="entity-link" >SzEntityClassResponseData</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/SzEntityData.html" data-type="entity-link" >SzEntityData</a>
                             </li>
                             <li class="link">
@@ -266,27 +256,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/SzEntityResponse.html" data-type="entity-link" >SzEntityResponse</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityType.html" data-type="entity-link" >SzEntityType</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityTypeBulkLoadResult.html" data-type="entity-link" >SzEntityTypeBulkLoadResult</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityTypeRecordAnalysis.html" data-type="entity-link" >SzEntityTypeRecordAnalysis</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityTypeResponse.html" data-type="entity-link" >SzEntityTypeResponse</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityTypeResponseData.html" data-type="entity-link" >SzEntityTypeResponseData</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityTypesResponse.html" data-type="entity-link" >SzEntityTypesResponse</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzEntityTypesResponseData.html" data-type="entity-link" >SzEntityTypesResponseData</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/SzError.html" data-type="entity-link" >SzError</a>
