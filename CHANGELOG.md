@@ -13,6 +13,7 @@ and [rest api specification](https://github.com/Senzing/senzing-rest-api-specifi
 
 ### Modified
 - `matchScore` removed from `SzBaseRelatedEntity`
+- The `EntityData.getEntityByEntityId` method had the parameter `forceMinimal` moved from the 3rd position to the 5th position.
 
 ### Removed
 - All models related to *Entity Types* and *Entity Classes* removed from the api have been removed from this package(see below)
@@ -48,8 +49,6 @@ and [rest api specification](https://github.com/Senzing/senzing-rest-api-specifi
   - `entityType`
   - `mapEntityTypes`
   - `mapEntityType`
-- The following parameters removed from `BulkData.getEntityByEntityId`
-  - `forceMinimal`
 
 ## [3.0.0] - 2021-12-14
 

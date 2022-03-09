@@ -40,10 +40,12 @@ export interface SzServerInfo {
     webSocketsMessageMaxSize?: number;
     /**
      * Whether or not an asynchronous INFO queue has been configured for automatically sending \"INFO\" messages when records are loaded, reevaluated or deleted.
+     * Only available in the POC Rest Server.
      */
     infoQueueConfigured?: boolean;
     /**
      * Whether or not an asynchronous LOAD queue has been configured for asynchronously loading records.
+     * Only available in the POC Rest Server.
      */
     loadQueueConfigured?: boolean;
 }
