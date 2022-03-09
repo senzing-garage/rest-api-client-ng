@@ -46,6 +46,8 @@
 
 
 
+
+
 <ol class="breadcrumb">
   <li>Miscellaneous</li>
   <li>Type aliases</li>
@@ -65,12 +67,6 @@
                             <a href="#DatasourcesBody1" title="projects/rest-api-client-ng/src/lib/model/datasourcesBody1.ts" ><b>DatasourcesBody1</b>&nbsp;&nbsp;&nbsp;(projects/.../datasourcesBody1.ts)</a>
                         </li>
                         <li>
-                            <a href="#EntitytypesBody" title="projects/rest-api-client-ng/src/lib/model/entitytypesBody.ts" ><b>EntitytypesBody</b>&nbsp;&nbsp;&nbsp;(projects/.../entitytypesBody.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#EntitytypesBody1" title="projects/rest-api-client-ng/src/lib/model/entitytypesBody1.ts" ><b>EntitytypesBody1</b>&nbsp;&nbsp;&nbsp;(projects/.../entitytypesBody1.ts)</a>
-                        </li>
-                        <li>
                             <a href="#SzAttributeClass" title="projects/rest-api-client-ng/src/lib/model/szAttributeClass.ts" ><b>SzAttributeClass</b>&nbsp;&nbsp;&nbsp;(projects/.../szAttributeClass.ts)</a>
                         </li>
                         <li>
@@ -86,16 +82,10 @@
                             <a href="#SzDataSourceDescriptor" title="projects/rest-api-client-ng/src/lib/model/szDataSourceDescriptor.ts" ><b>SzDataSourceDescriptor</b>&nbsp;&nbsp;&nbsp;(projects/.../szDataSourceDescriptor.ts)</a>
                         </li>
                         <li>
-                            <a href="#SzEntityClassDescriptor" title="projects/rest-api-client-ng/src/lib/model/szEntityClassDescriptor.ts" ><b>SzEntityClassDescriptor</b>&nbsp;&nbsp;&nbsp;(projects/.../szEntityClassDescriptor.ts)</a>
-                        </li>
-                        <li>
                             <a href="#SzEntityIdentifier" title="projects/rest-api-client-ng/src/lib/model/szEntityIdentifier.ts" ><b>SzEntityIdentifier</b>&nbsp;&nbsp;&nbsp;(projects/.../szEntityIdentifier.ts)</a>
                         </li>
                         <li>
                             <a href="#SzEntityIdentifiers" title="projects/rest-api-client-ng/src/lib/model/szEntityIdentifiers.ts" ><b>SzEntityIdentifiers</b>&nbsp;&nbsp;&nbsp;(projects/.../szEntityIdentifiers.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#SzEntityTypeDescriptor" title="projects/rest-api-client-ng/src/lib/model/szEntityTypeDescriptor.ts" ><b>SzEntityTypeDescriptor</b>&nbsp;&nbsp;&nbsp;(projects/.../szEntityTypeDescriptor.ts)</a>
                         </li>
                         <li>
                             <a href="#SzFeatureMode" title="projects/rest-api-client-ng/src/lib/model/szFeatureMode.ts" ><b>SzFeatureMode</b>&nbsp;&nbsp;&nbsp;(projects/.../szFeatureMode.ts)</a>
@@ -167,42 +157,6 @@
             </tr>
         </tbody>
     </table>
-</section>    <h3>projects/rest-api-client-ng/src/lib/model/entitytypesBody.ts</h3>
-    <section>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="EntitytypesBody"></a>
-                    <span class="name "><b>EntitytypesBody</b><a href="#EntitytypesBody"><span class="icon ion-ios-link"></span></a></span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <code>        <code><a href="../interfaces/SzEntityType.html" target="_self" >Array&lt;SzEntityTypeDescriptor&gt; | SzEntityTypeDescriptor</a></code>
-</code>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>    <h3>projects/rest-api-client-ng/src/lib/model/entitytypesBody1.ts</h3>
-    <section>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="EntitytypesBody1"></a>
-                    <span class="name "><b>EntitytypesBody1</b><a href="#EntitytypesBody1"><span class="icon ion-ios-link"></span></a></span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <code>        <code><a href="../interfaces/SzEntityType.html" target="_self" >Array&lt;SzEntityTypeDescriptor&gt; | SzEntityTypeDescriptor</a></code>
-</code>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>    <h3>projects/rest-api-client-ng/src/lib/model/szAttributeClass.ts</h3>
     <section>
     <table class="table table-sm table-bordered">
@@ -217,7 +171,7 @@
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -246,7 +200,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -275,7 +229,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -304,7 +258,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -338,30 +292,6 @@ Do not edit the class manually.</p>
             <tr>
                 <td class="col-md-4">
                     <code>        <code><a href="../interfaces/SzDataSource.html" target="_self" >string | SzDataSource</a></code>
-</code>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>    <h3>projects/rest-api-client-ng/src/lib/model/szEntityClassDescriptor.ts</h3>
-    <section>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="SzEntityClassDescriptor"></a>
-                    <span class="name "><b>SzEntityClassDescriptor</b><a href="#SzEntityClassDescriptor"><span class="icon ion-ios-link"></span></a></span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Describes an entity class either as only its entity class code or as an <code>SzEntityClass</code> object.</p>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <code>        <code><a href="../interfaces/SzEntityClass.html" target="_self" >string | SzEntityClass</a></code>
 </code>
                 </td>
             </tr>
@@ -415,30 +345,6 @@ Do not edit the class manually.</p>
             </tr>
         </tbody>
     </table>
-</section>    <h3>projects/rest-api-client-ng/src/lib/model/szEntityTypeDescriptor.ts</h3>
-    <section>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="SzEntityTypeDescriptor"></a>
-                    <span class="name "><b>SzEntityTypeDescriptor</b><a href="#SzEntityTypeDescriptor"><span class="icon ion-ios-link"></span></a></span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Describes an entity type either as only its entity type code or as an <code>SzEntityType</code> object.</p>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <code>        <code><a href="../interfaces/SzEntityType.html" target="_self" >string | SzEntityType</a></code>
-</code>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>    <h3>projects/rest-api-client-ng/src/lib/model/szFeatureMode.ts</h3>
     <section>
     <table class="table table-sm table-bordered">
@@ -453,7 +359,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -482,7 +388,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -511,7 +417,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -564,7 +470,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -593,7 +499,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -622,7 +528,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -651,7 +557,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>
@@ -680,7 +586,7 @@ Do not edit the class manually.</p>
                 <td class="col-md-4">
                     <div class="io-description"><p>Senzing REST API
 This is the Senzing REST API.  It describes the REST interface to Senzing API functions available via REST.  It leverages the Senzing native API which is documented at <a href="https://docs.senzing.com">https://docs.senzing.com</a>. <br><br> <b>SSE NOTE:</b> Some end-points described here will indicate &quot;(Supports SSE)&quot; to indicate that they support &quot;Server-sent Events&quot; via the <code>text/event-stream</code> media type.  This support is activated by adding the <code>Accept: text/event-stream</code> header to a request to override the default <code>application/json</code> media type.  Further, the end-point will behave similarly to its standard operation but will produce <code>progress</code> events at regular intervals that are equivalent to its <code>200</code> response schema. Upon success, the final event will be <code>completed</code> with the same response schema as a <code>200</code> response.  Upon failure, the final event will be <code>failed</code> with same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>) <br><br> <b>WEB SOCKETS NOTE:</b> Some end-points described here will indicate &quot;(Supports WebSockets)&quot; to indicate that they can invoked via the Web Sockets protocol. This support is activated by invoking the end-point using the <code>ws://</code> protocol in the URL.  Any request query parameters can still be sent on the URL and the request body can be sent as one or more message from the client (as documented).  The end-point response will be sent as one or more response messages as documented (sometimes describing progress as with SSE end-points).  Upon failure responses will follow the same schema as the <code>4xx</code> or <code>5xx</code> response (typically the <code>SzErrorResponse</code>)</p>
-<p>OpenAPI spec version: 2.7.0</p>
+<p>OpenAPI spec version: 3.0.0</p>
 <p>NOTE: This class is auto generated by the swagger code generator program.
 <a href="https://github.com/swagger-api/swagger-codegen.git">https://github.com/swagger-api/swagger-codegen.git</a>
 Do not edit the class manually.</p>

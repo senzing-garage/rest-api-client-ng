@@ -37,6 +37,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Injectables</li>
   <li >EntityDataService</li>
@@ -2525,7 +2526,7 @@ This operation deletes a single record identified by the data source code and re
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getEntityByEntityId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, featureMode?: <a href="../objects/SzFeatureMode.html" target="_self">SzFeatureMode</a>, forceMinimal?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withFeatureStats?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withInternalFeatures?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withRelated?: <a href="../objects/SzRelationshipMode.html" target="_self">SzRelationshipMode</a>, withRaw?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, observe?, reportProgress?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, additionalHeaders?: literal type)</code>
+                    <code>getEntityByEntityId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, featureMode?: <a href="../objects/SzFeatureMode.html" target="_self">SzFeatureMode</a>, withFeatureStats?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withInternalFeatures?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, forceMinimal?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withRelated?: <a href="../objects/SzRelationshipMode.html" target="_self">SzRelationshipMode</a>, withRaw?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, observe?, reportProgress?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, additionalHeaders?: literal type)</code>
                 </td>
             </tr>
 
@@ -2590,22 +2591,6 @@ Gets the details on a resolved entity that is identified by the entity ID specif
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>forceMinimal</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                    <td>
-                                        <p>Whether or not to force the minimum entity detail in the response which may consist of nothing more than an entity ID.  This provides the fastest response to an entity query operation because no additional data needs to be retrieved other than what is directly accessible.  This overrules other parameters governing the retrieval of features or related entities.</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td>withFeatureStats</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
@@ -2634,6 +2619,22 @@ Gets the details on a resolved entity that is identified by the entity ID specif
 
                                     <td>
                                         <p>Set to &#x60;true&#x60; to include &amp;quot;expressed&amp;quot; features that are derived composite keys such as name + date of birth keys.  This defaults to &#x60;false&#x60;.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>forceMinimal</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>Whether or not to force the minimum entity detail in the response which may consist of nothing more than an entity ID.  This provides the fastest response to an entity query operation because no additional data needs to be retrieved other than what is directly accessible.  This overrules other parameters governing the retrieval of features or related entities.</p>
 
                                     </td>
                                 </tr>
@@ -2745,7 +2746,7 @@ Gets the details on a resolved entity that is identified by the entity ID specif
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getEntityByEntityId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, featureMode?: <a href="../objects/SzFeatureMode.html" target="_self">SzFeatureMode</a>, forceMinimal?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withFeatureStats?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withInternalFeatures?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withRelated?: <a href="../objects/SzRelationshipMode.html" target="_self">SzRelationshipMode</a>, withRaw?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, observe?, reportProgress?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, additionalHeaders?: literal type)</code>
+                    <code>getEntityByEntityId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, featureMode?: <a href="../objects/SzFeatureMode.html" target="_self">SzFeatureMode</a>, withFeatureStats?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withInternalFeatures?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, forceMinimal?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withRelated?: <a href="../objects/SzRelationshipMode.html" target="_self">SzRelationshipMode</a>, withRaw?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, observe?, reportProgress?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, additionalHeaders?: literal type)</code>
                 </td>
             </tr>
 
@@ -2798,18 +2799,6 @@ Gets the details on a resolved entity that is identified by the entity ID specif
 
                                 </tr>
                                 <tr>
-                                    <td>forceMinimal</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                </tr>
-                                <tr>
                                     <td>withFeatureStats</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
@@ -2823,6 +2812,18 @@ Gets the details on a resolved entity that is identified by the entity ID specif
                                 </tr>
                                 <tr>
                                     <td>withInternalFeatures</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>forceMinimal</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
                                     </td>
@@ -2923,7 +2924,7 @@ Gets the details on a resolved entity that is identified by the entity ID specif
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getEntityByEntityId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, featureMode?: <a href="../objects/SzFeatureMode.html" target="_self">SzFeatureMode</a>, forceMinimal?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withFeatureStats?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withInternalFeatures?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withRelated?: <a href="../objects/SzRelationshipMode.html" target="_self">SzRelationshipMode</a>, withRaw?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, observe?, reportProgress?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, additionalHeaders?: literal type)</code>
+                    <code>getEntityByEntityId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, featureMode?: <a href="../objects/SzFeatureMode.html" target="_self">SzFeatureMode</a>, withFeatureStats?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withInternalFeatures?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, forceMinimal?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withRelated?: <a href="../objects/SzRelationshipMode.html" target="_self">SzRelationshipMode</a>, withRaw?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, observe?, reportProgress?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, additionalHeaders?: literal type)</code>
                 </td>
             </tr>
 
@@ -2976,18 +2977,6 @@ Gets the details on a resolved entity that is identified by the entity ID specif
 
                                 </tr>
                                 <tr>
-                                    <td>forceMinimal</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                </tr>
-                                <tr>
                                     <td>withFeatureStats</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
@@ -3001,6 +2990,18 @@ Gets the details on a resolved entity that is identified by the entity ID specif
                                 </tr>
                                 <tr>
                                     <td>withInternalFeatures</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>forceMinimal</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
                                     </td>
@@ -3101,7 +3102,7 @@ Gets the details on a resolved entity that is identified by the entity ID specif
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getEntityByEntityId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, featureMode?: <a href="../objects/SzFeatureMode.html" target="_self">SzFeatureMode</a>, forceMinimal?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withFeatureStats?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withInternalFeatures?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withRelated?: <a href="../objects/SzRelationshipMode.html" target="_self">SzRelationshipMode</a>, withRaw?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, observe: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, reportProgress: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, additionalHeaders: literal type)</code>
+                    <code>getEntityByEntityId(entityId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, featureMode?: <a href="../objects/SzFeatureMode.html" target="_self">SzFeatureMode</a>, withFeatureStats?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withInternalFeatures?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, forceMinimal?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, withRelated?: <a href="../objects/SzRelationshipMode.html" target="_self">SzRelationshipMode</a>, withRaw?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, observe: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, reportProgress: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, additionalHeaders: literal type)</code>
                 </td>
             </tr>
 
@@ -3159,20 +3160,6 @@ Gets the details on a resolved entity that is identified by the entity ID specif
 
                                 </tr>
                                 <tr>
-                                    <td>forceMinimal</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-                                    <td>
-                                    </td>
-
-                                </tr>
-                                <tr>
                                     <td>withFeatureStats</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
@@ -3188,6 +3175,20 @@ Gets the details on a resolved entity that is identified by the entity ID specif
                                 </tr>
                                 <tr>
                                     <td>withInternalFeatures</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>forceMinimal</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
                                     </td>
@@ -5887,8 +5888,8 @@ This operation reevaluates a single record identified by the data source code an
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="878"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:878</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="895"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:895</a></div>
                 </td>
             </tr>
 
@@ -6122,8 +6123,8 @@ This operation reevaluates a single record identified by the data source code an
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="879"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:879</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="896"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:896</a></div>
                 </td>
             </tr>
 
@@ -6312,8 +6313,8 @@ This operation reevaluates a single record identified by the data source code an
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="880"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:880</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="897"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:897</a></div>
                 </td>
             </tr>
 
@@ -6502,8 +6503,8 @@ This operation reevaluates a single record identified by the data source code an
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="881"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:881</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="898"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:898</a></div>
                 </td>
             </tr>
 
@@ -7606,8 +7607,8 @@ This operation finds all entities that would resolve or relate to the search can
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="790"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:790</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="800"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:800</a></div>
                 </td>
             </tr>
 
@@ -7842,8 +7843,8 @@ This operation finds all entities that would resolve or relate to the search can
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="791"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:791</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="801"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:801</a></div>
                 </td>
             </tr>
 
@@ -8032,8 +8033,8 @@ This operation finds all entities that would resolve or relate to the search can
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="792"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:792</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="802"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:802</a></div>
                 </td>
             </tr>
 
@@ -8222,8 +8223,8 @@ This operation finds all entities that would resolve or relate to the search can
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="793"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:793</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="803"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:803</a></div>
                 </td>
             </tr>
 
@@ -8439,8 +8440,8 @@ This operation finds all entities that would resolve or relate to the search can
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="899"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:899</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="916"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:916</a></div>
                 </td>
             </tr>
 
@@ -8675,8 +8676,8 @@ This operation provides an anlysis of why two entities related, did not relate o
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="900"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:900</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="917"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:917</a></div>
                 </td>
             </tr>
 
@@ -8865,8 +8866,8 @@ This operation provides an anlysis of why two entities related, did not relate o
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="901"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:901</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="918"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:918</a></div>
                 </td>
             </tr>
 
@@ -9055,8 +9056,8 @@ This operation provides an anlysis of why two entities related, did not relate o
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="902"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:902</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="919"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:919</a></div>
                 </td>
             </tr>
 
@@ -9272,8 +9273,8 @@ This operation provides an anlysis of why two entities related, did not relate o
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="979"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:979</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1002"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1002</a></div>
                 </td>
             </tr>
 
@@ -9492,8 +9493,8 @@ This operation provides an anlysis of why the records in an entity resolved.  Th
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="980"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:980</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1003"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1003</a></div>
                 </td>
             </tr>
 
@@ -9670,8 +9671,8 @@ This operation provides an anlysis of why the records in an entity resolved.  Th
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="981"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:981</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1004"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1004</a></div>
                 </td>
             </tr>
 
@@ -9848,8 +9849,8 @@ This operation provides an anlysis of why the records in an entity resolved.  Th
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="982"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:982</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1005"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1005</a></div>
                 </td>
             </tr>
 
@@ -10051,8 +10052,8 @@ This operation provides an anlysis of why the records in an entity resolved.  Th
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="1055"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1055</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1084"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1084</a></div>
                 </td>
             </tr>
 
@@ -10287,8 +10288,8 @@ This operation provides an anlysis of why the records in an entity resolved.  Th
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="1056"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1056</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1085"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1085</a></div>
                 </td>
             </tr>
 
@@ -10477,8 +10478,8 @@ This operation provides an anlysis of why the records in an entity resolved.  Th
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="1057"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1057</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1086"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1086</a></div>
                 </td>
             </tr>
 
@@ -10667,8 +10668,8 @@ This operation provides an anlysis of why the records in an entity resolved.  Th
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="1058"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1058</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1087"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1087</a></div>
                 </td>
             </tr>
 
@@ -10884,8 +10885,8 @@ This operation provides an anlysis of why the records in an entity resolved.  Th
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="1143"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1143</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1172"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1172</a></div>
                 </td>
             </tr>
 
@@ -11152,8 +11153,8 @@ This operation provides an anlysis of two records identified by data source code
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="1144"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1144</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1173"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1173</a></div>
                 </td>
             </tr>
 
@@ -11366,8 +11367,8 @@ This operation provides an anlysis of two records identified by data source code
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="1145"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1145</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1174"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1174</a></div>
                 </td>
             </tr>
 
@@ -11580,8 +11581,8 @@ This operation provides an anlysis of two records identified by data source code
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="1146"
-                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1146</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="1175"
+                            class="link-to-prism">projects/rest-api-client-ng/src/lib/api/entityData.service.ts:1175</a></div>
                 </td>
             </tr>
 
@@ -12317,18 +12318,18 @@ export class EntityDataService {
      * Gets the details on a resolved entity that is identified by the entity ID specified in the request path.  **NOTE:** Bear in mind that entity ID&amp;#x27;s are transient and may be recycled or repurposed as new records are loaded and entities resolve, unresolve and re-resolve.  An alternative way to identify a record is by one of its composite records using &amp;#x60;GET /data-sources/{dataSourceCode}/records/{recordId}/entity&amp;#x60;. 
      * @param entityId The unique numeric ID that identifies that entity being requested.
      * @param featureMode The method by which feature values should be included for entities returned in the response.  The possible values are:   * &amp;#x60;NONE&amp;#x60; - Do not include any feature values -- this is the fastest              option from a performance perspective because feature              values do not have to be retrieved.   * &amp;#x60;REPRESENTATIVE&amp;#x60; - Include only a single representative value per                        \&amp;quot;unique\&amp;quot; value of a feature.  If there are                        multiple values that are near duplicates then                        only one value is included and the others are                        suppressed.   * &amp;#x60;WITH_DUPLICATES&amp;#x60; - Group near-duplicate feature values and return                         a representative value along with its near                         duplicate values.
-     * @param forceMinimal Whether or not to force the minimum entity detail in the response which may consist of nothing more than an entity ID.  This provides the fastest response to an entity query operation because no additional data needs to be retrieved other than what is directly accessible.  This overrules other parameters governing the retrieval of features or related entities.
      * @param withFeatureStats Set to &amp;#x60;true&amp;#x60; to include resolution statistics for features.  This defaults to &amp;#x60;false&amp;#x60;.
      * @param withInternalFeatures Set to &amp;#x60;true&amp;#x60; to include \&amp;quot;expressed\&amp;quot; features that are derived composite keys such as name + date of birth keys.  This defaults to &amp;#x60;false&amp;#x60;.
+     * @param forceMinimal Whether or not to force the minimum entity detail in the response which may consist of nothing more than an entity ID.  This provides the fastest response to an entity query operation because no additional data needs to be retrieved other than what is directly accessible.  This overrules other parameters governing the retrieval of features or related entities.
      * @param withRelated Controls how to handle the first-degree related entities.  The possible values are:   * &amp;#x60;NONE&amp;#x60; - Do not include any data on first-degree related entities --      this is the fastest option from a performance perspective because      related entities do not have to be retrieved.   * &amp;#x60;PARTIAL&amp;#x60; - **(default value)** Include only partial stub      information for related entities with the &amp;#x60;partial&amp;#x60; property of the      &amp;#x60;SzRelatedEntity&amp;#x60; instances set to &amp;#x60;true&amp;#x60;.  Obtaining additional      information requires subsequent API calls.   * &amp;#x60;FULL&amp;#x60; - Include full data on the first-degree related entities.      This option obtains entity network at one degree for the requested      entity and will fully populate up to 1000 related entities and sets      the &amp;#x60;partial&amp;#x60; property of those &amp;#x60;SzRelatedEntity&amp;#x60; instances to      &amp;#x60;false&amp;#x60;.  Related entities beyond the first 1000 will be left      incomplete and have their &amp;#x60;partial&amp;#x60; property will be set to &amp;#x60;true&amp;#x60;.
      * @param withRaw Whether or not to include the raw JSON response from the underlying native API.  This raw response may include additional details but lack some of the abstraction the standard response provides.  If true, then the &amp;#x27;rawData&amp;#x27; field in the response will be a non-null value and contain the additional details.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, forceMinimal?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#x27;body&#x27;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable&lt;SzEntityResponse&gt;;
-    public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, forceMinimal?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#x27;response&#x27;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable&lt;HttpResponse&lt;SzEntityResponse&gt;&gt;;
-    public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, forceMinimal?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#x27;events&#x27;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable&lt;HttpEvent&lt;SzEntityResponse&gt;&gt;;
-    public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, forceMinimal?: boolean, withFeatureStats?: boolean, withInternalFeatures?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe: any &#x3D; &#x27;body&#x27;, reportProgress: boolean &#x3D; false, additionalHeaders: {[key: string]: string} &#x3D; {} ): Observable&lt;any&gt; {
+    public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#x27;body&#x27;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable&lt;SzEntityResponse&gt;;
+    public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#x27;response&#x27;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable&lt;HttpResponse&lt;SzEntityResponse&gt;&gt;;
+    public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#x27;events&#x27;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable&lt;HttpEvent&lt;SzEntityResponse&gt;&gt;;
+    public getEntityByEntityId(entityId: number, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe: any &#x3D; &#x27;body&#x27;, reportProgress: boolean &#x3D; false, additionalHeaders: {[key: string]: string} &#x3D; {} ): Observable&lt;any&gt; {
 
         if (entityId &#x3D;&#x3D;&#x3D; null || entityId &#x3D;&#x3D;&#x3D; undefined) {
             throw new Error(&#x27;Required parameter entityId was null or undefined when calling getEntityByEntityId.&#x27;);
@@ -12689,6 +12690,16 @@ export class EntityDataService {
      public searchEntitiesByGet(attrs?: string, attr?: Array&lt;string&gt;, includeOnly?: Array&lt;SzAttributeSearchResultType&gt;, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: &#x27;response&#x27;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable&lt;HttpResponse&lt;SzAttributeSearchResponse&gt;&gt;;
      public searchEntitiesByGet(attrs?: string, attr?: Array&lt;string&gt;, includeOnly?: Array&lt;SzAttributeSearchResultType&gt;, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe?: &#x27;events&#x27;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}): Observable&lt;HttpEvent&lt;SzAttributeSearchResponse&gt;&gt;;
      public searchEntitiesByGet(attrs?: string, attr?: Array&lt;string&gt;, includeOnly?: Array&lt;SzAttributeSearchResultType&gt;, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelationships?: boolean, withRaw?: boolean, observe: any &#x3D; &#x27;body&#x27;, reportProgress: boolean &#x3D; false, additionalHeaders: {[key: string]: string} &#x3D; {} ): Observable&lt;any&gt; {
+        
+
+
+
+
+
+
+
+
+
         let queryParameters &#x3D; new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (attrs !&#x3D;&#x3D; undefined &amp;&amp; attrs !&#x3D;&#x3D; null) {
             queryParameters &#x3D; queryParameters.set(&#x27;attrs&#x27;, &lt;any&gt;attrs);
@@ -12776,6 +12787,13 @@ export class EntityDataService {
         if (body &#x3D;&#x3D;&#x3D; null || body &#x3D;&#x3D;&#x3D; undefined) {
             throw new Error(&#x27;Required parameter body was null or undefined when calling searchEntitiesByPost.&#x27;);
         }
+
+
+
+
+
+
+
 
         let queryParameters &#x3D; new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (includeOnly) {
@@ -12890,6 +12908,12 @@ export class EntityDataService {
             throw new Error(&#x27;Required parameter entity2 was null or undefined when calling whyEntities.&#x27;);
         }
 
+
+
+
+
+
+
         let queryParameters &#x3D; new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (entity1 !&#x3D;&#x3D; undefined &amp;&amp; entity1 !&#x3D;&#x3D; null) {
             queryParameters &#x3D; queryParameters.set(&#x27;entity1&#x27;, &lt;any&gt;entity1);
@@ -12966,6 +12990,12 @@ export class EntityDataService {
             throw new Error(&#x27;Required parameter entityId was null or undefined when calling whyEntityByEntityID.&#x27;);
         }
 
+
+
+
+
+
+        
         let queryParameters &#x3D; new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (withRelationships !&#x3D;&#x3D; undefined &amp;&amp; withRelationships !&#x3D;&#x3D; null) {
             queryParameters &#x3D; queryParameters.set(&#x27;withRelationships&#x27;, &lt;any&gt;withRelationships);
@@ -13217,6 +13247,7 @@ export class EntityDataService {
     </div>
 
 </div>
+
 
 
 

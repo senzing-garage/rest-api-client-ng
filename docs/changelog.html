@@ -36,6 +36,62 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 <a href="https://dlaa.me/markdownlint/">markdownlint</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="400---2022-3-15">[4.0.0] - 2022-3-15</h2>
+<p>This update brings the models in line with the changes for the <code>3.0.0</code> release of the <a href="https://github.com/Senzing/senzing-api-server">senzing rest api server</a>
+and <a href="https://github.com/Senzing/senzing-rest-api-specification/blob/caceres.version-3.0.0/senzing-rest-api.yaml">rest api specification</a>.</p>
+<h3 id="modified">Modified</h3>
+<ul>
+<li><code>matchScore</code> removed from <code>SzBaseRelatedEntity</code></li>
+<li>The <code>EntityData.getEntityByEntityId</code> method had the parameter <code>forceMinimal</code> moved from the 3rd position to the 5th position.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>All models related to <em>Entity Types</em> and <em>Entity Classes</em> removed from the api have been removed from this package(see below)<ul>
+<li><code>SzEntityClass</code></li>
+<li><code>SzEntityClassDescriptor</code></li>
+<li><code>SzEntityClassResponse</code></li>
+<li><code>SzEntityClassResponseData</code></li>
+<li><code>SzEntityClassesResponse</code></li>
+<li><code>SzEntityClassesResponseData</code></li>
+<li><code>SzEntityType</code></li>
+<li><code>SzEntityTypeBulkLoadResult</code></li>
+<li><code>SzEntityTypeDescriptor</code></li>
+<li><code>SzEntityTypeRecordAnalysis</code></li>
+<li><code>SzEntityTypeResponse</code></li>
+<li><code>SzEntityTypeResponseData</code></li>
+<li><code>SzEntityTypesResponse</code></li>
+<li><code>SzEntityTypesResponseData</code></li>
+</ul>
+</li>
+<li>The following methods removed from <code>ConfigService</code><ul>
+<li><code>addEntityTypes</code></li>
+<li><code>addEntityTypesForClass</code></li>
+<li><code>getEntityClass</code></li>
+<li><code>getEntityClasses</code></li>
+<li><code>getEntityType</code></li>
+<li><code>getEntityTypeByClass</code></li>
+<li><code>getEntityTypes</code></li>
+<li><code>getEntityTypesByClass</code></li>
+</ul>
+</li>
+<li>The following parameters removed from <code>BulkData.analyzeBulkRecordsForm</code><ul>
+<li><code>entityType</code></li>
+<li><code>mapEntityTypes</code></li>
+<li><code>mapEntityType</code></li>
+<li><code>maxFailures</code></li>
+</ul>
+</li>
+<li>The following parameters removed from <code>BulkData.loadBulkRecordsForm</code><ul>
+<li><code>entityType</code></li>
+<li><code>mapEntityTypes</code></li>
+<li><code>mapEntityType</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="300---2021-12-14">[3.0.0] - 2021-12-14</h2>
+<p>As of 3.0.0 release this package now requires <code>@angular@~13.0.0</code> to compile and run. There are no components in this package so <em>technically</em> it would probably be compatible with earlier releases but it is not recommended and would <strong>not</strong> be officially supported.</p>
+<p>Updating to angular 13 resolves major dependency compatibility issues so we can apply the latest security patches to the library.</p>
+<p>For information updating your project from a previous angular version to <code>~13.0.0</code> see the <a href="https://update.angular.io/">Angular Update Guide </a></p>
 <h2 id="240---2021-12-10">[2.4.0] - 2021-12-10</h2>
 <ul>
 <li>removed:<ul>
@@ -93,48 +149,57 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 </li>
 <li><p>SenzingBaseResponse:</p>
-</li>
+<ul>
+<li><code>meta</code> changed from type <code>SzBaseResponseMeta</code> to <code>SzMeta</code></li>
+<li><code>links</code> changed from type <code>SzBaseResponseLinks</code> to <code>SzLinks</code></li>
 </ul>
-<div><pre class="line-numbers"><code class="language-none">- `meta` changed from type `SzBaseResponseMeta` to `SzMeta`
-- `links` changed from type `SzBaseResponseLinks` to `SzLinks`</code></pre></div><ul>
-<li>SzEntityRecord:<ul>
+</li>
+<li><p>SzEntityRecord:</p>
+<ul>
 <li>added <code>lastSeenTimestamp</code> as Date</li>
 <li>added <code>originalSourceData</code> as { [key: string]: any; }</li>
 </ul>
 </li>
-<li>SzMatchInfo<ul>
+<li><p>SzMatchInfo</p>
+<ul>
 <li>added <code>disclosedRelations</code> as Array<SzDisclosedRelation></li>
 </ul>
 </li>
-<li>SzResolvedEntity<ul>
+<li><p>SzResolvedEntity</p>
+<ul>
 <li>added <code>lastSeenTimestamp</code> as Date</li>
 </ul>
 </li>
-<li>SzServerInfo<ul>
+<li><p>SzServerInfo</p>
+<ul>
 <li>added <code>webSocketsMessageMaxSize</code> as number</li>
 <li>added <code>infoQueueConfigured</code> as boolean</li>
 <li>added <code>loadQueueConfigured</code> as boolean</li>
 </ul>
 </li>
-<li>SzVersionInfo<ul>
+<li><p>SzVersionInfo</p>
+<ul>
 <li>added <code>nativeApiBuildVersion</code> as string</li>
 <li>added <code>pocServerVersion</code> as string</li>
 <li>added <code>pocApiVersion</code> as string</li>
 </ul>
 </li>
-<li>AdminService<ul>
+<li><p>AdminService</p>
+<ul>
 <li>added <code>openApiSpecification</code> method</li>
 <li>added <code>root</code> method</li>
 </ul>
 </li>
-<li>BulkDataService<ul>
+<li><p>BulkDataService</p>
+<ul>
 <li>parameters maxFailures, and eofSendTimeout added to method <code>analyzeBulkRecords</code></li>
 <li>parameters maxFailures, and eofSendTimeout added to method <code>loadBulkRecords</code></li>
 <li>added <code>analyzeBulkRecordsForm</code> method</li>
 <li>added <code>loadBulkRecordsForm</code> method</li>
 </ul>
 </li>
-<li>EntityDataService<ul>
+<li><p>EntityDataService</p>
+<ul>
 <li>added <code>searchEntitiesByGet</code> method. existing behavior or passing search parameters in the url of api requests.</li>
 <li>added <code>searchEntitiesByPost</code> method to allow not passing search parameters through url requests.</li>
 <li><code>searchByAttributes</code> refactored as alias of <code>searchEntitiesByGet</code> to prevent breaking change.</li>
@@ -241,6 +306,8 @@ EntityGraphService.findEntityPath: <code>featureMode</code> arg type changed fro
 <li>minor update to projects/rest-api-client-ng/src/lib/model/szEntityPath.ts to support Graph Components.
 model was incorrect.</li>
 </ul>
+
+
 
 
 

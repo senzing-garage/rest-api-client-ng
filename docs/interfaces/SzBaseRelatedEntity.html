@@ -42,6 +42,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Interfaces</li>
   <li
@@ -107,13 +108,6 @@
                                         <a href="#matchLevel" 
 >
                                             matchLevel
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#matchScore" 
->
-                                            matchScore
                                         </a>
                                 </li>
                                 <li>
@@ -233,50 +227,6 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="matchScore"></a>
-                                        <span class="name "><b>matchScore</b>
-                                            <a href="#matchScore">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>matchScore:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The match score between the primary resolved entity and this related entity.  The higher the score the closer the match.</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
                                         <a name="refScore"></a>
                                         <span class="name "><b>refScore</b>
                                             <a href="#refScore">
@@ -382,7 +332,10 @@ export interface SzBaseRelatedEntity extends SzResolvedEntity {
     /**
      * The match score between the primary resolved entity and this related entity.  The higher the score the closer the match.
      */
+    /*
+    @deprecated as of 3.0.0
     matchScore?: number;
+    */
     /**
      * The match key describing what features matched between the primary resolved entity and the related entity.
      */
@@ -398,6 +351,7 @@ export interface SzBaseRelatedEntity extends SzResolvedEntity {
 }</code></pre>
     </div>
 </div>
+
 
 
 

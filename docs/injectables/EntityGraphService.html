@@ -37,6 +37,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Injectables</li>
   <li >EntityGraphService</li>
@@ -2607,11 +2608,11 @@ export class EntityGraphService {
     public findEntityPath(from: SzEntityIdentifier, to: SzEntityIdentifier, maxDegrees?: number, x?: Array&lt;SzEntityIdentifier&gt;, avoidEntities?: SzEntityIdentifiers, forbidAvoided?: boolean, s?: Array&lt;string&gt;, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRaw?: boolean, observe: any &#x3D; &#x27;body&#x27;, reportProgress: boolean &#x3D; false, additionalHeaders: {[key: string]: string} &#x3D; {} ): Observable&lt;any&gt; {
 
         if (from &#x3D;&#x3D;&#x3D; null || from &#x3D;&#x3D;&#x3D; undefined) {
-            throw new Error(&#x27;Required parameter from was null or undefined when calling findPathByEntityID.&#x27;);
+            throw new Error(&#x27;Required parameter from was null or undefined when calling findEntityPath.&#x27;);
         }
 
         if (to &#x3D;&#x3D;&#x3D; null || to &#x3D;&#x3D;&#x3D; undefined) {
-            throw new Error(&#x27;Required parameter to was null or undefined when calling findPathByEntityID.&#x27;);
+            throw new Error(&#x27;Required parameter to was null or undefined when calling findEntityPath.&#x27;);
         }
 
 
@@ -2704,6 +2705,7 @@ export class EntityGraphService {
     </div>
 
 </div>
+
 
 
 
