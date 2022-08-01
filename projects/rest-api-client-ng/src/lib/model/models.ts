@@ -40,6 +40,7 @@ export * from './szDataSourcesResponse';
 export * from './szDataSourcesResponseData';
 export * from './szDeleteRecordResponse';
 export * from './szDeleteRecordResponseData';
+export * from './szDetailLevel';
 export * from './szDisclosedRelation';
 //export * from './szEntityClass';                  // deprecated in 3.1.0
 //export * from './szEntityClassDescriptor';        // deprecated in 3.1.0
