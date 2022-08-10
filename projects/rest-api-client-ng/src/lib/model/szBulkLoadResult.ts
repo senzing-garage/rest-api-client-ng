@@ -32,21 +32,7 @@ export interface SzBulkLoadResult extends SzBaseBulkLoadResult {
      */
     missingDataSourceCount?: number;
     /**
-     * The number of records that are incomplete because they are missing the `ENTITY_TYPE` field.
-     */
-    /*
-    @deprecated as of 3.0.0
-    missingEntityTypeCount?: number;
-    */
-    /**
      * The array of `SzDataSourceBulkDataResult` elements describing the load statistics by data source.
      */
     resultsByDataSource?: Array<SzDataSourceBulkLoadResult>;
-    /**
-     * The array of `SzEntityTypeBulkDataResult` elements describing the load statistics by entity type.
-     */
-    /*
-    @deprecated as of 3.0.0
-    resultsByEntityType?: Array<SzEntityTypeBulkLoadResult>;
-    */
 }

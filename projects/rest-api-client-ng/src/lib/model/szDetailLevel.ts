@@ -11,13 +11,13 @@
  */
 
 /**
- * Describes the level of detail desired for entity data when obtained via the various endpoints that return entity data.  Details for features of entities as well as the related entities of entities are controlled by other flags.  Possible values are:   * `MINIMAL` - The entities returned will include at most their                 entity ID's as well as identifiers for their                 constituent records (i.e.: data source code and record                 ID for each record).   * `BRIEF` - Builds upon `MINIMAL` to add the entity name and record               summary as well as those for related entities when related               entities are being included.   * `STANDARD` - Builds upon `BRIEF` to add record-level matching info                  as well as matching info for related entities when                  related entities are being included.   * `DETAILED` - Builds upon `STANDARD` to add the original JSON data                  for each record as well as formatted record data
+ * Describes the level of detail desired for entity data when obtained via the various endpoints that return entity data.  Details for features of entities as well as the related entities of entities are controlled by other flags.  Possible values are:   * `MINIMAL` - The entities returned will include at most their                 entity ID's as well as identifiers for their                 constituent records (i.e.: data source code and record                 ID for each record).  This detail level is optimized for                 the fastest possible processing time.   * `BRIEF` - Builds upon `MINIMAL` to add the entity name and related               entity match info when related entity match info when               related entities are included.  This detail level aims to               maintain as much speed as possible while providing names               and relationship information for rendering a graph.   * `SUMMARY` - Identical to `BRIEF` except that individual record                 identifier information is excluded, leaving only the                 record summary (i.e.: a record count by data source                 code).  This reduces the size of the JSON document for                 large entities with thousands of records.  It may take                 longer to process than `BRIEF` but less data is                 returned as well, speeding up network transfer times.   * `VERBOSE` - Combines `BRIEF` and `SUMMARY` and then adds the                 original JSON data for each record, the record-level                 matching info, as well as formatted record data.  NOTE:                 the record-level matching info returned via \"how\" and                 \"why\" is often more useful than that embedded in the                 entity.  Further, the formatted record data, while                 readable, is not formatted according to locale (i.e.:                 address, name and date formatting may not appear as                 expected to a user).
  */
-export type SzDetailLevel = 'MINIMAL' | 'BRIEF' | 'STANDARD' | 'DETAILED';
+export type SzDetailLevel = 'MINIMAL' | 'BRIEF' | 'SUMMARY' | 'VERBOSE';
 
 export const SzDetailLevel = {
     MINIMAL: 'MINIMAL' as SzDetailLevel,
     BRIEF: 'BRIEF' as SzDetailLevel,
-    STANDARD: 'STANDARD' as SzDetailLevel,
-    DETAILED: 'DETAILED' as SzDetailLevel
+    SUMMARY: 'SUMMARY' as SzDetailLevel,
+    VERBOSE: 'VERBOSE' as SzDetailLevel
 };
