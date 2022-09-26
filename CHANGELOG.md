@@ -6,6 +6,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.1.0] - 2022-09-27
+models updated to [senzing-rest-api-spec@3.3.0](https://github.com/Senzing/senzing-rest-api-specification/releases/tag/3.3.0)
+
+### Added
+- `SzFeatureReference` model
+- `SzHowEntityResponse` model
+- `SzHowEntityResult` model
+- `SzHowMatchInfo` model
+- `SzRecordIdentifier` model
+- `SzResolutionStep` model
+- `SzVirtualEntity` model
+- `SzVirtualEntityData` model
+- `SzVirtualEntityRecord` model
+- `SzVirtualEntityResponse` model
+- `BAREMINIMAL` added to `SzDetailLevel`
+- `NETWORKMINIMAL` added to `SzDetailLevel`
+- `ENTITYNAMEONLY` added to `SzFeatureMode`
+- `ATTRIBUTED` added to `SzFeatureMode`
+- `featureReferences` added to `SzEntityRecord`
+
+### Modified
+- `SzMatchInfo` renamed to `SzWhyMatchInfo`
+
+### Removed
+
 ## [5.0.0] - 2022-08-11
 A new parameter and enum has been added for finer control over the detail levels of entity response objects.  
 

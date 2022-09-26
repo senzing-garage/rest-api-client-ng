@@ -69,7 +69,6 @@ export * from './szLicenseResponseData';
 export * from './szLinks';
 export * from './szLoadRecordResponse';
 export * from './szLoadRecordResponseData';
-export * from './szMatchInfo';
 export * from './szMatchLevel';
 export * from './szMatchedRecord';
 export * from './szMeta';

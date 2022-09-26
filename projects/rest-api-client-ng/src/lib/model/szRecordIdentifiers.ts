@@ -14,4 +14,4 @@ import { SzRecordId } from './szRecordId';
 /**
  * Identifies zero or more records by their data source codes and record ID's.  Identifiers in the array are homogeneous, either all entity IDs or all RecordId instances containing the data-source-code/record-id pair. The record ID's are either JSON-encoded `SzRecordId` instances or a delimited string where the first character is the delimiter, followed by the data source code, then the delimiter and the record ID (e.g.: `|CUSTOMERS|ABC123`).
  */
-export type SzRecordIdentifiers = Array&lt;SzRecordId&gt; | Array&lt;string&gt; | Array&lt;SzRecordId | string&gt;;
+export type SzRecordIdentifiers = Array<SzRecordId> | Array<string> | Array<SzRecordId | string>;
