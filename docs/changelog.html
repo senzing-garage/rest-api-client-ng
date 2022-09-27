@@ -36,9 +36,48 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 <a href="https://dlaa.me/markdownlint/">markdownlint</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<h2 id="500---2022-08-01">[5.0.0] - 2022-08-01</h2>
-<p>A new parameter and enum has been added for finer control over the detail levels of entity response objects.  </p>
+<h2 id="510---2022-09-27">[5.1.0] - 2022-09-27</h2>
+<p>models updated to <a href="https://github.com/Senzing/senzing-rest-api-specification/releases/tag/3.3.0">senzing-rest-api-spec@3.3.0</a></p>
+<ul>
+<li>Added methods and models to support &quot;how entity&quot; functionality</li>
+<li>Added enumeration options for detail levels and feature mode to allow for graph optimization.</li>
+</ul>
 <h3 id="added">Added</h3>
+<ul>
+<li><code>SzFeatureReference</code> model</li>
+<li><code>SzHowEntityResponse</code> model</li>
+<li><code>SzHowEntityResult</code> model</li>
+<li><code>SzHowMatchInfo</code> model</li>
+<li><code>SzRecordIdentifier</code> model</li>
+<li><code>SzRecordIdentifiers</code> model</li>
+<li><code>SzResolutionStep</code> model</li>
+<li><code>SzVirtualEntity</code> model</li>
+<li><code>SzVirtualEntityData</code> model</li>
+<li><code>SzVirtualEntityRecord</code> model</li>
+<li><code>SzVirtualEntityResponse</code> model</li>
+<li><code>BAREMINIMAL</code> added to <code>SzDetailLevel</code> to handle just returning the
+entity ID&#39;s without record information or relationship match info.</li>
+<li><code>NETWORKMINIMAL</code> added to <code>SzDetailLevel</code> to behave the same as 
+<code>SzDetailLevel.BAREMINIMAL</code>, but with the addition of relationship match info in the case of related entities being included.</li>
+<li><code>ENTITYNAMEONLY</code> added to <code>SzFeatureMode</code> to handle just retrieving the entity name without actually returning other features.</li>
+<li><code>ATTRIBUTED</code> value for <code>SzFeatureMode</code> for pulling back feature references at the record level to indicate which records contributed which features.</li>
+<li><code>featureReferences</code> property to <code>SzEntityRecord</code></li>
+<li>the following methods added to <code>EntityDataService</code><ul>
+<li><code>getVirtualEntityByRecordIds</code> gets a virtual entity by simulating the resolution of the records identified by the specified record ID parameters. This operation simulates the resolution of the one or more specified records into a single entity and returns the simulated &quot;virtual&quot; entity.  The subject records are identified by data source code and record ID pairs.</li>
+<li><code>howEntityByEntityID</code> gets an analysis of how the entity for the respective entity ID resolved. This operation provides an anlysis of how the records in an entity resolved.  The subject entity is identified by the entity ID in the request path. </li>
+<li><code>howEntityByRecordID</code> gets an analysis of how the entity for the record with the respective data source code and record ID resolved. This operation provides an anlysis of how the records in an entity resolved.  The subject entity is the one containing the record identified by the data source code and record ID in the request path.</li>
+</ul>
+</li>
+</ul>
+<h3 id="modified">Modified</h3>
+<ul>
+<li><code>SzMatchInfo</code> renamed to <code>SzWhyMatchInfo</code></li>
+<li>Updated <code>GET /entity-paths</code> parameter(s)</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<h2 id="500---2022-08-11">[5.0.0] - 2022-08-11</h2>
+<p>A new parameter and enum has been added for finer control over the detail levels of entity response objects.  </p>
+<h3 id="added-1">Added</h3>
 <ul>
 <li><code>SzDetailLevel</code> is a new enum that describes the level of detail desired for entity data when obtained via the various endpoints that return entity data. Details for features of entities as well as the related entities of entities are controlled by other flags.  Possible values are:<ul>
 <li><code>MINIMAL</code> The entities returned will include at most their entity ID&#39;s as well as identifiers for their constituent records (i.e.: data source code and record ID for each record).  This detail level is optimized for the fastest possible processing time.   </li>
@@ -48,7 +87,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 </li>
 </ul>
-<h3 id="modified">Modified</h3>
+<h3 id="modified-1">Modified</h3>
 <ul>
 <li>The call signature has been updated for <code>EntityDataService.getEntityByEntityId</code> from <code>entityId: number, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code> to <code>entityId: number, detailLevel?: SzDetailLevel, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code></li>
 <li>The call signature has been updated for <code>EntityDataService.getEntityByRecordId</code> from <code>dataSourceCode: string, recordId: string, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code> to <code>dataSourceCode: string, recordId: string, detailLevel?: SzDetailLevel, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code></li>
@@ -62,20 +101,20 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>The call signature has been updated for <code>EntityGraphService.findEntityPath</code> from <code>from: SzEntityIdentifier, to: SzEntityIdentifier, maxDegrees?: number, x?: Array&lt;SzEntityIdentifier&gt;, avoidEntities?: SzEntityIdentifiers, forbidAvoided?: boolean, s?: Array&lt;string&gt;, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code> to <code>from: SzEntityIdentifier, to: SzEntityIdentifier, maxDegrees?: number, x?: Array&lt;SzEntityIdentifier&gt;, avoidEntities?: SzEntityIdentifiers, forbidAvoided?: boolean, s?: Array&lt;string&gt;, detailLevel?: SzDetailLevel, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code></li>
 </ul>
 <h2 id="402---2022-07-31">[4.0.2] - 2022-07-31</h2>
-<h3 id="modified-1">Modified</h3>
+<h3 id="modified-2">Modified</h3>
 <p>Dependencies updated</p>
 <h2 id="401---2022-06-09">[4.0.1] - 2022-06-09</h2>
-<h3 id="modified-2">Modified</h3>
+<h3 id="modified-3">Modified</h3>
 <p>Dependencies updated</p>
 <h2 id="400---2022-03-15">[4.0.0] - 2022-03-15</h2>
 <p>This update brings the models in line with the changes for the <code>3.0.0</code> release of the <a href="https://github.com/Senzing/senzing-api-server">senzing rest api server</a>
 and <a href="https://github.com/Senzing/senzing-rest-api-specification/blob/caceres.version-3.0.0/senzing-rest-api.yaml">rest api specification</a>.</p>
-<h3 id="modified-3">Modified</h3>
+<h3 id="modified-4">Modified</h3>
 <ul>
 <li><code>matchScore</code> removed from <code>SzBaseRelatedEntity</code></li>
 <li>The <code>EntityData.getEntityByEntityId</code> method had the parameter <code>forceMinimal</code> moved from the 3rd position to the 5th position.</li>
 </ul>
-<h3 id="removed">Removed</h3>
+<h3 id="removed-1">Removed</h3>
 <ul>
 <li>All models related to <em>Entity Types</em> and <em>Entity Classes</em> removed from the api have been removed from this package(see below)<ul>
 <li><code>SzEntityClass</code></li>

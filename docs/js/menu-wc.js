@@ -264,6 +264,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/SzErrorResponse.html" data-type="entity-link" >SzErrorResponse</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/SzFeatureReference.html" data-type="entity-link" >SzFeatureReference</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/SzFeatureScore.html" data-type="entity-link" >SzFeatureScore</a>
                             </li>
                             <li class="link">
@@ -274,6 +277,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/SzFocusRecordId.html" data-type="entity-link" >SzFocusRecordId</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SzHowEntityResponse.html" data-type="entity-link" >SzHowEntityResponse</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SzHowEntityResult.html" data-type="entity-link" >SzHowEntityResult</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SzHowMatchInfo.html" data-type="entity-link" >SzHowMatchInfo</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/SzLicenseInfo.html" data-type="entity-link" >SzLicenseInfo</a>
@@ -295,9 +307,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/SzMatchedRecord.html" data-type="entity-link" >SzMatchedRecord</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/SzMatchInfo.html" data-type="entity-link" >SzMatchInfo</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/SzMeta.html" data-type="entity-link" >SzMeta</a>
@@ -339,6 +348,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/SzResolutionInfo.html" data-type="entity-link" >SzResolutionInfo</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/SzResolutionStep.html" data-type="entity-link" >SzResolutionStep</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/SzResolvedEntity.html" data-type="entity-link" >SzResolvedEntity</a>
                             </li>
                             <li class="link">
@@ -366,6 +378,18 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/SzVersionResponse.html" data-type="entity-link" >SzVersionResponse</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/SzVirtualEntity.html" data-type="entity-link" >SzVirtualEntity</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SzVirtualEntityData.html" data-type="entity-link" >SzVirtualEntityData</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SzVirtualEntityRecord.html" data-type="entity-link" >SzVirtualEntityRecord</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SzVirtualEntityResponse.html" data-type="entity-link" >SzVirtualEntityResponse</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/SzWhyEntitiesResponse.html" data-type="entity-link" >SzWhyEntitiesResponse</a>
                             </li>
                             <li class="link">
@@ -382,6 +406,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/SzWhyEntityResult.html" data-type="entity-link" >SzWhyEntityResult</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SzWhyMatchInfo.html" data-type="entity-link" >SzWhyMatchInfo</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/SzWhyPerspective.html" data-type="entity-link" >SzWhyPerspective</a>

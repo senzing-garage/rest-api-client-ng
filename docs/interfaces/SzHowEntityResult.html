@@ -47,7 +47,7 @@
   <li>Interfaces</li>
   <li
   >
-  SzWhyEntityResult</li>
+  SzHowEntityResult</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -65,7 +65,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/rest-api-client-ng/src/lib/model/szWhyEntityResult.ts</code>
+            <code>projects/rest-api-client-ng/src/lib/model/szHowEntityResult.ts</code>
         </p>
 
 
@@ -73,7 +73,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Describes why an entity resolved.</p>
+                <p>Describes the result of the &quot;how entity&quot; operation as a mapping of non-singleton virtual entity ID&#39;s to their corresponding <code>SzResolutionStep</code> instances as well as an array of <code>SzVirtualEntity</code> instances describing the possible final states for the entity. <strong>NOTE</strong>: If there are more than one possible final states then the entity requires reevaluation, while a result with a single final state does not require reevaluation.</p>
 
             </p>
 
@@ -92,16 +92,16 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#matchInfo" 
+                                        <a href="#finalStates" 
 >
-                                            matchInfo
+                                            finalStates
                                         </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#perspective" 
+                                        <a href="#resolutionSteps" 
 >
-                                            perspective
+                                            resolutionSteps
                                         </a>
                                 </li>
                             </ul>
@@ -119,9 +119,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="matchInfo"></a>
-                                        <span class="name "><b>matchInfo</b>
-                                            <a href="#matchInfo">
+                                        <a name="finalStates"></a>
+                                        <span class="name "><b>finalStates</b>
+                                            <a href="#finalStates">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -129,7 +129,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>matchInfo:         <code><a href="../interfaces/SzWhyMatchInfo.html" target="_self" >SzWhyMatchInfo</a></code>
+                                        <code>finalStates:         <code><a href="../interfaces/SzVirtualEntity.html" target="_self" >Array&lt;SzVirtualEntity&gt;</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -137,7 +137,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/SzWhyMatchInfo.html" target="_self" >SzWhyMatchInfo</a></code>
+                                            <i>Type : </i>        <code><a href="../interfaces/SzVirtualEntity.html" target="_self" >Array&lt;SzVirtualEntity&gt;</a></code>
 
                                         </td>
                                     </tr>
@@ -151,15 +151,21 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The array of <code>SzVirtualEntity</code> instances describing the possible final states for the entity.  If there are more than one elements in the array then the entity requires reevaluation.  If there is only a single element in the array, then reevaluation is not required.  This array will always have at least one element.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="perspective"></a>
-                                        <span class="name "><b>perspective</b>
-                                            <a href="#perspective">
+                                        <a name="resolutionSteps"></a>
+                                        <span class="name "><b>resolutionSteps</b>
+                                            <a href="#resolutionSteps">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -167,7 +173,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>perspective:         <code><a href="../interfaces/SzWhyPerspective.html" target="_self" >SzWhyPerspective</a></code>
+                                        <code>resolutionSteps:     <code>literal type</code>
 </code>
                                     </td>
                                 </tr>
@@ -175,7 +181,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/SzWhyPerspective.html" target="_self" >SzWhyPerspective</a></code>
+                                            <i>Type : </i>    <code>literal type</code>
 
                                         </td>
                                     </tr>
@@ -189,6 +195,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The map of virtual entity ID&#39;s for non-singleton virtual entities to <code>SzResolutionStep</code> instances describing how the virtual entity  for the respective virtual entity ID was formed.  Since singleton virtual entities are base building blocks, they do not have an associated how step.  They are simply formed by the loading of a record to the repository.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -196,15 +208,21 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzWhyMatchInfo } from &#x27;./szWhyMatchInfo&#x27;;
-import { SzWhyPerspective } from &#x27;./szWhyPerspective&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzResolutionStep } from &#x27;./szResolutionStep&#x27;;
+import { SzVirtualEntity } from &#x27;./szVirtualEntity&#x27;;
 
 /**
- * Describes why an entity resolved.
+ * Describes the result of the \&quot;how entity\&quot; operation as a mapping of non-singleton virtual entity ID&#x27;s to their corresponding &#x60;SzResolutionStep&#x60; instances as well as an array of &#x60;SzVirtualEntity&#x60; instances describing the possible final states for the entity. **NOTE**: If there are more than one possible final states then the entity requires reevaluation, while a result with a single final state does not require reevaluation.
  */
-export interface SzWhyEntityResult { 
-    perspective?: SzWhyPerspective;
-    matchInfo?: SzWhyMatchInfo;
+export interface SzHowEntityResult { 
+    /**
+     * The array of &#x60;SzVirtualEntity&#x60; instances describing the possible final states for the entity.  If there are more than one elements in the array then the entity requires reevaluation.  If there is only a single element in the array, then reevaluation is not required.  This array will always have at least one element.
+     */
+    finalStates?: Array&lt;SzVirtualEntity&gt;;
+    /**
+     * The map of virtual entity ID&#x27;s for non-singleton virtual entities to &#x60;SzResolutionStep&#x60; instances describing how the virtual entity  for the respective virtual entity ID was formed.  Since singleton virtual entities are base building blocks, they do not have an associated how step.  They are simply formed by the loading of a record to the repository.
+     */
+    resolutionSteps?: { [key: string]: SzResolutionStep; };
 }</code></pre>
     </div>
 </div>
@@ -242,7 +260,7 @@ export interface SzWhyEntityResult {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'SzWhyEntityResult.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SzHowEntityResult.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
