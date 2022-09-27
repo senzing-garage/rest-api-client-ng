@@ -47,7 +47,7 @@
   <li>Interfaces</li>
   <li
   >
-  SzWhyEntityResult</li>
+  SzHowEntityResponse</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -65,7 +65,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/rest-api-client-ng/src/lib/model/szWhyEntityResult.ts</code>
+            <code>projects/rest-api-client-ng/src/lib/model/szHowEntityResponse.ts</code>
         </p>
 
 
@@ -73,10 +73,16 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Describes why an entity resolved.</p>
+                <p>The response describing the result of the &quot;how entity&quot; operation.</p>
 
             </p>
 
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="../interfaces/SzResponseWithRawData.html" target="_self" >SzResponseWithRawData</a></code>
+            </p>
 
         <section>
             <h3 id="index">Index</h3>
@@ -92,16 +98,9 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#matchInfo" 
+                                        <a href="#data" 
 >
-                                            matchInfo
-                                        </a>
-                                </li>
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#perspective" 
->
-                                            perspective
+                                            data
                                         </a>
                                 </li>
                             </ul>
@@ -119,9 +118,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="matchInfo"></a>
-                                        <span class="name "><b>matchInfo</b>
-                                            <a href="#matchInfo">
+                                        <a name="data"></a>
+                                        <span class="name "><b>data</b>
+                                            <a href="#data">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -129,7 +128,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>matchInfo:         <code><a href="../interfaces/SzWhyMatchInfo.html" target="_self" >SzWhyMatchInfo</a></code>
+                                        <code>data:         <code><a href="../interfaces/SzHowEntityResult.html" target="_self" >SzHowEntityResult</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -137,45 +136,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/SzWhyMatchInfo.html" target="_self" >SzWhyMatchInfo</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="perspective"></a>
-                                        <span class="name "><b>perspective</b>
-                                            <a href="#perspective">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>perspective:         <code><a href="../interfaces/SzWhyPerspective.html" target="_self" >SzWhyPerspective</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/SzWhyPerspective.html" target="_self" >SzWhyPerspective</a></code>
+                                            <i>Type : </i>        <code><a href="../interfaces/SzHowEntityResult.html" target="_self" >SzHowEntityResult</a></code>
 
                                         </td>
                                     </tr>
@@ -196,15 +157,14 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzWhyMatchInfo } from &#x27;./szWhyMatchInfo&#x27;;
-import { SzWhyPerspective } from &#x27;./szWhyPerspective&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzHowEntityResult } from &#x27;./szHowEntityResult&#x27;;
+import { SzResponseWithRawData } from &#x27;./szResponseWithRawData&#x27;;
 
 /**
- * Describes why an entity resolved.
+ * The response describing the result of the \&quot;how entity\&quot; operation.
  */
-export interface SzWhyEntityResult { 
-    perspective?: SzWhyPerspective;
-    matchInfo?: SzWhyMatchInfo;
+export interface SzHowEntityResponse extends SzResponseWithRawData { 
+    data?: SzHowEntityResult;
 }</code></pre>
     </div>
 </div>
@@ -242,7 +202,7 @@ export interface SzWhyEntityResult {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'SzWhyEntityResult.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SzHowEntityResponse.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -508,7 +508,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>An array of entity data associated with the entity where the items are formatted for readability.  These will be prefixed by an identifier type and may be prefixed by a &quot;usage type&quot; if one was provided (e.g.: &quot;ID: 123456789&quot; or &quot;EMAIL: WORK: <a href="mailto:&#106;&#x6f;&#x65;&#64;&#110;&#x6f;&#119;&#104;&#x65;&#114;&#101;&#x2e;&#x63;&#111;&#109;">&#106;&#x6f;&#x65;&#64;&#110;&#x6f;&#119;&#104;&#x65;&#114;&#101;&#x2e;&#x63;&#111;&#109;</a>&quot;)</p>
+                                    <div class="io-description"><p>An array of entity data associated with the entity where the items are formatted for readability.  These will be prefixed by an identifier type and may be prefixed by a &quot;usage type&quot; if one was provided (e.g.: &quot;ID: 123456789&quot; or &quot;EMAIL: WORK: <a href="mailto:&#x6a;&#111;&#x65;&#x40;&#110;&#x6f;&#119;&#x68;&#101;&#114;&#x65;&#46;&#x63;&#111;&#x6d;">&#x6a;&#111;&#x65;&#x40;&#110;&#x6f;&#119;&#x68;&#101;&#114;&#x65;&#46;&#x63;&#111;&#x6d;</a>&quot;)</p>
 </div>
                                 </td>
                             </tr>
@@ -684,7 +684,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>If true then this <code>SzResolvedEntity</code> has complete features and records, otherwise they are not provided.  Also, the recordSummary items may be missing the topRecordIds if partial is true.  This can be true for partially retrieved related entities or if features are suppressed, if the detail level has has suppressed records or if the force-minimal response flag has been specified.</p>
+                                    <div class="io-description"><p>If true then this <code>SzResolvedEntity</code> has complete features and records, otherwise they are not provided.  Also, the recordSummary items may be missing the topRecordIds if partial is true.  This can be true for partially retrieved related entities or if features are suppressed, if the detail level has suppressed records or related matching info (in the case of related entities) or if the force-minimal response flag has been been specified.</p>
 </div>
                                 </td>
                             </tr>
@@ -932,7 +932,7 @@ export interface SzResolvedEntity {
      */
     features?: { [key: string]: Array&lt;SzEntityFeature&gt;; };
     /**
-     * If true then this &#x60;SzResolvedEntity&#x60; has complete features and records, otherwise they are not provided.  Also, the recordSummary items may be missing the topRecordIds if partial is true.  This can be true for partially retrieved related entities or if features are suppressed, if the detail level has has suppressed records or if the force-minimal response flag has been specified.
+     * If true then this &#x60;SzResolvedEntity&#x60; has complete features and records, otherwise they are not provided.  Also, the recordSummary items may be missing the topRecordIds if partial is true.  This can be true for partially retrieved related entities or if features are suppressed, if the detail level has suppressed records or related matching info (in the case of related entities) or if the force-minimal response flag has been been specified.
      */
     partial?: boolean;
     /**

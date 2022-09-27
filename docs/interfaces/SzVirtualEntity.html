@@ -47,7 +47,7 @@
   <li>Interfaces</li>
   <li
   >
-  SzWhyEntityResult</li>
+  SzVirtualEntity</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -65,7 +65,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/rest-api-client-ng/src/lib/model/szWhyEntityResult.ts</code>
+            <code>projects/rest-api-client-ng/src/lib/model/szVirtualEntity.ts</code>
         </p>
 
 
@@ -73,7 +73,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Describes why an entity resolved.</p>
+                <p>Describes a virtual entity that describes an interim resolution step for an actual entity.  Virtual entities that consist of a single record (or multiple &quot;identical&quot; records) are considered singletons and are the initial building blocks in how an entity is resolved.  Those with multiple distinct records are compound virtual entities formed from resolving two virtual entities.</p>
 
             </p>
 
@@ -92,16 +92,23 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#matchInfo" 
+                                        <a href="#records" 
 >
-                                            matchInfo
+                                            records
                                         </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#perspective" 
+                                        <a href="#singleton" 
 >
-                                            perspective
+                                            singleton
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#virtualEntityId" 
+>
+                                            virtualEntityId
                                         </a>
                                 </li>
                             </ul>
@@ -119,9 +126,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="matchInfo"></a>
-                                        <span class="name "><b>matchInfo</b>
-                                            <a href="#matchInfo">
+                                        <a name="records"></a>
+                                        <span class="name "><b>records</b>
+                                            <a href="#records">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -129,7 +136,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>matchInfo:         <code><a href="../interfaces/SzWhyMatchInfo.html" target="_self" >SzWhyMatchInfo</a></code>
+                                        <code>records:     <code>Array&lt;SzVirtualEntityRecord&gt;</code>
 </code>
                                     </td>
                                 </tr>
@@ -137,7 +144,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/SzWhyMatchInfo.html" target="_self" >SzWhyMatchInfo</a></code>
+                                            <i>Type : </i>    <code>Array&lt;SzVirtualEntityRecord&gt;</code>
 
                                         </td>
                                     </tr>
@@ -151,15 +158,21 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The array of <code>SzVirtualEntityRecords</code> identifying the constituent records of the virtual entity.  Those records in the array with the same <code>internalId</code> property are effectively identical for the purposes of entity resolution.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="perspective"></a>
-                                        <span class="name "><b>perspective</b>
-                                            <a href="#perspective">
+                                        <a name="singleton"></a>
+                                        <span class="name "><b>singleton</b>
+                                            <a href="#singleton">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -167,7 +180,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>perspective:         <code><a href="../interfaces/SzWhyPerspective.html" target="_self" >SzWhyPerspective</a></code>
+                                        <code>singleton:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -175,7 +188,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/SzWhyPerspective.html" target="_self" >SzWhyPerspective</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                                         </td>
                                     </tr>
@@ -189,6 +202,56 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicates if the virtual entity consists of a a single record or one or more effectively identical records (i.e.: with the same internal ID) with a value of <code>true</code>.  If this virtual entity comprises multiple distinct records then this is <code>false</code>.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="virtualEntityId"></a>
+                                        <span class="name "><b>virtualEntityId</b>
+                                            <a href="#virtualEntityId">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>virtualEntityId:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The unique identifier that distinguishes this virtual entity from all other virtual entities among all steps in a &quot;how&quot; result.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -196,15 +259,24 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzWhyMatchInfo } from &#x27;./szWhyMatchInfo&#x27;;
-import { SzWhyPerspective } from &#x27;./szWhyPerspective&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzVirtualEntityRecord } from &#x27;./szVirtualEntityRecord&#x27;;
 
 /**
- * Describes why an entity resolved.
+ * Describes a virtual entity that describes an interim resolution step for an actual entity.  Virtual entities that consist of a single record (or multiple \&quot;identical\&quot; records) are considered singletons and are the initial building blocks in how an entity is resolved.  Those with multiple distinct records are compound virtual entities formed from resolving two virtual entities.
  */
-export interface SzWhyEntityResult { 
-    perspective?: SzWhyPerspective;
-    matchInfo?: SzWhyMatchInfo;
+export interface SzVirtualEntity { 
+    /**
+     * The unique identifier that distinguishes this virtual entity from all other virtual entities among all steps in a \&quot;how\&quot; result.
+     */
+    virtualEntityId?: string;
+    /**
+     * Indicates if the virtual entity consists of a a single record or one or more effectively identical records (i.e.: with the same internal ID) with a value of &#x60;true&#x60;.  If this virtual entity comprises multiple distinct records then this is &#x60;false&#x60;.
+     */
+    singleton?: boolean;
+    /**
+     * The array of &#x60;SzVirtualEntityRecords&#x60; identifying the constituent records of the virtual entity.  Those records in the array with the same &#x60;internalId&#x60; property are effectively identical for the purposes of entity resolution.
+     */
+    records?: Array&lt;SzVirtualEntityRecord&gt;;
 }</code></pre>
     </div>
 </div>
@@ -242,7 +314,7 @@ export interface SzWhyEntityResult {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'SzWhyEntityResult.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SzVirtualEntity.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

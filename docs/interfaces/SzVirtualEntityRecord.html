@@ -47,7 +47,7 @@
   <li>Interfaces</li>
   <li
   >
-  SzWhyEntityResult</li>
+  SzVirtualEntityRecord</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -65,7 +65,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/rest-api-client-ng/src/lib/model/szWhyEntityResult.ts</code>
+            <code>projects/rest-api-client-ng/src/lib/model/szVirtualEntityRecord.ts</code>
         </p>
 
 
@@ -73,7 +73,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Describes why an entity resolved.</p>
+                <p>Describes a record that belongs to a virtual entity.  This identifies the record as well as its internal ID to understand which records in the virtual entity are considered to be duplicates of each other.</p>
 
             </p>
 
@@ -92,16 +92,23 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#matchInfo" 
+                                        <a href="#dataSource" 
 >
-                                            matchInfo
+                                            dataSource
                                         </a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#perspective" 
+                                        <a href="#internalId" 
 >
-                                            perspective
+                                            internalId
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#recordId" 
+>
+                                            recordId
                                         </a>
                                 </li>
                             </ul>
@@ -119,9 +126,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="matchInfo"></a>
-                                        <span class="name "><b>matchInfo</b>
-                                            <a href="#matchInfo">
+                                        <a name="dataSource"></a>
+                                        <span class="name "><b>dataSource</b>
+                                            <a href="#dataSource">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -129,7 +136,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>matchInfo:         <code><a href="../interfaces/SzWhyMatchInfo.html" target="_self" >SzWhyMatchInfo</a></code>
+                                        <code>dataSource:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -137,7 +144,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/SzWhyMatchInfo.html" target="_self" >SzWhyMatchInfo</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                         </td>
                                     </tr>
@@ -151,15 +158,21 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The data source code that uniquely identifies the data source associated with the record.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="perspective"></a>
-                                        <span class="name "><b>perspective</b>
-                                            <a href="#perspective">
+                                        <a name="internalId"></a>
+                                        <span class="name "><b>internalId</b>
+                                            <a href="#internalId">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -167,7 +180,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>perspective:         <code><a href="../interfaces/SzWhyPerspective.html" target="_self" >SzWhyPerspective</a></code>
+                                        <code>internalId:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -175,7 +188,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/SzWhyPerspective.html" target="_self" >SzWhyPerspective</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                         </td>
                                     </tr>
@@ -189,6 +202,56 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The unique internal ID for the record.  Those records having the same value for this field are effectively identical for the purpose of entity resolution and automatically bound together.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="recordId"></a>
+                                        <span class="name "><b>recordId</b>
+                                            <a href="#recordId">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>recordId:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The record ID that uniquely identifies a record within the respective data source.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -196,15 +259,19 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SzWhyMatchInfo } from &#x27;./szWhyMatchInfo&#x27;;
-import { SzWhyPerspective } from &#x27;./szWhyPerspective&#x27;;
-
-/**
- * Describes why an entity resolved.
- */
-export interface SzWhyEntityResult { 
-    perspective?: SzWhyPerspective;
-    matchInfo?: SzWhyMatchInfo;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface SzVirtualEntityRecord { 
+    /**
+     * The data source code that uniquely identifies the data source associated with the record.
+     */
+    dataSource?: string;
+    /**
+     * The record ID that uniquely identifies a record within the respective data source.
+     */
+    recordId?: string;
+    /**
+     * The unique internal ID for the record.  Those records having the same value for this field are effectively identical for the purpose of entity resolution and automatically bound together.
+     */
+    internalId?: string;
 }</code></pre>
     </div>
 </div>
@@ -242,7 +309,7 @@ export interface SzWhyEntityResult {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'SzWhyEntityResult.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SzVirtualEntityRecord.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
