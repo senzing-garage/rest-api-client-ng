@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.1.0] - 2022-09-27
 models updated to [senzing-rest-api-spec@3.3.0](https://github.com/Senzing/senzing-rest-api-specification/releases/tag/3.3.0)
+- Added methods and models to support "how entity" functionality
+- Added enumeration options for detail levels and feature mode to allow for graph optimization.
 
 ### Added
 - `SzFeatureReference` model
@@ -15,19 +17,27 @@ models updated to [senzing-rest-api-spec@3.3.0](https://github.com/Senzing/senzi
 - `SzHowEntityResult` model
 - `SzHowMatchInfo` model
 - `SzRecordIdentifier` model
+- `SzRecordIdentifiers` model
 - `SzResolutionStep` model
 - `SzVirtualEntity` model
 - `SzVirtualEntityData` model
 - `SzVirtualEntityRecord` model
 - `SzVirtualEntityResponse` model
-- `BAREMINIMAL` added to `SzDetailLevel`
-- `NETWORKMINIMAL` added to `SzDetailLevel`
-- `ENTITYNAMEONLY` added to `SzFeatureMode`
-- `ATTRIBUTED` added to `SzFeatureMode`
-- `featureReferences` added to `SzEntityRecord`
+- `BAREMINIMAL` added to `SzDetailLevel` to handle just returning the
+  entity ID's without record information or relationship match info.
+- `NETWORKMINIMAL` added to `SzDetailLevel` to behave the same as 
+  `SzDetailLevel.BAREMINIMAL`, but with the addition of relationship match info in the case of related entities being included.
+- `ENTITYNAMEONLY` added to `SzFeatureMode` to handle just retrieving the entity name without actually returning other features.
+- `ATTRIBUTED` value for `SzFeatureMode` for pulling back feature references at the record level to indicate which records contributed which features.
+- `featureReferences` property to `SzEntityRecord`
+- the following methods added to `EntityDataService`
+  - `getVirtualEntityByRecordIds` gets a virtual entity by simulating the resolution of the records identified by the specified record ID parameters. This operation simulates the resolution of the one or more specified records into a single entity and returns the simulated "virtual" entity.  The subject records are identified by data source code and record ID pairs.
+  - `howEntityByEntityID` gets an analysis of how the entity for the respective entity ID resolved. This operation provides an anlysis of how the records in an entity resolved.  The subject entity is identified by the entity ID in the request path. 
+  - `howEntityByRecordID` gets an analysis of how the entity for the record with the respective data source code and record ID resolved. This operation provides an anlysis of how the records in an entity resolved.  The subject entity is the one containing the record identified by the data source code and record ID in the request path. 
 
 ### Modified
 - `SzMatchInfo` renamed to `SzWhyMatchInfo`
+- Updated `GET /entity-paths` parameter(s)
 
 ### Removed
 
