@@ -38,6 +38,7 @@ import { SzWhyRecordsResponse } from '../model/szWhyRecordsResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
+import { SzRecordId } from '../model/models';
 
 
 @Injectable()
@@ -602,6 +603,10 @@ export class EntityDataService {
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (r) {
             r.forEach((element) => {
+                // SzRecordIdentifier can be object or string
+                if(element && (element as SzRecordId).id){
+                    element = JSON.stringify(element);
+                }
                 queryParameters = queryParameters.append('r', <any>element);
             })
         }
