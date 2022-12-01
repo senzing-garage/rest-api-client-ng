@@ -35,7 +35,6 @@
       }
     }
   },
-  "defaultProject": "@senzing/rest-api-client-ng",
   "cli": {
     "analytics": "544ec7f8-4c04-49ba-96ce-3cd59fd8763d"
   }
