@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [5.1.0] - 2022-09-27
+## [6.0.0] - 2023-01-12
+Angular Framework updated to version 15. As of 6.0.0 release this package now requires `@angular@~15.0.0` to compile and run. Updating to angular 15 resolves major dependency compatibility issues so we can apply the latest security patches to the library. For information updating your project from a previous angular version to `~15.0.0` see the [Angular Update Guide ](https://update.angular.io/)
+
 models updated to [senzing-rest-api-spec@3.3.0](https://github.com/Senzing/senzing-rest-api-specification/releases/tag/3.3.0)
 - Added methods and models to support "how entity" functionality
 - Added enumeration options for detail levels and feature mode to allow for graph optimization.
