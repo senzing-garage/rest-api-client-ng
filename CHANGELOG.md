@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.1] - 2023-04-05
+
+Dependency versions updated for latest security patches.
+
 ## [6.0.0] - 2023-01-12
 
 As of 6.0.0 release this package now requires `@angular@~15.0.0` to compile and run. There are no components in this package so _technically_ it would probably be compatible with earlier releases but it is not recommended and would **not** be officially supported.
