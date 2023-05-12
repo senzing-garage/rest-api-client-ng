@@ -6,9 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [6.0.1] - 2023-04-05
+## [6.0.1] - 2023-05-11
 
-Dependency versions updated for latest security patches.
+### Modified
+- angular dependencies updated to 15.2.x
+- dependency versions updated for security patches
 
 ## [6.0.0] - 2023-01-12
 
