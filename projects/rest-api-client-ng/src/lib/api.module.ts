@@ -7,6 +7,7 @@ import { BulkDataService } from './api/bulkData.service';
 import { ConfigService } from './api/config.service';
 import { EntityDataService } from './api/entityData.service';
 import { EntityGraphService } from './api/entityGraph.service';
+import { StatisticsService } from './api/statistics.service';
 
 @NgModule({
   imports:      [],
@@ -17,7 +18,8 @@ import { EntityGraphService } from './api/entityGraph.service';
     BulkDataService,
     ConfigService,
     EntityDataService,
-    EntityGraphService ]
+    EntityGraphService,
+    StatisticsService ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders<ApiModule> {
