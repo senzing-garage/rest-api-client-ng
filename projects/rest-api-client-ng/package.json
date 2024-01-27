@@ -1,10 +1,10 @@
 {
   "name": "@senzing/rest-api-client-ng",
   "version": "6.1.0-alpha.1",
-  "description": "A package providing restful http interfaces to typescript interfaces to @senzing/senzing-api-server. Utilizes the OpenAPI spec defined in the https://github.com/Senzing/senzing-rest-api-specification repository.",
+  "description": "A package providing restful http interfaces to typescript interfaces to @senzing/senzing-api-server. Utilizes the OpenAPI spec defined in the https://github.com/senzing-garage/senzing-rest-api-specification repository.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Senzing/rest-api-client-ng.git"
+    "url": "git+https://github.com/senzing-garage/rest-api-client-ng.git"
   },
   "keywords": [
     "REST",
@@ -17,9 +17,9 @@
   "author": "Ara Winters",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Senzing/rest-api-client-ng/issues"
+    "url": "https://github.com/senzing-garage/rest-api-client-ng/issues"
   },
-  "homepage": "https://github.com/Senzing/rest-api-client-ng#readme",
+  "homepage": "https://github.com/senzing-garage/rest-api-client-ng#readme",
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0"
