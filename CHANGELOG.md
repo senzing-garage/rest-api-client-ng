@@ -20,7 +20,7 @@ Updating to angular 15 resolves major dependency compatibility issues so we can 
 
 For information updating your project from a previous angular version to `~15.0.0` see the [Angular Update Guide ](https://update.angular.io/)
 
-models updated to [senzing-rest-api-spec@3.3.0](https://github.com/senzing-garage-garage/senzing-rest-api-specification/releases/tag/3.3.0)
+models updated to [senzing-rest-api-spec@3.3.0](https://github.com/senzing-garage/senzing-rest-api-specification/releases/tag/3.3.0)
 - Added methods and models to support "how entity" functionality
 - Added enumeration options for detail levels and feature mode to allow for graph optimization.
 
@@ -89,7 +89,7 @@ Dependencies updated
 ## [4.0.0] - 2022-03-15
 
 This update brings the models in line with the changes for the `3.0.0` release of the [senzing rest api server](https://github.com/senzing-garage/senzing-api-server)
-and [rest api specification](https://github.com/senzing-garage-garage/senzing-rest-api-specification/blob/caceres.version-3.0.0/senzing-rest-api.yaml).
+and [rest api specification](https://github.com/senzing-garage/senzing-rest-api-specification/blob/caceres.version-3.0.0/senzing-rest-api.yaml).
 
 ### Modified
 - `matchScore` removed from `SzBaseRelatedEntity`
@@ -239,7 +239,7 @@ relevant tickets: #63, #67
 ## [2.2.0] - 2020-10-16
 
 the models need to be updated to match the 2.2.0 specification release.
-https://github.com/senzing-garage-garage/senzing-rest-api-specification/releases/tag/2.2.0
+https://github.com/senzing-garage/senzing-rest-api-specification/releases/tag/2.2.0
 
 - Added `SzNameScoring` to describe name scoring details
 - Added `SzSearchFeatureScore` for search feature scores
