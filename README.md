@@ -1,13 +1,24 @@
 # @senzing/rest-api-client-ng
 
-[![Build Status](https://travis-ci.com/Senzing/rest-api-client-ng.svg?branch=master)](https://travis-ci.com/Senzing/rest-api-client-ng)
+If you are beginning your journey with
+[Senzing](https://senzing.com/),
+please start with
+[Senzing Quick Start guides](https://docs.senzing.com/quickstart/).
+
+You are in the
+[Senzing Garage](https://github.com/senzing-garage)
+where projects are "tinkered" on.
+Although this GitHub repository may help you understand an approach to using Senzing,
+it's not considered to be "production ready" and is not considered to be part of the Senzing product.
+Heck, it may not even be appropriate for your application of Senzing!
+
 [![npm version](https://badge.fury.io/js/%40senzing%2Frest-api-client-ng.svg)](https://badge.fury.io/js/%40senzing%2Frest-api-client-ng)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/senzing/rest-api-client-ng?color=%2300c4ff&logo=latest%20tag)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/senzing/rest-api-client-ng?color=orange&logo=latest&logoColor=blue)
 
 ## Overview
 
-This project is a package that provides a Angular TypeScript REST client intended to be used as a dependency for other [Senzing](https://senzing.com/senzing-api/) projects like [@senzing/sdk-components-ng](https://www.npmjs.com/package/@senzing/sdk-components-ng]). This project should conform to the OAS schema defined in [Senzing/senzing-rest-api-specification](https://github.com/Senzing/senzing-rest-api-specification/blob/master/senzing-rest-api.yaml)
+This project is a package that provides a Angular TypeScript REST client intended to be used as a dependency for other [Senzing](https://senzing.com/senzing-api/) projects like [@senzing/sdk-components-ng](https://www.npmjs.com/package/@senzing/sdk-components-ng]). This project should conform to the OAS schema defined in [Senzing/senzing-rest-api-specification](https://github.com/senzing-garage/senzing-rest-api-specification/blob/master/senzing-rest-api.yaml)
 
 The usage for classes, models, and services can be found in the [documentation examples](http://hub.senzing.com/rest-api-client-ng/).
 
