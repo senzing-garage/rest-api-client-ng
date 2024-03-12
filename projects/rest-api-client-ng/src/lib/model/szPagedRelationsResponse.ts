@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { SzBaseResponse } from './szBaseResponse';
+import { SzLinks } from './szLinks';
+import { SzMeta } from './szMeta';
+import { SzRelationsPage } from './szRelationsPage';
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Extends the BaseResponse to add the fields describing a list of `SzRelation`'s that is \"paged\" with a boundary, a page size and a  total relations count.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
-
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
-};
+export interface SzPagedRelationsResponse extends SzBaseResponse { 
+    data?: SzRelationsPage;
+}

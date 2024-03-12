@@ -9,14 +9,22 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { SzMatchCounts } from './szMatchCounts';
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Describes the cross-summary statistics for matches between two data sources for each requested match key and principle combination.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
-
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
-};
+export interface SzMatchCountsResponseData { 
+    /**
+     * The primary data source in the cross comparison.
+     */
+    dataSource: string;
+    /**
+     * The versus data source in the cross comparison.
+     */
+    versusDataSource: string;
+    /**
+     * The array of `SzMatchCounts` describing the entity and record counts  associated with matches from records of the primary data source to at  least one record of the \"versus\" data source for each combination of  match key and principle that were requested.  If all were requested, this includes the cases where either or both of the match key and principle are absent or `null` indicating tracking across all match keys and/or principles.
+     */
+    counts: Array<SzMatchCounts>;
+}
