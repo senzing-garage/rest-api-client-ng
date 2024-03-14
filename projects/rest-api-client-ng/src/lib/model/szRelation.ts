@@ -9,14 +9,22 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { SzEntity } from './szEntity';
+import { SzRelationType } from './szRelationType';
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Describes a relationship between two entities.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
-
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
-};
+export interface SzRelation { 
+    entity: SzEntity;
+    relatedEntity: SzEntity;
+    matchType?: SzRelationType;
+    /**
+     * The match key describing what features matched between the first record in the resolved entity and this record.
+     */
+    matchKey?: string;
+    /**
+     * The code identifying the resolution rule that related the entities to one another.
+     */
+    principle?: string;
+}

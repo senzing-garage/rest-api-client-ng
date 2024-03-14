@@ -11,12 +11,27 @@
  */
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Describes the entity, record and relationship counts for the respective relation type for entities having at least one record from the primary data source to  entities having at least one record from the \"versus\" data source.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
-
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
-};
+export interface SzRelationCounts { 
+    /**
+     * The optional match key associated with the statistics.  This may be `null` or absent if the statistics are not associated with a match key.
+     */
+    matchKey?: string;
+    /**
+     * The optional principle associated with the statistics.  This may be `null` or absent if the statistics are not associated with a principle.
+     */
+    principle?: string;
+    /**
+     * The number of entities having at least one record from the primary data source related by a relationship of the respective relationship type to  an entity with at least one record from the \"versus\" data source.
+     */
+    entityCount?: number;
+    /**
+     * The number of records from the primary data source in the entities described by the `entityCount`.  NOTE: this is not the total number of records in those entities, but only the count of those records from the primary data source.
+     */
+    recordCount?: number;
+    /**
+     * The number of relationships of the respective relationship type between entities having at least one record from the primary data source and entities having at least one record from the \"versus\" data source.
+     */
+    relationCount?: number;
+}

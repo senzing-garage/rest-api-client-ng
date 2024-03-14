@@ -11,12 +11,13 @@
  */
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Similar to `SzRelationshipType` but this enumeration is used with the  statistics API provided by the data mart replicator.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
+export type SzRelationType = 'AMBIGUOUS_MATCH' | 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
 
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
+export const SzRelationType = {
+    AMBIGUOUSMATCH: 'AMBIGUOUS_MATCH' as SzRelationType,
+    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationType,
+    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationType,
+    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationType
 };

@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { SzBaseResponse } from './szBaseResponse';
+import { SzCrossSourceSummary } from './szCrossSourceSummary';
+import { SzLinks } from './szLinks';
+import { SzMeta } from './szMeta';
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Extends the BaseResponse to add the fields for statistics representing cross-summary statistics between two specific data sources.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
-
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
-};
+export interface SzCrossSourceSummaryResponse extends SzBaseResponse { 
+    data?: SzCrossSourceSummary;
+}

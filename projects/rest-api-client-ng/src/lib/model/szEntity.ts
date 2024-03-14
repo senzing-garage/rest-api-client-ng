@@ -9,14 +9,30 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { SzRecord } from './szRecord';
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Describes an entity that has been synced to the datamart.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
-
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
-};
+export interface SzEntity { 
+    /**
+     * The entity ID that uniquely identifies the entity.
+     */
+    entityId: number;
+    /**
+     * The best name associated with the entity.
+     */
+    entityName?: string;
+    /**
+     * The number of records resolved together in the entity.
+     */
+    recordCount?: number;
+    /**
+     * The number of entities that are related to this entity.
+     */
+    relationCount?: number;
+    /**
+     * The array of `SzRecord` describing the records for this entity.
+     */
+    records?: Array<SzRecord>;
+}
