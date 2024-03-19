@@ -6,6 +6,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.1.0] - 2024-03-13
+
+The majority of the new additions to models and api services only match up to the POC server implementation of the Senzing API Spec and facilitate access to statistics provided through the *Data Mart* interface(s). As Such these are provided as *optional* models that are not present in all api products.
+
+### Added
+- `SzCrossSourceSummary` model. Describes the cross-source statistics between two data sources.
+- `SzCrossSourceSummaryResponse` model. Extends the BaseResponse to add the fields for statistics representing cross-summary statistics between two specific data sources.
+- `SzEntity` model. Describes an entity that has been synced to the datamart.
+- `SzLoadedStats` model. Encapsulates the statistics pertaining to counts of entities and records both in total and by data source.
+- `SzLoadedStatsResponse` model. Extends the BaseResponse to add the fields for statistics representing counts of entities and records in total and by data source.
+- `SzMatchCounts` model. Describes the entity and record counts for matches between records from the primary data source to at least one record from the "versus" data source.
+- `SzMatchCountsResponse` model. Extends the BaseResponse to add the fields for statistics representing cross-summary statistics on matches between two specific data sources.
+- `SzMatchCountsResponseData` model. Describes the cross-summary statistics for matches between two data sources for each requested match key and principle combination.
+- `SzPagedRelationsResponse` model. Extends the BaseResponse to add the fields describing a list of SzRelation's that is "paged" with a boundary, a page size and a total relations count.
+- `SzRecord` model. Describes a record that has been synced to the datamart.
+- `SzRelation` model. Describes a relationship between two entities.
+- `SzRelationCounts` model. Describes the entity, record and relationship counts for the respective relation type for entities having at least one record from the primary data source to entities having at least one record from the "versus" data source.
+- `SzRelationCountsResponse` model. Extends the BaseResponse to add the fields for statistics representing cross-summary statistics on relationships of a specific type between two specific data sources.
+- `SzRelationCountsResponseData` model. Describes the cross-source statistics between two data sources.
+- `SzRelationsPage` model. Encapsulates a paged list of SzRelation values describing entity relationships pertaining to a specific statistic.
+- `SzRelationType` model. Similar to SzRelationshipType but this enumeration is used with the statistics API provided by the data mart replicator.      Possible values are 'AMBIGUOUS_MATCH', 'POSSIBLE_MATCH', 'POSSIBLE_RELATION','DISCLOSED_RELATION'.
+- `SzSourceLoadedStats` model. Encapsulates the statistics pertaining to counts of entities and records for a specific data source.
+- `SzSourceLoadedStatsResponse` model. Extends the BaseResponse to add the fields for statistics representing counts of entities and records for a specific data source.
+- `SzSourceSummary` model. Describes the source summary and all cross-summaries with that data source.
+- `SzSourceSummaryResponse` model. Extends the BaseResponse to add the fields for statistics representing summary statistics for a single data source versus itself and every other data source.
+- `SzSummaryStats` model. Encapsulates the statistics for the source summaries for every data source.
+- `SzSummaryStatsResponse` model. Extends the BaseResponse to add the fields for statistics representing summary statistics for every configured data source.
+
 ## [6.0.1] - 2023-05-11
 
 ### Modified

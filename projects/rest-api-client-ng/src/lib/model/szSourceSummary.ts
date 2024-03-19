@@ -9,14 +9,30 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { SzCrossSourceSummary } from './szCrossSourceSummary';
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Describes the source summary and all cross-summaries with that data source.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
-
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
-};
+export interface SzSourceSummary { 
+    /**
+     * The data source to which the summary statistics apply.
+     */
+    dataSource?: string;
+    /**
+     * The number of entities having at least one record from the data source.
+     */
+    entityCount?: number;
+    /**
+     * The number of records loaded from the data source.
+     */
+    recordCount?: number;
+    /**
+     * The number of records from this data source that did not match a record from the same data source.  This represents the number of records from the data source that are effectively unique (not duplicated).
+     */
+    unmatchedRecordCount?: number;
+    /**
+     * The array of `SzCrossSourceSummary` instances describing the summary statistics between the associated data source versus every data source (including itself).
+     */
+    crossSourceSummaries?: Array<SzCrossSourceSummary>;
+}

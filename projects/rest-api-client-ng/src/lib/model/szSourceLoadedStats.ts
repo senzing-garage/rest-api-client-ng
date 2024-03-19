@@ -11,12 +11,23 @@
  */
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Encapsulates the statistics pertaining to counts of entities and records for a specific data source.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
-
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
-};
+export interface SzSourceLoadedStats { 
+    /**
+     * The data source code identifying the data source to which the statistics are associated.
+     */
+    dataSource: string;
+    /**
+     * The total number of records that have been loaded for the associated data source.
+     */
+    recordCount: number;
+    /**
+     * The number of entities that have at least one record from the  associated data source.
+     */
+    entityCount: number;
+    /**
+     * The total number of records that have been loaded for the associated data source that did *NOT* match against any other records.  This  represents the number of entities having a record from this data source where that is the *ONLY* (single) record in the entity.
+     */
+    unmatchedRecordCount?: number;
+}

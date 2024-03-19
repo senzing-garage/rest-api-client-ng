@@ -1,24 +1,31 @@
-name: CI Angular app through Github Actions
+name: npm build
+
 on: push
+
 jobs:
-  build:
+  npm-build:
+    name: CI Angular app through Github Actions
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js 16.x
+
+      - name: use Node.js 16.x
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
 
-      - name: Setup
+      - name: setup
         run: npm ci
 
-      - name: Run Static Tests
+      - name: run static tests
         run: |
           npm test -- --no-watch --watch=false --progress=false --no-progress --browsers=ChromeHeadlessCI
-      - name: Ensure Documentation is Buildable
+
+      - name: ensure documentation is buildable
         run: |
           npm run build:docs
-      - name: Ensure Package Compiles
+
+      - name: ensure package compiles
         run: |
           npm run build

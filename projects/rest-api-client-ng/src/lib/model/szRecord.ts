@@ -11,12 +11,23 @@
  */
 
 /**
- * Describes how an entity is related to another (either a possible match, a discovered possible relationship or a disclosed relationship)
+ * Describes a record that has been synced to the datamart.
  */
-export type SzRelationshipType = 'POSSIBLE_MATCH' | 'POSSIBLE_RELATION' | 'DISCLOSED_RELATION';
-
-export const SzRelationshipType = {
-    POSSIBLEMATCH: 'POSSIBLE_MATCH' as SzRelationshipType,
-    POSSIBLERELATION: 'POSSIBLE_RELATION' as SzRelationshipType,
-    DISCLOSEDRELATION: 'DISCLOSED_RELATION' as SzRelationshipType
-};
+export interface SzRecord { 
+    /**
+     * The data source code identifying the data source from  which the record was loaded.
+     */
+    dataSource: string;
+    /**
+     * The record ID that uniquely identifies the record within the data source from which it was loaded.
+     */
+    recordId: string;
+    /**
+     * The optional match key describing why the record merged into the entity to which it belongs.  This may be absent or `null` if this record belongs to a single-record entity or if it was the inital record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).
+     */
+    matchKey: string;
+    /**
+     * The optioanl principle identifying the resolution rule that was used to merge the record into the entity to which it belonss.  This may be absent or `null` if this record belongs to a single-record entity or if it was the inital record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).
+     */
+    principle: string;
+}
