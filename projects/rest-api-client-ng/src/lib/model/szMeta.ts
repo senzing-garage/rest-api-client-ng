@@ -60,4 +60,12 @@ export interface SzMeta {
      * The timing measurements that were taken where the keys are identifying what was timed and the values are the number of milliseconds.
      */
     timings?: { [key: string]: number; };
+    /**
+     * The version number of the server.
+     */
+    pocServerVersion?: string;
+    /**
+     * The REST API specification version implemented by the server.
+     */
+    pocApiVersion?: string;
 }
