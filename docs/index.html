@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="./styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">@senzing/rest-api-client-ng documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">@senzing/rest-api-client-ng documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,29 +75,38 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="senzingrest-api-client-ng">@senzing/rest-api-client-ng</h1>
-<p><a href="https://travis-ci.com/Senzing/rest-api-client-ng"><img src="https://travis-ci.com/Senzing/rest-api-client-ng.svg?branch=master" alt="Build Status" class="img-responsive"></a>
-<a href="https://badge.fury.io/js/%40senzing%2Frest-api-client-ng"><img src="https://badge.fury.io/js/%40senzing%2Frest-api-client-ng.svg" alt="npm version" class="img-responsive"></a>
+<h1>@senzing/rest-api-client-ng</h1>
+<p>If you are beginning your journey with
+<a href="https://senzing.com/">Senzing</a>,
+please start with
+<a href="https://docs.senzing.com/quickstart/">Senzing Quick Start guides</a>.</p>
+<p>You are in the
+<a href="https://github.com/senzing-garage">Senzing Garage</a>
+where projects are &quot;tinkered&quot; on.
+Although this GitHub repository may help you understand an approach to using Senzing,
+it&#39;s not considered to be &quot;production ready&quot; and is not considered to be part of the Senzing product.
+Heck, it may not even be appropriate for your application of Senzing!</p>
+<p><a href="https://badge.fury.io/js/%40senzing%2Frest-api-client-ng"><img src="https://badge.fury.io/js/%40senzing%2Frest-api-client-ng.svg" alt="npm version" class="img-responsive"></a>
 <img src="https://img.shields.io/github/v/release/senzing/rest-api-client-ng?color=%2300c4ff&logo=latest%20tag" alt="GitHub release (latest SemVer)" class="img-responsive">
 <img src="https://img.shields.io/github/package-json/v/senzing/rest-api-client-ng?color=orange&logo=latest&logoColor=blue" alt="GitHub package.json version" class="img-responsive"></p>
-<h2 id="overview">Overview</h2>
+<h2>Overview</h2>
 <p>This project is a package that provides a Angular TypeScript REST client intended to be used as a dependency for other <a href="https://senzing.com/senzing-api/">Senzing</a> projects like <a href="https://www.npmjs.com/package/@senzing/sdk-components-ng%5D">@senzing/sdk-components-ng</a>. This project should conform to the OAS schema defined in <a href="https://github.com/senzing-garage/senzing-rest-api-specification/blob/master/senzing-rest-api.yaml">Senzing/senzing-rest-api-specification</a></p>
 <p>The usage for classes, models, and services can be found in the <a href="http://hub.senzing.com/rest-api-client-ng/">documentation examples</a>.</p>
-<h2 id="installation">Installation</h2>
-<div><pre class="line-numbers"><code class="language-bash">npm install &#64;senzing/rest-api-client-ng --save</code></pre></div><h2 id="building-from-source">Building from source</h2>
-<div><pre class="line-numbers"><code class="language-bash">git clone git&#64;github.com:Senzing/rest-api-client-ng.git
+<h2>Installation</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm install &#64;senzing/rest-api-client-ng --save</code></pre></div><h2>Building from source</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">git clone git&#64;github.com:Senzing/rest-api-client-ng.git
 cd rest-api-client-ng
 npm install
 npm run build:prod
 npm run package</code></pre></div><p>The steps above will checkout the repo and build the package to the ./dist/@senzing/rest-api-client-ng directory. The local package can then be statically installed by using first changing to the directory of your project and doing a <code>npm install ./relative/path/to/dist/@senzing/rest-api-client-ng/rest-api-client-ng.0.0.0.tgz</code> or npm link.</p>
-<h2 id="running-unit-tests">Running unit tests</h2>
+<h2>Running unit tests</h2>
 <p>Run <code>npm run test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
 
 
@@ -98,6 +158,19 @@ npm run package</code></pre></div><p>The steps above will checkout the repo and 
             var COMPODOC_CURRENT_PAGE_URL = 'index.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>

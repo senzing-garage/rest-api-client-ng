@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">@senzing/rest-api-client-ng documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">@senzing/rest-api-client-ng documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,7 +75,7 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
@@ -49,11 +100,11 @@
 
 
 <ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Variables</li>
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
 </ol>
 
-<section>
+<section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -77,6 +128,9 @@
                         </li>
                         <li>
                             <a href="#SzAttributeSearchResultType" title="projects/rest-api-client-ng/src/lib/model/szAttributeSearchResultType.ts" ><b>SzAttributeSearchResultType</b>&nbsp;&nbsp;&nbsp;(projects/.../szAttributeSearchResultType.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SzBoundType" title="projects/rest-api-client-ng/src/lib/model/szBoundType.ts" ><b>SzBoundType</b>&nbsp;&nbsp;&nbsp;(projects/.../szBoundType.ts)</a>
                         </li>
                         <li>
                             <a href="#SzBulkDataStatus" title="projects/rest-api-client-ng/src/lib/model/szBulkDataStatus.ts" ><b>SzBulkDataStatus</b>&nbsp;&nbsp;&nbsp;(projects/.../szBulkDataStatus.ts)</a>
@@ -103,6 +157,9 @@
                             <a href="#SzRelationshipType" title="projects/rest-api-client-ng/src/lib/model/szRelationshipType.ts" ><b>SzRelationshipType</b>&nbsp;&nbsp;&nbsp;(projects/.../szRelationshipType.ts)</a>
                         </li>
                         <li>
+                            <a href="#SzRelationType" title="projects/rest-api-client-ng/src/lib/model/szRelationType.ts" ><b>SzRelationType</b>&nbsp;&nbsp;&nbsp;(projects/.../szRelationType.ts)</a>
+                        </li>
+                        <li>
                             <a href="#SzScoringBucket" title="projects/rest-api-client-ng/src/lib/model/szScoringBucket.ts" ><b>SzScoringBucket</b>&nbsp;&nbsp;&nbsp;(projects/.../szScoringBucket.ts)</a>
                         </li>
                         <li>
@@ -116,7 +173,7 @@
 </section>
 
     <h3>projects/rest-api-client-ng/src/lib/api/api.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -136,7 +193,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>[AdminService, BulkDataService, ConfigService, EntityDataService, EntityGraphService]</code>
+                        <i>Default value : </i><code>[AdminService, BulkDataService, ConfigService, EntityDataService, EntityGraphService, StatisticsService]</code>
                     </td>
                 </tr>
 
@@ -145,7 +202,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/variables.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -199,7 +256,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szAttributeClass.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -237,7 +294,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szAttributeNecessity.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -271,7 +328,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szAttributeSearchResultType.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -304,8 +361,42 @@
         </tbody>
     </table>
 </section>
+    <h3>projects/rest-api-client-ng/src/lib/model/szBoundType.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SzBoundType"></a>
+                    <span class="name">
+                        <span ><b>SzBoundType</b></span>
+                        <a href="#SzBoundType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    INCLUSIVELOWER: &#x27;INCLUSIVE_LOWER&#x27; as SzBoundType,
+    EXCLUSIVELOWER: &#x27;EXCLUSIVE_LOWER&#x27; as SzBoundType,
+    INCLUSIVEUPPER: &#x27;INCLUSIVE_UPPER&#x27; as SzBoundType,
+    EXCLUSIVEUPPER: &#x27;EXCLUSIVE_UPPER&#x27; as SzBoundType
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>projects/rest-api-client-ng/src/lib/model/szBulkDataStatus.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -339,7 +430,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szDetailLevel.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -375,7 +466,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szFeatureMode.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -410,7 +501,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szHttpMethod.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -445,7 +536,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szMatchLevel.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -481,7 +572,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szRelationDirection.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -514,7 +605,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szRelationshipMode.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -547,7 +638,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szRelationshipType.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -579,8 +670,42 @@
         </tbody>
     </table>
 </section>
+    <h3>projects/rest-api-client-ng/src/lib/model/szRelationType.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SzRelationType"></a>
+                    <span class="name">
+                        <span ><b>SzRelationType</b></span>
+                        <a href="#SzRelationType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    AMBIGUOUSMATCH: &#x27;AMBIGUOUS_MATCH&#x27; as SzRelationType,
+    POSSIBLEMATCH: &#x27;POSSIBLE_MATCH&#x27; as SzRelationType,
+    POSSIBLERELATION: &#x27;POSSIBLE_RELATION&#x27; as SzRelationType,
+    DISCLOSEDRELATION: &#x27;DISCLOSED_RELATION&#x27; as SzRelationType
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>projects/rest-api-client-ng/src/lib/model/szScoringBucket.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -617,7 +742,7 @@
     </table>
 </section>
     <h3>projects/rest-api-client-ng/src/lib/model/szScoringFrequency.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -684,6 +809,19 @@
             var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
