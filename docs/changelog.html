@@ -12,10 +12,61 @@
         <link rel="stylesheet" href="./styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">@senzing/rest-api-client-ng documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">@senzing/rest-api-client-ng documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -24,21 +75,52 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="changelog">Changelog</h1>
+<h1>Changelog</h1>
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 <a href="https://dlaa.me/markdownlint/">markdownlint</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<h2 id="601---2023-04-05">[6.0.1] - 2023-04-05</h2>
-<p>Dependency versions updated for latest security patches.</p>
-<h2 id="600---2023-01-12">[6.0.0] - 2023-01-12</h2>
+<h2>[6.1.0] - 2024-03-13</h2>
+<p>The majority of the new additions to models and api services only match up to the POC server implementation of the Senzing API Spec and facilitate access to statistics provided through the <em>Data Mart</em> interface(s). As Such these are provided as <em>optional</em> models that are not present in all api products.</p>
+<h3>Added</h3>
+<ul>
+<li><code>SzCrossSourceSummary</code> model. Describes the cross-source statistics between two data sources.</li>
+<li><code>SzCrossSourceSummaryResponse</code> model. Extends the BaseResponse to add the fields for statistics representing cross-summary statistics between two specific data sources.</li>
+<li><code>SzEntity</code> model. Describes an entity that has been synced to the datamart.</li>
+<li><code>SzLoadedStats</code> model. Encapsulates the statistics pertaining to counts of entities and records both in total and by data source.</li>
+<li><code>SzLoadedStatsResponse</code> model. Extends the BaseResponse to add the fields for statistics representing counts of entities and records in total and by data source.</li>
+<li><code>SzMatchCounts</code> model. Describes the entity and record counts for matches between records from the primary data source to at least one record from the &quot;versus&quot; data source.</li>
+<li><code>SzMatchCountsResponse</code> model. Extends the BaseResponse to add the fields for statistics representing cross-summary statistics on matches between two specific data sources.</li>
+<li><code>SzMatchCountsResponseData</code> model. Describes the cross-summary statistics for matches between two data sources for each requested match key and principle combination.</li>
+<li><code>SzPagedRelationsResponse</code> model. Extends the BaseResponse to add the fields describing a list of SzRelation&#39;s that is &quot;paged&quot; with a boundary, a page size and a total relations count.</li>
+<li><code>SzRecord</code> model. Describes a record that has been synced to the datamart.</li>
+<li><code>SzRelation</code> model. Describes a relationship between two entities.</li>
+<li><code>SzRelationCounts</code> model. Describes the entity, record and relationship counts for the respective relation type for entities having at least one record from the primary data source to entities having at least one record from the &quot;versus&quot; data source.</li>
+<li><code>SzRelationCountsResponse</code> model. Extends the BaseResponse to add the fields for statistics representing cross-summary statistics on relationships of a specific type between two specific data sources.</li>
+<li><code>SzRelationCountsResponseData</code> model. Describes the cross-source statistics between two data sources.</li>
+<li><code>SzRelationsPage</code> model. Encapsulates a paged list of SzRelation values describing entity relationships pertaining to a specific statistic.</li>
+<li><code>SzRelationType</code> model. Similar to SzRelationshipType but this enumeration is used with the statistics API provided by the data mart replicator.      Possible values are &#39;AMBIGUOUS_MATCH&#39;, &#39;POSSIBLE_MATCH&#39;, &#39;POSSIBLE_RELATION&#39;,&#39;DISCLOSED_RELATION&#39;.</li>
+<li><code>SzSourceLoadedStats</code> model. Encapsulates the statistics pertaining to counts of entities and records for a specific data source.</li>
+<li><code>SzSourceLoadedStatsResponse</code> model. Extends the BaseResponse to add the fields for statistics representing counts of entities and records for a specific data source.</li>
+<li><code>SzSourceSummary</code> model. Describes the source summary and all cross-summaries with that data source.</li>
+<li><code>SzSourceSummaryResponse</code> model. Extends the BaseResponse to add the fields for statistics representing summary statistics for a single data source versus itself and every other data source.</li>
+<li><code>SzSummaryStats</code> model. Encapsulates the statistics for the source summaries for every data source.</li>
+<li><code>SzSummaryStatsResponse</code> model. Extends the BaseResponse to add the fields for statistics representing summary statistics for every configured data source.</li>
+</ul>
+<h2>[6.0.1] - 2023-05-11</h2>
+<h3>Modified</h3>
+<ul>
+<li>angular dependencies updated to 15.2.x</li>
+<li>dependency versions updated for security patches</li>
+</ul>
+<h2>[6.0.0] - 2023-01-12</h2>
 <p>As of 6.0.0 release this package now requires <code>@angular@~15.0.0</code> to compile and run. There are no components in this package so <em>technically</em> it would probably be compatible with earlier releases but it is not recommended and would <strong>not</strong> be officially supported.</p>
 <p>Updating to angular 15 resolves major dependency compatibility issues so we can apply the latest security patches to the library.</p>
 <p>For information updating your project from a previous angular version to <code>~15.0.0</code> see the <a href="https://update.angular.io/">Angular Update Guide </a></p>
@@ -47,7 +129,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added methods and models to support &quot;how entity&quot; functionality</li>
 <li>Added enumeration options for detail levels and feature mode to allow for graph optimization.</li>
 </ul>
-<h3 id="added">Added</h3>
+<h3>Added</h3>
 <ul>
 <li><code>SzFeatureReference</code> model</li>
 <li><code>SzHowEntityResponse</code> model</li>
@@ -74,15 +156,15 @@ entity ID&#39;s without record information or relationship match info.</li>
 </ul>
 </li>
 </ul>
-<h3 id="modified">Modified</h3>
+<h3>Modified</h3>
 <ul>
 <li><code>SzMatchInfo</code> renamed to <code>SzWhyMatchInfo</code></li>
 <li>Updated <code>GET /entity-paths</code> parameter(s)</li>
 </ul>
-<h3 id="removed">Removed</h3>
-<h2 id="500---2022-08-11">[5.0.0] - 2022-08-11</h2>
+<h3>Removed</h3>
+<h2>[5.0.0] - 2022-08-11</h2>
 <p>A new parameter and enum has been added for finer control over the detail levels of entity response objects.  </p>
-<h3 id="added-1">Added</h3>
+<h3>Added</h3>
 <ul>
 <li><code>SzDetailLevel</code> is a new enum that describes the level of detail desired for entity data when obtained via the various endpoints that return entity data. Details for features of entities as well as the related entities of entities are controlled by other flags.  Possible values are:<ul>
 <li><code>MINIMAL</code> The entities returned will include at most their entity ID&#39;s as well as identifiers for their constituent records (i.e.: data source code and record ID for each record).  This detail level is optimized for the fastest possible processing time.   </li>
@@ -92,7 +174,7 @@ entity ID&#39;s without record information or relationship match info.</li>
 </ul>
 </li>
 </ul>
-<h3 id="modified-1">Modified</h3>
+<h3>Modified</h3>
 <ul>
 <li>The call signature has been updated for <code>EntityDataService.getEntityByEntityId</code> from <code>entityId: number, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code> to <code>entityId: number, detailLevel?: SzDetailLevel, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code></li>
 <li>The call signature has been updated for <code>EntityDataService.getEntityByRecordId</code> from <code>dataSourceCode: string, recordId: string, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code> to <code>dataSourceCode: string, recordId: string, detailLevel?: SzDetailLevel, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRelated?: SzRelationshipMode, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code></li>
@@ -105,21 +187,21 @@ entity ID&#39;s without record information or relationship match info.</li>
 <li>The call signature has been updated for <code>EntityGraphService.findEntityNetwork</code> from <code>e?: Array&lt;SzEntityIdentifier&gt;, entities?: SzEntityIdentifiers, maxDegrees?: number, buildOut?: number, maxEntities?: number, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code> to <code>e?: Array&lt;SzEntityIdentifier&gt;, entities?: SzEntityIdentifiers, maxDegrees?: number, buildOut?: number, maxEntities?: number, detailLevel?: SzDetailLevel, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code></li>
 <li>The call signature has been updated for <code>EntityGraphService.findEntityPath</code> from <code>from: SzEntityIdentifier, to: SzEntityIdentifier, maxDegrees?: number, x?: Array&lt;SzEntityIdentifier&gt;, avoidEntities?: SzEntityIdentifiers, forbidAvoided?: boolean, s?: Array&lt;string&gt;, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code> to <code>from: SzEntityIdentifier, to: SzEntityIdentifier, maxDegrees?: number, x?: Array&lt;SzEntityIdentifier&gt;, avoidEntities?: SzEntityIdentifiers, forbidAvoided?: boolean, s?: Array&lt;string&gt;, detailLevel?: SzDetailLevel, featureMode?: SzFeatureMode, withFeatureStats?: boolean, withInternalFeatures?: boolean, forceMinimal?: boolean, withRaw?: boolean, observe?: &#39;body&#39;, reportProgress?: boolean, additionalHeaders?: {[key: string]: string}</code></li>
 </ul>
-<h2 id="402---2022-07-31">[4.0.2] - 2022-07-31</h2>
-<h3 id="modified-2">Modified</h3>
+<h2>[4.0.2] - 2022-07-31</h2>
+<h3>Modified</h3>
 <p>Dependencies updated</p>
-<h2 id="401---2022-06-09">[4.0.1] - 2022-06-09</h2>
-<h3 id="modified-3">Modified</h3>
+<h2>[4.0.1] - 2022-06-09</h2>
+<h3>Modified</h3>
 <p>Dependencies updated</p>
-<h2 id="400---2022-03-15">[4.0.0] - 2022-03-15</h2>
+<h2>[4.0.0] - 2022-03-15</h2>
 <p>This update brings the models in line with the changes for the <code>3.0.0</code> release of the <a href="https://github.com/senzing-garage/senzing-api-server">senzing rest api server</a>
 and <a href="https://github.com/senzing-garage/senzing-rest-api-specification/blob/caceres.version-3.0.0/senzing-rest-api.yaml">rest api specification</a>.</p>
-<h3 id="modified-4">Modified</h3>
+<h3>Modified</h3>
 <ul>
 <li><code>matchScore</code> removed from <code>SzBaseRelatedEntity</code></li>
 <li>The <code>EntityData.getEntityByEntityId</code> method had the parameter <code>forceMinimal</code> moved from the 3rd position to the 5th position.</li>
 </ul>
-<h3 id="removed-1">Removed</h3>
+<h3>Removed</h3>
 <ul>
 <li>All models related to <em>Entity Types</em> and <em>Entity Classes</em> removed from the api have been removed from this package(see below)<ul>
 <li><code>SzEntityClass</code></li>
@@ -163,11 +245,11 @@ and <a href="https://github.com/senzing-garage/senzing-rest-api-specification/bl
 </ul>
 </li>
 </ul>
-<h2 id="300---2021-12-14">[3.0.0] - 2021-12-14</h2>
+<h2>[3.0.0] - 2021-12-14</h2>
 <p>As of 3.0.0 release this package now requires <code>@angular@~13.0.0</code> to compile and run. There are no components in this package so <em>technically</em> it would probably be compatible with earlier releases but it is not recommended and would <strong>not</strong> be officially supported.</p>
 <p>Updating to angular 13 resolves major dependency compatibility issues so we can apply the latest security patches to the library.</p>
 <p>For information updating your project from a previous angular version to <code>~13.0.0</code> see the <a href="https://update.angular.io/">Angular Update Guide </a></p>
-<h2 id="240---2021-12-10">[2.4.0] - 2021-12-10</h2>
+<h2>[2.4.0] - 2021-12-10</h2>
 <ul>
 <li>removed:<ul>
 <li>IE11 support (via NG13)</li>
@@ -184,7 +266,7 @@ and <a href="https://github.com/senzing-garage/senzing-rest-api-specification/bl
 <p>Updating to angular 13 resolves major dependency compatibility issues so we can apply the latest security patches to the library.</p>
 <p>For information updating your project from a previous angular version to <code>~13.0.0</code> see the <a href="https://update.angular.io/">Angular Update Guide </a></p>
 <p>relevant tickets #78</p>
-<h2 id="230---2021-7-31">[2.3.0] - 2021-7-31</h2>
+<h2>[2.3.0] - 2021-7-31</h2>
 <ul>
 <li><p>deleted:    </p>
 <ul>
@@ -281,7 +363,7 @@ and <a href="https://github.com/senzing-garage/senzing-rest-api-specification/bl
 </ul>
 </li>
 </ul>
-<h2 id="222---2021-06-09">[2.2.2] - 2021-06-09</h2>
+<h2>[2.2.2] - 2021-06-09</h2>
 <ul>
 <li>Dependency security updates and bugfixes. #67</li>
 <li>Added new <code>additionalHeaders</code> parameter to <em><em>ALL</em></em> service methods. see issue #63</li>
@@ -293,11 +375,11 @@ and <a href="https://github.com/senzing-garage/senzing-rest-api-specification/bl
 </li>
 </ul>
 <p>relevant tickets: #63, #67</p>
-<h2 id="221---2021-04-08">[2.2.1] - 2021-04-08</h2>
+<h2>[2.2.1] - 2021-04-08</h2>
 <ul>
 <li>Dependency security updates and bugfixes.</li>
 </ul>
-<h2 id="220---2020-10-16">[2.2.0] - 2020-10-16</h2>
+<h2>[2.2.0] - 2020-10-16</h2>
 <p>the models need to be updated to match the 2.2.0 specification release.
 <a href="https://github.com/senzing-garage/senzing-rest-api-specification/releases/tag/2.2.0">https://github.com/senzing-garage/senzing-rest-api-specification/releases/tag/2.2.0</a></p>
 <ul>
@@ -320,7 +402,7 @@ the most sensible score value from the <code>nameScoringDetails</code> for <code
 features since the <code>FULL_SCORE</code> field is not available for names.</li>
 <li>Added the <code>NOT_SCORED</code> value for <code>SzScoringBucket</code> enum.</li>
 </ul>
-<h2 id="210---2020-9-20">[2.1.0] - 2020-9-20</h2>
+<h2>[2.1.0] - 2020-9-20</h2>
 <p>Maintenance release for framework upgrade to Angular 10: see <a href="https://blog.angular.io/version-10-of-angular-now-available-78960babd41">https://blog.angular.io/version-10-of-angular-now-available-78960babd41</a></p>
 <p>Major updates to most dependency versions have also been made which should improve file sizes, security, and stability.</p>
 <p>The following Senzing projects have also been updated to operate on Angular 10,
@@ -330,10 +412,10 @@ see the following links for associated tickets:</p>
 <li><a href="https://github.com/senzing-garage/rest-api-client-ng/issues/39">rest-api-client-ng/issues/39</a></li>
 <li><a href="https://github.com/senzing-garage/sdk-graph-components/issues/37">sdk-graph-components/issues/37</a></li>
 </ul>
-<h2 id="201---2020-9-20">2.0.1 - 2020-9-20</h2>
+<h2>2.0.1 - 2020-9-20</h2>
 <p>Minor updates to dependency versions. Security patches.</p>
-<h2 id="200---2020-07-06">2.0.0 - 2020-07-06</h2>
-<h3 id="added-to-200">Added to 2.0.0</h3>
+<h2>2.0.0 - 2020-07-06</h2>
+<h3>Added to 2.0.0</h3>
 <p>ConfigService.getDataSources
 EntityDataService.reevaluateEntity
 EntityDataService.reevaluateRecord
@@ -341,11 +423,11 @@ EntityDataService.whyEntityByEntityID
 EntityDataService.whyEntityByRecordID
 EntityDataService.whyRecords
 EntityDataService.deleteRecord</p>
-<h3 id="removed-in-200">Removed in 2.0.0</h3>
+<h3>Removed in 2.0.0</h3>
 <p>ConfigService.addEntityClasses
 ConfigService.getCurrentConfig
 ConfigService.getDefaultConfig</p>
-<h3 id="refactored-in-200">Refactored in 2.0.0</h3>
+<h3>Refactored in 2.0.0</h3>
 <p>ConfigService.listDataSources: renamed to <code>ConfigService.getDataSources</code>
 ConfigService.listEntityClasses: renamed to <code>ConfigService.getEntityClasses</code>
 ConfigService.listEntityTypes: renamed to <code>ConfigService.getEntityTypes</code>
@@ -375,8 +457,8 @@ EntityGraphService.findEntityNetwork: &quot;entities&quot; arg type changed from
 EntityGraphService.findEntityPath: <code>withDerivedFeatures</code> renamed to <code>withInternalFeatures</code>
 EntityGraphService.findEntityPath: <code>x</code> arg type changed from <code>SzEntityIdentifiers</code> to <code>Array&lt;SzEntityIdentifier&gt;</code> (superficial type change)
 EntityGraphService.findEntityPath: <code>featureMode</code> arg type changed from <code>string</code> to <code>featureMode</code> (enum &#39;NONE&#39; | &#39;REPRESENTATIVE&#39; | &#39;WITHDUPLICATES&#39;)</p>
-<h2 id="102---2019-06-05">[1.0.2] - 2019-06-05</h2>
-<h3 id="added-to-102">Added to 1.0.2</h3>
+<h2>[1.0.2] - 2019-06-05</h2>
+<h3>Added to 1.0.2</h3>
 <ul>
 <li>minor update to projects/rest-api-client-ng/src/lib/model/szEntityPath.ts to support Graph Components.
 model was incorrect.</li>
@@ -431,6 +513,19 @@ model was incorrect.</li>
             var COMPODOC_CURRENT_PAGE_URL = 'changelog.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>

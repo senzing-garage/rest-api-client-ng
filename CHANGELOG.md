@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [6.1.0] - 2024-03-13
+## [6.1.0] - 2024-10-02
 
 The majority of the new additions to models and api services only match up to the POC server implementation of the Senzing API Spec and facilitate access to statistics provided through the *Data Mart* interface(s). As Such these are provided as *optional* models that are not present in all api products.
 
@@ -33,6 +33,9 @@ The majority of the new additions to models and api services only match up to th
 - `SzSourceSummaryResponse` model. Extends the BaseResponse to add the fields for statistics representing summary statistics for a single data source versus itself and every other data source.
 - `SzSummaryStats` model. Encapsulates the statistics for the source summaries for every data source.
 - `SzSummaryStatsResponse` model. Extends the BaseResponse to add the fields for statistics representing summary statistics for every configured data source.
+
+### Modified
+- dependency versions updated for security patches
 
 ## [6.0.1] - 2023-05-11
 
