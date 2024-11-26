@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.0.0] - 2024-11-26
+The 7.0.0 release updates the version of @angular required to 18 and typescript to 4.5.x.
+no new features were added.
+
+## What's Changed
+* updates the required version of the angular library to [version 18](https://blog.angular.dev/angular-v18-is-now-available-e79d5ac0affe).
+* updates the typescript dependency to [version 5.4.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-4.html)
+
+**Full Changelog**: https://github.com/senzing-garage/rest-api-client-ng/compare/6.1.0...7.0.0
+
+
 ## [6.1.0] - 2024-10-02
 
 The majority of the new additions to models and api services only match up to the POC server implementation of the Senzing API Spec and facilitate access to statistics provided through the *Data Mart* interface(s). As Such these are provided as *optional* models that are not present in all api products.
