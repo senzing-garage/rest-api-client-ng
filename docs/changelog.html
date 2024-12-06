@@ -87,7 +87,16 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 <a href="https://dlaa.me/markdownlint/">markdownlint</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<h2>[6.1.0] - 2024-03-13</h2>
+<h2>[7.0.0] - 2024-11-26</h2>
+<p>The 7.0.0 release updates the version of @angular required to 18 and typescript to 4.5.x.
+no new features were added.</p>
+<h2>What&#39;s Changed</h2>
+<ul>
+<li>updates the required version of the angular library to <a href="https://blog.angular.dev/angular-v18-is-now-available-e79d5ac0affe">version 18</a>.</li>
+<li>updates the typescript dependency to <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-4.html">version 5.4.0</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/senzing-garage/rest-api-client-ng/compare/6.1.0...7.0.0">https://github.com/senzing-garage/rest-api-client-ng/compare/6.1.0...7.0.0</a></p>
+<h2>[6.1.0] - 2024-10-02</h2>
 <p>The majority of the new additions to models and api services only match up to the POC server implementation of the Senzing API Spec and facilitate access to statistics provided through the <em>Data Mart</em> interface(s). As Such these are provided as <em>optional</em> models that are not present in all api products.</p>
 <h3>Added</h3>
 <ul>
@@ -113,6 +122,10 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><code>SzSourceSummaryResponse</code> model. Extends the BaseResponse to add the fields for statistics representing summary statistics for a single data source versus itself and every other data source.</li>
 <li><code>SzSummaryStats</code> model. Encapsulates the statistics for the source summaries for every data source.</li>
 <li><code>SzSummaryStatsResponse</code> model. Extends the BaseResponse to add the fields for statistics representing summary statistics for every configured data source.</li>
+</ul>
+<h3>Modified</h3>
+<ul>
+<li>dependency versions updated for security patches</li>
 </ul>
 <h2>[6.0.1] - 2023-05-11</h2>
 <h3>Modified</h3>
@@ -538,7 +551,6 @@ model was incorrect.</li>
        <script src="./js/libs/es6-shim.min.js"></script>
        <script src="./js/libs/EventDispatcher.js"></script>
        <script src="./js/libs/promise.min.js"></script>
-       <script src="./js/libs/zepto.min.js"></script>
 
        <script src="./js/compodoc.js"></script>
 
