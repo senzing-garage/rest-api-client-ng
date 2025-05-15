@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.0] - 2025-05-15
+The 8.0.0 release updates the version of @angular required to 19 and typescript to 5.8.
+no new features were added.
+
+## What's Changed
+* updates the required version of the angular library to [version 19](https://blog.angular.dev/angular-19-2-is-now-available-673ec70aea12).
+* updates the typescript dependency to [version 5.8.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-8.html)
+
 ## [7.0.0] - 2024-11-26
 The 7.0.0 release updates the version of @angular required to 18 and typescript to 4.5.x.
 no new features were added.
