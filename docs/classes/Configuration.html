@@ -100,15 +100,15 @@
 
 <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a href="#info" 
+            <a href="#info"
                 class="nav-link"
                 class="nav-link active"
                 role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
         <li class="nav-item">
-            <a href="#source" 
+            <a href="#source"
                 class="nav-link"
-                
+
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
@@ -257,15 +257,15 @@
                                         <tbody>
                                                 <tr>
                                                         <td>configurationParameters</td>
-                                                  
+
                                                         <td>
                                                                         <code><a href="../interfaces/ConfigurationParameters.html" target="_self" >ConfigurationParameters</a></code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -277,7 +277,7 @@
 </section>
 
             <section data-compodoc="block-properties">
-    
+
     <h3 id="inputs">
         Properties
     </h3>
@@ -446,7 +446,7 @@
 </section>
 
             <section data-compodoc="block-methods">
-    
+
     <h3 id="methods">
         Methods
     </h3>
@@ -485,7 +485,7 @@
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -515,7 +515,7 @@
 
                         </div>
                             <div class="io-description">
-                                
+
                             </div>
                 </td>
             </tr>
@@ -554,7 +554,7 @@
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -638,7 +638,7 @@ JSON MIME examples:
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -717,7 +717,7 @@ JSON MIME examples:
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -747,7 +747,7 @@ JSON MIME examples:
 
                         </div>
                             <div class="io-description">
-                                
+
                             </div>
                 </td>
             </tr>
@@ -790,7 +790,7 @@ If no content type is found return the first found type if the contentTypes is n
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -885,7 +885,7 @@ If no content type is found return the first found type if the contentTypes is n
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -1013,15 +1013,15 @@ properties as a <ConfigurationParameters> Object</p>
                                             <tbody>
                                                     <tr>
                                                             <td>value</td>
-                                                    
+
                                                             <td>
                                                                             <code><a href="../interfaces/ConfigurationParameters.html" target="_self" >ConfigurationParameters</a></code>
                                                             </td>
-                                                    
+
                                                         <td>
                                                                 No
                                                         </td>
-                                                        
+
                                                     </tr>
                                             </tbody>
                                         </table>
@@ -1098,15 +1098,15 @@ or required non-standard headers like jwt session tokens, auth id etc.</p>
                                             <tbody>
                                                     <tr>
                                                             <td>value</td>
-                                                    
+
                                                             <td>
                                                                         <code>literal type | undefined</code>
                                                             </td>
-                                                    
+
                                                         <td>
                                                                 No
                                                         </td>
-                                                        
+
                                                     </tr>
                                             </tbody>
                                         </table>
@@ -1143,8 +1143,8 @@ export class Configuration {
     accessToken?: string | (() &#x3D;&gt; string);
     basePath?: string;
     withCredentials?: boolean;
-    /** 
-     * additional headers to pass to api requests 
+    /**
+     * additional headers to pass to api requests
      * @internal
     */
     private _additionalHeaders: {key: string, value: string}[] | undefined;
@@ -1157,24 +1157,24 @@ export class Configuration {
         this.basePath &#x3D; configurationParameters.basePath;
         this.withCredentials &#x3D; configurationParameters.withCredentials;
         // safety check because extra setter logic to unset value present
-        if(configurationParameters.additionalHeaders) { 
+        if(configurationParameters.additionalHeaders) {
             this.additionalHeaders &#x3D; configurationParameters.additionalHeaders;
         }
     }
 
     /**
-     * Convenience getter that returns the current state of the object&#x27;s 
+     * Convenience getter that returns the current state of the object&#x27;s
      * properties as a &lt;ConfigurationParameters&gt; Object
      */
     public get configurationParameters(): ConfigurationParameters {
         let retVal: ConfigurationParameters &#x3D; {};
-        if(this.apiKeys &amp;&amp; this.apiKeys !&#x3D;&#x3D; undefined &amp;&amp; this.apiKeys !&#x3D;&#x3D; null) retVal.apiKeys &#x3D; this.apiKeys; 
-        if(this.username &amp;&amp; this.username !&#x3D;&#x3D; undefined &amp;&amp; this.username !&#x3D;&#x3D; null) retVal.username &#x3D; this.username; 
-        if(this.password &amp;&amp; this.password !&#x3D;&#x3D; undefined &amp;&amp; this.password !&#x3D;&#x3D; null) retVal.password &#x3D; this.password; 
-        if(this.accessToken &amp;&amp; this.accessToken !&#x3D;&#x3D; undefined &amp;&amp; this.accessToken !&#x3D;&#x3D; null) retVal.accessToken &#x3D; this.accessToken; 
-        if(this.basePath &amp;&amp; this.basePath !&#x3D;&#x3D; undefined &amp;&amp; this.basePath !&#x3D;&#x3D; null) retVal.basePath &#x3D; this.basePath; 
-        if(this.withCredentials &amp;&amp; this.withCredentials !&#x3D;&#x3D; undefined &amp;&amp; this.withCredentials !&#x3D;&#x3D; null) retVal.withCredentials &#x3D; this.withCredentials; 
-        if(this.additionalHeaders &amp;&amp; this.additionalHeaders !&#x3D;&#x3D; undefined &amp;&amp; this.additionalHeaders !&#x3D;&#x3D; null) retVal.additionalHeaders &#x3D; this.additionalHeaders; 
+        if(this.apiKeys &amp;&amp; this.apiKeys !&#x3D;&#x3D; undefined &amp;&amp; this.apiKeys !&#x3D;&#x3D; null) retVal.apiKeys &#x3D; this.apiKeys;
+        if(this.username &amp;&amp; this.username !&#x3D;&#x3D; undefined &amp;&amp; this.username !&#x3D;&#x3D; null) retVal.username &#x3D; this.username;
+        if(this.password &amp;&amp; this.password !&#x3D;&#x3D; undefined &amp;&amp; this.password !&#x3D;&#x3D; null) retVal.password &#x3D; this.password;
+        if(this.accessToken &amp;&amp; this.accessToken !&#x3D;&#x3D; undefined &amp;&amp; this.accessToken !&#x3D;&#x3D; null) retVal.accessToken &#x3D; this.accessToken;
+        if(this.basePath &amp;&amp; this.basePath !&#x3D;&#x3D; undefined &amp;&amp; this.basePath !&#x3D;&#x3D; null) retVal.basePath &#x3D; this.basePath;
+        if(this.withCredentials &amp;&amp; this.withCredentials !&#x3D;&#x3D; undefined &amp;&amp; this.withCredentials !&#x3D;&#x3D; null) retVal.withCredentials &#x3D; this.withCredentials;
+        if(this.additionalHeaders &amp;&amp; this.additionalHeaders !&#x3D;&#x3D; undefined &amp;&amp; this.additionalHeaders !&#x3D;&#x3D; null) retVal.additionalHeaders &#x3D; this.additionalHeaders;
         return retVal;
     }
     /**
@@ -1182,13 +1182,13 @@ export class Configuration {
      */
     public set configurationParameters(value: ConfigurationParameters) {
         let retVal: ConfigurationParameters &#x3D; {};
-        if(value.apiKeys &amp;&amp; value.apiKeys !&#x3D;&#x3D; undefined &amp;&amp; value.apiKeys !&#x3D;&#x3D; null) this.apiKeys &#x3D; value.apiKeys; 
-        if(value.username &amp;&amp; value.username !&#x3D;&#x3D; undefined &amp;&amp; value.username !&#x3D;&#x3D; null) this.username &#x3D; value.username; 
-        if(value.password &amp;&amp; value.password !&#x3D;&#x3D; undefined &amp;&amp; value.password !&#x3D;&#x3D; null) this.password &#x3D; value.password; 
-        if(value.accessToken &amp;&amp; value.accessToken !&#x3D;&#x3D; undefined &amp;&amp; value.accessToken !&#x3D;&#x3D; null) this.accessToken &#x3D; value.accessToken; 
-        if(value.basePath &amp;&amp; value.basePath !&#x3D;&#x3D; undefined &amp;&amp; value.basePath !&#x3D;&#x3D; null) this.basePath &#x3D; value.basePath; 
-        if(value.withCredentials &amp;&amp; value.withCredentials !&#x3D;&#x3D; undefined &amp;&amp; value.withCredentials !&#x3D;&#x3D; null) this.withCredentials &#x3D; value.withCredentials; 
-        if(value.additionalHeaders &amp;&amp; value.additionalHeaders !&#x3D;&#x3D; undefined &amp;&amp; value.additionalHeaders !&#x3D;&#x3D; null) this.additionalHeaders &#x3D; value.additionalHeaders; 
+        if(value.apiKeys &amp;&amp; value.apiKeys !&#x3D;&#x3D; undefined &amp;&amp; value.apiKeys !&#x3D;&#x3D; null) this.apiKeys &#x3D; value.apiKeys;
+        if(value.username &amp;&amp; value.username !&#x3D;&#x3D; undefined &amp;&amp; value.username !&#x3D;&#x3D; null) this.username &#x3D; value.username;
+        if(value.password &amp;&amp; value.password !&#x3D;&#x3D; undefined &amp;&amp; value.password !&#x3D;&#x3D; null) this.password &#x3D; value.password;
+        if(value.accessToken &amp;&amp; value.accessToken !&#x3D;&#x3D; undefined &amp;&amp; value.accessToken !&#x3D;&#x3D; null) this.accessToken &#x3D; value.accessToken;
+        if(value.basePath &amp;&amp; value.basePath !&#x3D;&#x3D; undefined &amp;&amp; value.basePath !&#x3D;&#x3D; null) this.basePath &#x3D; value.basePath;
+        if(value.withCredentials &amp;&amp; value.withCredentials !&#x3D;&#x3D; undefined &amp;&amp; value.withCredentials !&#x3D;&#x3D; null) this.withCredentials &#x3D; value.withCredentials;
+        if(value.additionalHeaders &amp;&amp; value.additionalHeaders !&#x3D;&#x3D; undefined &amp;&amp; value.additionalHeaders !&#x3D;&#x3D; null) this.additionalHeaders &#x3D; value.additionalHeaders;
     }
 
     /**
@@ -1242,7 +1242,7 @@ export class Configuration {
                         break;
                     default:
                         if((body as File).type &#x3D;&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; (body as File).name !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; (body as File).name.indexOf(&#x27;.&#x27;) &gt; 0) {
-                            // has extenstion
+                            // has extension
                             const fExt &#x3D; (body as File).name.substring( (body as File).name.indexOf(&#x27;.&#x27;)+1 ).toUpperCase();
                             switch(fExt) {
                                 case &#x27;JSONL&#x27;:
@@ -1313,8 +1313,8 @@ export class Configuration {
         const jsonMime: RegExp &#x3D; new RegExp(&#x27;^(application\/json|[^;/ \t]+\/[^;/ \t]+[+]json)[ \t]*(;.*)?$&#x27;, &#x27;i&#x27;);
         return mime !&#x3D; null &amp;&amp; (jsonMime.test(mime) || mime.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;application/json-patch+json&#x27;);
     }
-    /** 
-     * additional http/https request headers that will be added by default to 
+    /**
+     * additional http/https request headers that will be added by default to
      * all outbound api server requests.
      */
     public get additionalHeaders(): {[key: string]: string} | undefined {
@@ -1327,9 +1327,9 @@ export class Configuration {
         }
         return undefined;
     }
-    /** 
-     * set additional http/https request headers to be added by default to 
-     * all outbound api server requests. most commonly used for adding custom 
+    /**
+     * set additional http/https request headers to be added by default to
+     * all outbound api server requests. most commonly used for adding custom
      * or required non-standard headers like jwt session tokens, auth id etc.
      */
     public set additionalHeaders(value: {[key: string]: string} | undefined) {
