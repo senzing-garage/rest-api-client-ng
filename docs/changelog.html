@@ -165,15 +165,15 @@ no new features were added.</p>
 <li><code>SzVirtualEntityResponse</code> model</li>
 <li><code>BAREMINIMAL</code> added to <code>SzDetailLevel</code> to handle just returning the
 entity ID&#39;s without record information or relationship match info.</li>
-<li><code>NETWORKMINIMAL</code> added to <code>SzDetailLevel</code> to behave the same as 
+<li><code>NETWORKMINIMAL</code> added to <code>SzDetailLevel</code> to behave the same as
 <code>SzDetailLevel.BAREMINIMAL</code>, but with the addition of relationship match info in the case of related entities being included.</li>
 <li><code>ENTITYNAMEONLY</code> added to <code>SzFeatureMode</code> to handle just retrieving the entity name without actually returning other features.</li>
 <li><code>ATTRIBUTED</code> value for <code>SzFeatureMode</code> for pulling back feature references at the record level to indicate which records contributed which features.</li>
 <li><code>featureReferences</code> property to <code>SzEntityRecord</code></li>
 <li>the following methods added to <code>EntityDataService</code><ul>
 <li><code>getVirtualEntityByRecordIds</code> gets a virtual entity by simulating the resolution of the records identified by the specified record ID parameters. This operation simulates the resolution of the one or more specified records into a single entity and returns the simulated &quot;virtual&quot; entity.  The subject records are identified by data source code and record ID pairs.</li>
-<li><code>howEntityByEntityID</code> gets an analysis of how the entity for the respective entity ID resolved. This operation provides an anlysis of how the records in an entity resolved.  The subject entity is identified by the entity ID in the request path. </li>
-<li><code>howEntityByRecordID</code> gets an analysis of how the entity for the record with the respective data source code and record ID resolved. This operation provides an anlysis of how the records in an entity resolved.  The subject entity is the one containing the record identified by the data source code and record ID in the request path.</li>
+<li><code>howEntityByEntityID</code> gets an analysis of how the entity for the respective entity ID resolved. This operation provides an analysis of how the records in an entity resolved.  The subject entity is identified by the entity ID in the request path. </li>
+<li><code>howEntityByRecordID</code> gets an analysis of how the entity for the record with the respective data source code and record ID resolved. This operation provides an analysis of how the records in an entity resolved.  The subject entity is the one containing the record identified by the data source code and record ID in the request path.</li>
 </ul>
 </li>
 </ul>
@@ -388,7 +388,7 @@ and <a href="https://github.com/senzing-garage/senzing-rest-api-specification/bl
 <ul>
 <li>Dependency security updates and bugfixes. #67</li>
 <li>Added new <code>additionalHeaders</code> parameter to <em><em>ALL</em></em> service methods. see issue #63</li>
-<li>New methods and property added to <a href="http://hub.senzing.com/rest-api-client-ng/classes/Configuration.html">Cofiguration class</a> :<ul>
+<li>New methods and property added to <a href="http://hub.senzing.com/rest-api-client-ng/classes/Configuration.html">Configuration class</a> :<ul>
 <li><a href="http://hub.senzing.com/rest-api-client-ng/classes/Configuration.html#additionalHeaders">additionalHeaders</a></li>
 <li><a href="http://hub.senzing.com/rest-api-client-ng/classes/Configuration.html#addAdditionalRequestHeader">addAdditionalRequestHeader</a></li>
 <li><a href="http://hub.senzing.com/rest-api-client-ng/classes/Configuration.html#removeAdditionalRequestHeader">removeAdditionalRequestHeader</a></li>
@@ -418,7 +418,7 @@ based on the strength of the name match).</li>
 provide feature scores without using &quot;raw data&quot;</li>
 <li>Added <code>nameScoringDetails</code> field to <code>SzFeatureScore</code> class to provide
 <code>SzNameScoring</code> name scoring details on why operations,</li>
-<li>Updated <code>com.senzing.api.model.SzFeatureScore</code> to define its <code>score</code> field as 
+<li>Updated <code>com.senzing.api.model.SzFeatureScore</code> to define its <code>score</code> field as
 the most sensible score value from the <code>nameScoringDetails</code> for <code>&quot;NAME&quot;</code>
 features since the <code>FULL_SCORE</code> field is not available for names.</li>
 <li>Added the <code>NOT_SCORED</code> value for <code>SzScoringBucket</code> enum.</li>

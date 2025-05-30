@@ -15,8 +15,8 @@ export class Configuration {
     accessToken?: string | (() => string);
     basePath?: string;
     withCredentials?: boolean;
-    /** 
-     * additional headers to pass to api requests 
+    /**
+     * additional headers to pass to api requests
      * @internal
     */
     private _additionalHeaders: {key: string, value: string}[] | undefined;
@@ -29,24 +29,24 @@ export class Configuration {
         this.basePath = configurationParameters.basePath;
         this.withCredentials = configurationParameters.withCredentials;
         // safety check because extra setter logic to unset value present
-        if(configurationParameters.additionalHeaders) { 
+        if(configurationParameters.additionalHeaders) {
             this.additionalHeaders = configurationParameters.additionalHeaders;
         }
     }
 
     /**
-     * Convenience getter that returns the current state of the object's 
+     * Convenience getter that returns the current state of the object's
      * properties as a <ConfigurationParameters> Object
      */
     public get configurationParameters(): ConfigurationParameters {
         let retVal: ConfigurationParameters = {};
-        if(this.apiKeys && this.apiKeys !== undefined && this.apiKeys !== null) retVal.apiKeys = this.apiKeys; 
-        if(this.username && this.username !== undefined && this.username !== null) retVal.username = this.username; 
-        if(this.password && this.password !== undefined && this.password !== null) retVal.password = this.password; 
-        if(this.accessToken && this.accessToken !== undefined && this.accessToken !== null) retVal.accessToken = this.accessToken; 
-        if(this.basePath && this.basePath !== undefined && this.basePath !== null) retVal.basePath = this.basePath; 
-        if(this.withCredentials && this.withCredentials !== undefined && this.withCredentials !== null) retVal.withCredentials = this.withCredentials; 
-        if(this.additionalHeaders && this.additionalHeaders !== undefined && this.additionalHeaders !== null) retVal.additionalHeaders = this.additionalHeaders; 
+        if(this.apiKeys && this.apiKeys !== undefined && this.apiKeys !== null) retVal.apiKeys = this.apiKeys;
+        if(this.username && this.username !== undefined && this.username !== null) retVal.username = this.username;
+        if(this.password && this.password !== undefined && this.password !== null) retVal.password = this.password;
+        if(this.accessToken && this.accessToken !== undefined && this.accessToken !== null) retVal.accessToken = this.accessToken;
+        if(this.basePath && this.basePath !== undefined && this.basePath !== null) retVal.basePath = this.basePath;
+        if(this.withCredentials && this.withCredentials !== undefined && this.withCredentials !== null) retVal.withCredentials = this.withCredentials;
+        if(this.additionalHeaders && this.additionalHeaders !== undefined && this.additionalHeaders !== null) retVal.additionalHeaders = this.additionalHeaders;
         return retVal;
     }
     /**
@@ -54,13 +54,13 @@ export class Configuration {
      */
     public set configurationParameters(value: ConfigurationParameters) {
         let retVal: ConfigurationParameters = {};
-        if(value.apiKeys && value.apiKeys !== undefined && value.apiKeys !== null) this.apiKeys = value.apiKeys; 
-        if(value.username && value.username !== undefined && value.username !== null) this.username = value.username; 
-        if(value.password && value.password !== undefined && value.password !== null) this.password = value.password; 
-        if(value.accessToken && value.accessToken !== undefined && value.accessToken !== null) this.accessToken = value.accessToken; 
-        if(value.basePath && value.basePath !== undefined && value.basePath !== null) this.basePath = value.basePath; 
-        if(value.withCredentials && value.withCredentials !== undefined && value.withCredentials !== null) this.withCredentials = value.withCredentials; 
-        if(value.additionalHeaders && value.additionalHeaders !== undefined && value.additionalHeaders !== null) this.additionalHeaders = value.additionalHeaders; 
+        if(value.apiKeys && value.apiKeys !== undefined && value.apiKeys !== null) this.apiKeys = value.apiKeys;
+        if(value.username && value.username !== undefined && value.username !== null) this.username = value.username;
+        if(value.password && value.password !== undefined && value.password !== null) this.password = value.password;
+        if(value.accessToken && value.accessToken !== undefined && value.accessToken !== null) this.accessToken = value.accessToken;
+        if(value.basePath && value.basePath !== undefined && value.basePath !== null) this.basePath = value.basePath;
+        if(value.withCredentials && value.withCredentials !== undefined && value.withCredentials !== null) this.withCredentials = value.withCredentials;
+        if(value.additionalHeaders && value.additionalHeaders !== undefined && value.additionalHeaders !== null) this.additionalHeaders = value.additionalHeaders;
     }
 
     /**
@@ -114,7 +114,7 @@ export class Configuration {
                         break;
                     default:
                         if((body as File).type === '' && (body as File).name !== '' && (body as File).name.indexOf('.') > 0) {
-                            // has extenstion
+                            // has extension
                             const fExt = (body as File).name.substring( (body as File).name.indexOf('.')+1 ).toUpperCase();
                             switch(fExt) {
                                 case 'JSONL':
@@ -185,8 +185,8 @@ export class Configuration {
         const jsonMime: RegExp = new RegExp('^(application\/json|[^;/ \t]+\/[^;/ \t]+[+]json)[ \t]*(;.*)?$', 'i');
         return mime != null && (jsonMime.test(mime) || mime.toLowerCase() === 'application/json-patch+json');
     }
-    /** 
-     * additional http/https request headers that will be added by default to 
+    /**
+     * additional http/https request headers that will be added by default to
      * all outbound api server requests.
      */
     public get additionalHeaders(): {[key: string]: string} | undefined {
@@ -199,9 +199,9 @@ export class Configuration {
         }
         return undefined;
     }
-    /** 
-     * set additional http/https request headers to be added by default to 
-     * all outbound api server requests. most commonly used for adding custom 
+    /**
+     * set additional http/https request headers to be added by default to
+     * all outbound api server requests. most commonly used for adding custom
      * or required non-standard headers like jwt session tokens, auth id etc.
      */
     public set additionalHeaders(value: {[key: string]: string} | undefined) {

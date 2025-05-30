@@ -103,15 +103,15 @@
 
 <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a href="#info" 
+            <a href="#info"
                 class="nav-link"
                 class="nav-link active"
                 role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
         <li class="nav-item">
-            <a href="#source" 
+            <a href="#source"
                 class="nav-link"
-                
+
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
@@ -148,25 +148,25 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#dataSource" 
+                                        <a href="#dataSource"
 >
                                             dataSource
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#matchKey" 
+                                        <a href="#matchKey"
 >
                                             matchKey
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#principle" 
+                                        <a href="#principle"
 >
                                             principle
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#recordId" 
+                                        <a href="#recordId"
 >
                                             recordId
                                         </a>
@@ -254,7 +254,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The optional match key describing why the record merged into the entity to which it belongs.  This may be absent or <code>null</code> if this record belongs to a single-record entity or if it was the inital record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).</p>
+                                    <div class="io-description"><p>The optional match key describing why the record merged into the entity to which it belongs.  This may be absent or <code>null</code> if this record belongs to a single-record entity or if it was the initial record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).</p>
 </div>
                                 </td>
                             </tr>
@@ -293,7 +293,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The optioanl principle identifying the resolution rule that was used to merge the record into the entity to which it belonss.  This may be absent or <code>null</code> if this record belongs to a single-record entity or if it was the inital record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).</p>
+                                    <div class="io-description"><p>The optional principle identifying the resolution rule that was used to merge the record into the entity to which it belongs.  This may be absent or <code>null</code> if this record belongs to a single-record entity or if it was the initial record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).</p>
 </div>
                                 </td>
                             </tr>
@@ -343,7 +343,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface SzRecord { 
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface SzRecord {
     /**
      * The data source code identifying the data source from  which the record was loaded.
      */
@@ -353,11 +353,11 @@
      */
     recordId: string;
     /**
-     * The optional match key describing why the record merged into the entity to which it belongs.  This may be absent or &#x60;null&#x60; if this record belongs to a single-record entity or if it was the inital record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).
+     * The optional match key describing why the record merged into the entity to which it belongs.  This may be absent or &#x60;null&#x60; if this record belongs to a single-record entity or if it was the initial record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).
      */
     matchKey: string;
     /**
-     * The optioanl principle identifying the resolution rule that was used to merge the record into the entity to which it belonss.  This may be absent or &#x60;null&#x60; if this record belongs to a single-record entity or if it was the inital record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).
+     * The optional principle identifying the resolution rule that was used to merge the record into the entity to which it belongs.  This may be absent or &#x60;null&#x60; if this record belongs to a single-record entity or if it was the initial record of the first multi-record entity to which it belonged (even if it later re-resolved into a larger entity).
      */
     principle: string;
 }</code></pre>
