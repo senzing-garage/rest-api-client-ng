@@ -2,18 +2,21 @@ name: npm build
 
 on: push
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   npm-build:
     name: CI Angular app through Github Actions
     outputs:
       status: ${{ job.status }}
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: use Node.js 18.x
         uses: actions/setup-node@v5
