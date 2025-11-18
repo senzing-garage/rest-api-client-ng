@@ -45,3 +45,9 @@ package-lock.old.json
 # System Files
 .DS_Store
 Thumbs.db
+
+# Visual Studio code
+.vscode/*
+!.vscode/cspell.json
+*.code-workspace
+.history
