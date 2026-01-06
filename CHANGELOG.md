@@ -15,6 +15,7 @@ no new features were added.
 
 - updates the required version of the angular library to [version 19](https://blog.angular.dev/angular-19-2-is-now-available-673ec70aea12).
 - updates the typescript dependency to [version 5.8.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-8.html)
+- updates the required Node.js version to 20.x or 22.x (Node.js 18 reached EOL on March 27, 2025).
 
 ## [7.0.0] - 2024-11-26
 
