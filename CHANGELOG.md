@@ -1,5 +1,7 @@
 # Changelog
 
+<!-- markdownlint-disable MD013 MD024 -->
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -11,22 +13,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 The 8.0.0 release updates the version of @angular required to 19 and typescript to 5.8.
 no new features were added.
 
-## What's Changed
+### Changed in 8.0.0
 
 - updates the required version of the angular library to [version 19](https://blog.angular.dev/angular-19-2-is-now-available-673ec70aea12).
 - updates the typescript dependency to [version 5.8.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-8.html)
+- updates the required Node.js version to 20.x or 22.x (Node.js 18 reached EOL on March 27, 2025).
 
 ## [7.0.0] - 2024-11-26
 
 The 7.0.0 release updates the version of @angular required to 18 and typescript to 4.5.x.
 no new features were added.
 
-## What's Changed
+### Changed in 7.0.0
 
 - updates the required version of the angular library to [version 18](https://blog.angular.dev/angular-v18-is-now-available-e79d5ac0affe).
 - updates the typescript dependency to [version 5.4.0](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-4.html)
 
-**Full Changelog**: https://github.com/senzing-garage/rest-api-client-ng/compare/6.1.0...7.0.0
+**Full Changelog**: [6.1.0...7.0.0](https://github.com/senzing-garage/rest-api-client-ng/compare/6.1.0...7.0.0)
 
 ## [6.1.0] - 2024-10-02
 
@@ -74,7 +77,7 @@ As of 6.0.0 release this package now requires `@angular@~15.0.0` to compile and 
 
 Updating to angular 15 resolves major dependency compatibility issues so we can apply the latest security patches to the library.
 
-For information updating your project from a previous angular version to `~15.0.0` see the [Angular Update Guide ](https://update.angular.io/)
+For information updating your project from a previous angular version to `~15.0.0` see the [Angular Update Guide](https://update.angular.io/)
 
 models updated to [senzing-rest-api-spec@3.3.0](https://github.com/senzing-garage/senzing-rest-api-specification/releases/tag/3.3.0)
 
@@ -202,7 +205,7 @@ As of 3.0.0 release this package now requires `@angular@~13.0.0` to compile and 
 
 Updating to angular 13 resolves major dependency compatibility issues so we can apply the latest security patches to the library.
 
-For information updating your project from a previous angular version to `~13.0.0` see the [Angular Update Guide ](https://update.angular.io/)
+For information updating your project from a previous angular version to `~13.0.0` see the [Angular Update Guide](https://update.angular.io/)
 
 ## [2.4.0] - 2021-12-10
 
@@ -217,14 +220,13 @@ As of 2.4.0 release this package now requires `@angular@~13.0.0` to compile and 
 
 Updating to angular 13 resolves major dependency compatibility issues so we can apply the latest security patches to the library.
 
-For information updating your project from a previous angular version to `~13.0.0` see the [Angular Update Guide ](https://update.angular.io/)
+For information updating your project from a previous angular version to `~13.0.0` see the [Angular Update Guide](https://update.angular.io/)
 
 relevant tickets #78
 
 ## [2.3.0] - 2021-7-31
 
 - deleted:
-
   - szBaseResponseLinks.ts
   - szBaseResponseMeta.ts
   - (DEPRECATED) szBulkDataLoadResponse.ts
@@ -236,7 +238,6 @@ relevant tickets #78
   - body5.ts
 
 - added:
-
   - bulkdataAnalyzeBody.ts
   - bulkdataLoadBody.ts
   - bulkdataRecordsBody.ts
@@ -306,8 +307,7 @@ relevant tickets: #63, #67
 
 ## [2.2.0] - 2020-10-16
 
-the models need to be updated to match the 2.2.0 specification release.
-https://github.com/senzing-garage/senzing-rest-api-specification/releases/tag/2.2.0
+the models need to be updated to match the [2.2.0 specification release](https://github.com/senzing-garage/senzing-rest-api-specification/releases/tag/2.2.0).
 
 - Added `SzNameScoring` to describe name scoring details
 - Added `SzSearchFeatureScore` for search feature scores
